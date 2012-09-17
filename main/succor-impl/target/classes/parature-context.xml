@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="ticketParatureApi" class="com.rosettastone.succor.parature.TicketParatureApi" scope="event">
+        <property name="paratureHttpClient" ref="paratureHttpClient" />
+        <property name="ticketSerializer" ref="ticketSerializer" />
+        <property name="actionSerializer" ref="actionSerializer" />
+        <property name="languageConverter" ref="languageConverter" />
+        <property name="actionConverter" ref="actionConverter" />
+        <property name="reportDao" ref="reportDao" />
+        <property name="ruleDao" ref="ruleDao" />
+        <property name="paratureProperties" ref="paratureProperties" />
+        <property name="ticketBuilder" ref="ticketBuilder" />
+        <property name="templateDao" ref="templateDao" />
+        <property name="csrParatureApi" ref="csrParatureApi" />
+
+         <property name="ParatureHttpDelegator" ref="ParatureHttpDelegator"/>
+        <aop:scoped-proxy />
+    </bean>
+
+    <bean id="customerParatureApi" class="com.rosettastone.succor.parature.CustomerParatureApi" scope="event">
+        <property name="paratureHttpClient" ref="paratureHttpClient" />
+        <property name="paratureProperties" ref="paratureProperties" />
+        <property name="customerJsonParser" ref="customerJsonParser" />
+        <aop:scoped-proxy />
+    </bean>
+
+    <bean id="csrParatureApi" class="com.rosettastone.succor.parature.CsrParatureApi" scope="event">
+        <property name="paratureHttpClient" ref="paratureHttpClient" />
+        <property name="paratureProperties" ref="paratureProperties" />
+        <property name="csrJsonParser" ref="csrJsonParser" />
+        <aop:scoped-proxy />
+    </bean>
+
+    <bean id="paratureHttpClientFactory" class="com.rosettastone.succor.parature.ParatureHttpClientFactory">
+        <property name="paratureProperties" ref="paratureProperties" />
+    </bean>
+
+    <bean id="paratureHttpClient" factory-bean="paratureHttpClientFactory" factory-method="getHttpClient" scope="event" />
+
+    <bean id="ticketSerializer" class="com.rosettastone.succor.utils.TicketSerializer" init-method="init">
+        <property name="paratureProperties" ref="paratureProperties" />
+    </bean>
+
+    <bean id="actionSerializer" class="com.rosettastone.succor.utils.ActionSerializer" />
+
+    <bean id="languageConverter" class="com.rosettastone.succor.utils.mapping.LanguageConverter" />
+
+    <bean id="ticketBuilder" class="com.rosettastone.succor.utils.TicketObjectBuilder">
+        <property name="languageConverter" ref="languageConverter" />
+        <property name="contactReasonConverter" ref="contactReasonConverter" />
+        <property name="messageSource" ref="messageSource" />
+    </bean>
+
+	<bean id="ParatureHttpDelegator" class="com.rosettastone.succor.utils.ParatureHttpDelegator" scope="event">
+ 		<property name="paratureHttpClient" ref="paratureHttpClient" />
+ 	 	<property name="ticketSerializer" ref="ticketSerializer" />
+ 	 	<property name="actionSerializer" ref="actionSerializer" />
+ 	  	<property name="currentTask" ref="currentTask"/>
+ 	  	<property name="paratureTaskTrackerDao" ref="paratureTaskTrackerDao"/>
+ 	</bean>
+    <bean id="contactReasonConverter" class="com.rosettastone.succor.utils.mapping.ContactReasonConverter" />
+
+
+    <bean id="actionConverter" class="com.rosettastone.succor.utils.mapping.ActionConverter">
+        <property name="paratureProperties" ref="paratureProperties" />
+    </bean>
+
+    <bean id="customerJsonParser" class="com.rosettastone.succor.utils.CustomerJSONParser">
+        <property name="paratureProperties" ref="paratureProperties" />
+    </bean>
+
+    <bean id="csrJsonParser" class="com.rosettastone.succor.utils.CsrJSONParser">
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <property name="scopes">
+            <map>
+                <entry key="event" value-ref="eventScope" />
+            </map>
+        </property>
+    </bean>
+
+    <bean id="eventScope" class="com.rosettastone.succor.spring.EventScope">
+        <property name="currentEventStorage" ref="currentEventStorage" />
+    </bean>
+</beans>
+

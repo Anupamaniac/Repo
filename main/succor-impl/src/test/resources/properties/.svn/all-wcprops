@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/resources/properties
+END
+test_es.properties
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/resources/properties/test_es.properties
+END
+test_ja.properties
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/resources/properties/test_ja.properties
+END
+test_en.properties
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/resources/properties/test_en.properties
+END

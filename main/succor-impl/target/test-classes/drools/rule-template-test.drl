@@ -1,0 +1,21 @@
+template header
+ruleName
+ruleAction
+ruleCondition
+
+
+package com.rosettastone.succor
+
+import com.rosettastone.succor.drools.Item;
+global com.rosettastone.succor.drools.ItemService itemService
+
+template "conditon"
+
+rule "@{ruleName}"
+when
+    $item: Item(@{ruleCondition})
+then
+    @{ruleAction}
+end
+
+end template

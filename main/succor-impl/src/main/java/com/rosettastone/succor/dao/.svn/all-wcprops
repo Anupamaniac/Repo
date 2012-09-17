@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/WebDev/!svn/ver/105893/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/dao
+END
+DiscoveryCallEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/dao/DiscoveryCallEntity.java
+END
+CustomerDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/dao/CustomerDAO.java
+END
+DiscoveryCallDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/dao/DiscoveryCallDao.java
+END
+CustomerPK.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/dao/CustomerPK.java
+END
+EventMessageTypeDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/dao/EventMessageTypeDao.java
+END
+KeepaliveControllerDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/WebDev/!svn/ver/108041/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/dao/KeepaliveControllerDao.java
+END
+CustomerEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/dao/CustomerEntity.java
+END
+DiscoveryCallPK.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/dao/DiscoveryCallPK.java
+END

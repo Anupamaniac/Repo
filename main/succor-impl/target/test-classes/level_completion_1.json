@@ -1,0 +1,56 @@
+{
+    "header": {
+        "message_type": "level_completion_message",
+        "created_at": 1281734508,
+        "hostname": "rshbgdev04",
+        "schema_version": 1,
+        "test_disable_sync" : true
+    },
+    "message": {
+        "guid": "33333333-3333-3333-3333-333333333333",
+        "rs_language_code": "ENG",
+        "course": "HEY",
+        "level": 1,
+        "iso_language_code": "en-US",
+        "test_product_names" : ["S5"]
+    },
+    "license_data": {
+      "creation_account_guid": "33333333-3333-3333-3333-333333333333",
+      "creation_account_type": "FamilyCreationAccount",
+      "test_license": true,
+      "upgraded_at": 0,
+      "product_rights": [
+        {
+          "rs_language_code": "ENG",
+          "family": "application",
+          "content_ranges": [
+            "1-4"
+          ]
+        },
+        {
+          "rs_language_code": "ENG",
+          "family": "eschool",
+          "content_ranges": [
+            "1-4"
+          ]
+        }
+      ]
+    },
+    "customer_data": {
+        "city":"New York",
+        "postal_code":"12345",
+        "state_province":"NY",
+        "guid":"33333333-3333-3333-3333-333333333333",
+        "support_language_iso":"en-US",
+        "contact_phone_number":"(333) 555555",
+        "first_name":"Konstantin",
+        "contact_phone_country_code":"8",
+        "last_viewed_locale":"en-US",
+        "last_name":"Zhirov",
+        "country_iso":4,
+        "email":"kzhirov@rosettastone.com",
+        "institutional": false,
+        "test_contact" : true,
+        "test_parature_id" : 557208
+    }
+}

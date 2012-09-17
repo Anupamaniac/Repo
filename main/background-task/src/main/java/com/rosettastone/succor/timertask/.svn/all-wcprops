@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask
+END
+SendPostalBatchTimer.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/SendPostalBatchTimer.java
+END
+RemoveOldPostalHistoryTimer.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/RemoveOldPostalHistoryTimer.java
+END
+CSVConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/CSVConverter.java
+END
+EmailReportTimer.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/EmailReportTimer.java
+END
+ResetNextRunTimer.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/ResetNextRunTimer.java
+END
+RemoveOldParatureTaskAndHistoryTimer.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/RemoveOldParatureTaskAndHistoryTimer.java
+END
+BatchMailer.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/BatchMailer.java
+END

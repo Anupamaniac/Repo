@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor
+END
+RabbitMQTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/RabbitMQTest.java
+END
+IntegrationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/IntegrationTest.java
+END
+RabbitMqCleaner.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/RabbitMqCleaner.java
+END

@@ -1,0 +1,262 @@
+package com.rosettastone.succor.utils;
+
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.TimeZone;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.context.MessageSource;
+
+import com.rosettastone.succor.exception.ApplicationException;
+import com.rosettastone.succor.model.bandit.Customer;
+import com.rosettastone.succor.model.bandit.Event;
+import com.rosettastone.succor.model.bandit.Message;
+import com.rosettastone.succor.model.bandit.StudioReminderMessage;
+import com.rosettastone.succor.model.bandit.StudioSessionCancellationMessage;
+import com.rosettastone.succor.model.parature.TicketLanguageType;
+import com.rosettastone.succor.utils.mapping.LanguageConverter;
+
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+
+/**
+ * The {@code EmailBodyGenerator} allows to create body for email.
+ */
+
+public class EmailBodyGenerator {
+	
+	 private final Log log = LogFactory.getLog(EmailBodyGenerator.class);
+
+	public static final long ONE_SECOND = 1000;
+    private static final String FORMAT = "MMMMM d 'at' h:mm aa";
+    private static final String KO_FORMAT = "MMMMM d'ì�¼' aa h:mm";
+
+    private Configuration freemarkerConfiguration;
+    private MessageSource messageSource;
+    private LanguageConverter languageConverter;
+
+    private Set<String> supportedLanguages;
+
+    /**
+     * Constructs an arrayBodyGenerator with set of supported language.
+     */
+    public EmailBodyGenerator() {
+        supportedLanguages = new HashSet<String>();
+        supportedLanguages.add(Locale.ENGLISH.getLanguage());
+        supportedLanguages.add("es"); // Spanish
+        supportedLanguages.add(Locale.JAPANESE.getLanguage());
+        supportedLanguages.add("ru"); // Russian
+        supportedLanguages.add("ar"); // Arabic
+        supportedLanguages.add(Locale.CHINESE.getLanguage());
+        supportedLanguages.add(Locale.GERMANY.getLanguage());
+        supportedLanguages.add(Locale.FRENCH.getLanguage());
+        supportedLanguages.add(Locale.ITALIAN.getLanguage());
+        supportedLanguages.add(Locale.KOREAN.getLanguage());
+        supportedLanguages.add("pt"); // Portuguese
+    }
+
+    /**
+     * Generates email body string from event and body.
+     *
+     * @param event
+     * @param body
+     * @return string
+     */
+    public String generateEmailBody(Event event, String body) {
+        Map<Object, Object> datModel = prepareDataModel(event);
+
+        StringWriter str = new StringWriter();
+        try {
+        	if (body == null) {
+                body = "";
+              }
+            Template template = new Template("email", new StringReader(body), freemarkerConfiguration);
+            template.process(datModel, str);
+        } catch (TemplateException e) {
+            throw new ApplicationException(e);
+        } catch (IOException e) {
+            throw new ApplicationException(e);
+        }
+        return str.toString();
+    }
+
+    /**
+     * Creates data model for {@code event}.
+     *
+     * @param event
+     * @return map
+     */
+    private Map<Object, Object> prepareDataModel(Event event) {
+        Map<Object, Object> params = new HashMap<Object, Object>();
+        params.put("event", event);
+
+        Message message = event.getMessage();
+
+        if (message.getIsoLanguageCode() != null) {
+            LocalizedMessageSource localizedMessageSource = new LocalizedMessageSourceImpl(messageSource, event
+                    .getInternalSuccorData().getSupportLocale());
+            TicketLanguageType language = languageConverter.convert(message.getIsoLanguageCode());
+            // Community absence messages have no language
+            if (language != null) {
+                params.put("language", localizedMessageSource.getMessage(language.getLabelKey()));
+            } else {
+                params.put("language", "");
+            }
+        } else {
+            params.put("language", "");
+        }
+
+        if (message instanceof StudioSessionCancellationMessage || message instanceof StudioReminderMessage) {
+            params.put("sessionStartTime", buildSessionStartTime(message, event.getCustomer()));
+            params.put("cancelBeforeTime", buildCancelBeforeTime(message, event.getCustomer()));
+        } else {
+            params.put("sessionStartTime", "");
+            params.put("cancelBeforeTime", "");
+        }
+
+        return params;
+    }
+
+    private Object buildCancelBeforeTime(Message message,
+			Customer customer) {
+    	Date originalDate = new Date();
+    	Date cancelBeforeDate = new Date();
+    	Long cancellationWindow = new Long(0);
+
+        if (message instanceof StudioReminderMessage) {
+            originalDate = ((StudioReminderMessage) message).getSessionStartTime();
+            cancellationWindow = ((StudioReminderMessage) message).getCancellationWindowInSeconds();
+            cancelBeforeDate = new Date(originalDate.getTime() - (cancellationWindow)*ONE_SECOND);
+        }
+
+        if (customer.getTimeZone() != null) {
+            TimeZone timeZone = TimeZone.getTimeZone(customer.getTimeZone());
+            cancelBeforeDate = changeTimeZone(cancelBeforeDate, timeZone);
+        }
+
+        Locale locale = customer.getSupportLanguageIso();
+        if (locale == null) {
+            locale = customer.getLastViewedLocale();
+        }
+        if (locale == null)
+        	throw new ApplicationException("Support language is null for the customer with license guid="+customer.getGuid());	
+        
+        String result = new String();
+        if (locale.equals(Locale.JAPAN)) {
+            // This part is localized like 2月 4日
+            SimpleDateFormat monthAndDate = new SimpleDateFormat("MMMMM d'日' ", locale);
+            result += monthAndDate.format(cancelBeforeDate);
+
+            // this part is in US locale they want AM/PM to be in English
+            SimpleDateFormat time = new SimpleDateFormat("a h:mm");
+            result += time.format(cancelBeforeDate);
+        } 
+        else if(locale.equals(Locale.KOREA)){
+            SimpleDateFormat format = new SimpleDateFormat(KO_FORMAT, locale);
+            result = format.format(cancelBeforeDate);
+        }
+        else {
+            SimpleDateFormat format = new SimpleDateFormat(FORMAT, locale);
+            result = format.format(cancelBeforeDate);
+        }
+        return result;
+	}
+
+	/**
+     * Create start time of session.
+     *
+     * @return string
+     */
+    public String buildSessionStartTime(Message message, Customer customer) {
+        Date originalDate = new Date();
+
+        if (message instanceof StudioSessionCancellationMessage) {
+            originalDate = ((StudioSessionCancellationMessage) message).getSessionStartTime();
+        } else if (message instanceof StudioReminderMessage) {
+            originalDate = ((StudioReminderMessage) message).getSessionStartTime();
+        }
+
+        if (customer.getTimeZone() != null) {
+            TimeZone timeZone = TimeZone.getTimeZone(customer.getTimeZone());
+            originalDate = changeTimeZone(originalDate, timeZone);
+        }
+
+        Locale locale = customer.getSupportLanguageIso();
+        if (locale == null) {
+            locale = customer.getLastViewedLocale();
+        }
+        if (locale == null)
+        	throw new ApplicationException("Support language is null for the customer with license guid="+customer.getGuid());	
+        
+        String result = new String();
+        if (locale.equals(Locale.JAPAN)) {
+            // This part is localized like 2月 4日
+            SimpleDateFormat monthAndDate = new SimpleDateFormat("MMMMM d'日' ", locale);
+            result += monthAndDate.format(originalDate);
+
+            // this part is in US locale they want AM/PM to be in English
+            SimpleDateFormat time = new SimpleDateFormat("a h:mm");
+            result += time.format(originalDate);
+        } 
+        else if(locale.equals(Locale.KOREA)){
+            SimpleDateFormat format = new SimpleDateFormat(KO_FORMAT, locale);
+            result = format.format(originalDate);
+        }
+        else {
+            SimpleDateFormat format = new SimpleDateFormat(FORMAT, locale);
+            result = format.format(originalDate);
+        }
+        return result;
+    }
+
+    /**
+     * Change date to different Time Zone.
+     * 
+     * @param date
+     * @param zone
+     * @return
+     */
+    private Date changeTimeZone(Date date, TimeZone zone) {
+        Calendar first = Calendar.getInstance(zone);
+        first.setTimeInMillis(date.getTime());
+
+        Calendar output = Calendar.getInstance();
+        output.set(Calendar.YEAR, first.get(Calendar.YEAR));
+        output.set(Calendar.MONTH, first.get(Calendar.MONTH));
+        output.set(Calendar.DAY_OF_MONTH, first.get(Calendar.DAY_OF_MONTH));
+        output.set(Calendar.HOUR_OF_DAY, first.get(Calendar.HOUR_OF_DAY));
+        output.set(Calendar.MINUTE, first.get(Calendar.MINUTE));
+        output.set(Calendar.SECOND, first.get(Calendar.SECOND));
+        output.set(Calendar.MILLISECOND, first.get(Calendar.MILLISECOND));
+
+        return output.getTime();
+    }
+
+    @Required
+    public void setFreemarkerConfiguration(Configuration freemarkerConfiguration) {
+        this.freemarkerConfiguration = freemarkerConfiguration;
+    }
+
+    @Required
+    public void setMessageSource(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
+
+    @Required
+    public void setLanguageConverter(LanguageConverter languageConverter) {
+        this.languageConverter = languageConverter;
+    }
+
+}

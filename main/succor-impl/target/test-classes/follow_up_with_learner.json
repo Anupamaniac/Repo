@@ -1,0 +1,44 @@
+{
+  "header": {
+    "message_type": "attendance_needs_followup_message",
+    "created_at": 1301426544,
+    "schema_version": 1,
+    "hostname": "kb.local"
+  },
+
+  "license_data": {
+    "test_license": false
+  },
+
+  "message": {
+    "session_start_time": 1301426544,
+    "notes_value": "good although rather insecure and not very articulate. decent vocabulary",
+    "level": 1,
+    "unit": 2,
+    "iso_language_code": "en-US",
+    "guid": "11111111-1111-1111-1111-111111111111",
+    "label": "Production",
+    "str_value": "NULL",
+    "rs_language_code": "ENG"
+  },
+
+  "customer_data": {
+    "address_line_2": null,
+    "last_viewed_locale": "en-US",
+    "city": null,
+    "institutional": true,
+    "state_province": null,
+    "postal_code": null,
+    "country_iso": 840,
+    "guid": "11111111-1111-1111-1111-111111111111",
+    "contact_phone_number": null,
+    "email": "laura@example.com",
+    "first_name": "Laura",
+    "support_language_iso": null,
+    "address_line_1": null,
+    "time_zone": "America/New_York",
+    "contact_phone_country_code": null,
+    "last_name": "Hanssson"
+  }
+
+}

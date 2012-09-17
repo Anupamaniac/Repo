@@ -1,0 +1,28 @@
+{
+    "product_rights": [
+        {
+            "family": "application",
+            "rs_language_code": "ENG",
+            "content_ranges": ["1-4", "5-8"]
+        },
+        {
+            "family": "premium_community",
+            "rs_language_code": "ENG",
+            "content_ranges": ["1-4", "5-8"]
+        },
+        {
+            "family": "premium_community",
+            "rs_language_code": "ARA",
+            "content_ranges": ["1-4", "5-8"]
+        },
+        {
+            "family": "application",
+            "rs_language_code": "ARA",
+            "content_ranges": ["1-12"]
+        }
+    ],
+    "test_license": false,
+    "updaded_at": 1231231312123,
+    "creation_account_guid": "735cea86-53c9-4446-a87d-b28ee5329475",
+    "creation_account_type": "FamilyCreationAccount"
+}

@@ -1,0 +1,105 @@
+{
+  "customer_data": {
+    "postal_code": "",
+    "country_iso": 840,
+    "first_name": "naman",
+    "contact_phone_number": "",
+    "last_name": "naman",
+    "support_language_iso": "en-US",
+    "address_line_1": "",
+    "email": "engnamn@rs.com",
+    "contact_phone_country_code": "",
+    "address_line_2": "",
+    "last_viewed_locale": "en-US",
+    "city": "",
+    "institutional": false,
+    "guid": "f6a17653-21c3-4948-b466-5495d26d3a6e",
+    "time_zone": "America/New_York",
+    "state_province": ""
+  },
+  "header": {
+    "created_at": 1346187696,
+    "hostname": "stgrun001",
+    "message_type": "studio_reminder_message",
+    "schema_version": 1
+  },
+  "message": {
+    "eschool_session_id": 267155,
+    "iso_language_code": "en-US",
+    "hours": 48,
+    "unit": 1,
+    "session_id": 267155,
+    "student_id": 21988,
+    "rs_language_code": "ENG",
+    "level": 1,
+    "session_start_time": 1347548379,
+  	"number_of_seats": 1,
+    "guid": "f6a17653-21c3-4948-b466-5495d26d3a6e",
+	"cancellation_window_in_seconds": 86400,
+    "attendance_id": 36467
+  },
+  "license_data": {
+    "creation_account_guid": "35db3747-bddd-4275-9965-d61074fdb11f",
+    "product_rights": [
+      {
+        "family": "application",
+        "content_ranges": [
+          "1-20"
+        ],
+        "rs_language_code": "ENG"
+      },
+      {
+        "family": "eschool",
+        "content_ranges": [
+          "1-20"
+        ],
+        "rs_language_code": "ENG"
+      },
+      {
+        "rs_language_code": "ENG",
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "eschool_group_sessions"
+      },
+      {
+        "rs_language_code": "CHI",
+        "content_ranges": [
+          "1-20"
+        ],
+       "family": "eschool_one_on_one_sessions"
+      },
+      {
+        "family": "premium_community",
+        "content_ranges": [
+          "1-20"
+        ],
+        "rs_language_code": "ENG"
+      },
+      {
+        "rs_language_code": "CHI",
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "application"
+      },
+      {
+        "rs_language_code": "CHI",
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "eschool"
+      },
+      {
+        "rs_language_code": "CHI",
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "premium_community"
+      }
+    ],
+    "creation_account_type": "FamilyCreationAccount",
+    "test_license": true,
+    "upgraded_at": 0
+  }
+}

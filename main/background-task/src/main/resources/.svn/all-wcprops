@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/WebDev/!svn/ver/94567/succor/branches/trunk_30032012/background-task/src/main/resources
+END
+backgrountaskexecutors-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/WebDev/!svn/ver/93486/succor/branches/trunk_30032012/background-task/src/main/resources/backgrountaskexecutors-context.xml
+END
+timer-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/resources/timer-context.xml
+END
+backgroundtask-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/WebDev/!svn/ver/108041/succor/branches/trunk_30032012/background-task/src/main/resources/backgroundtask-context.xml
+END
+backgroundtask-hibernate.cfg.xml
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/WebDev/!svn/ver/94567/succor/branches/trunk_30032012/background-task/src/main/resources/backgroundtask-hibernate.cfg.xml
+END

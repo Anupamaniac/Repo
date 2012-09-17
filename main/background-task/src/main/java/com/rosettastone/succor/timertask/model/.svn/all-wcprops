@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/model
+END
+PostalHistory.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/model/PostalHistory.java
+END
+EmailReportHistory.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/model/EmailReportHistory.java
+END
+PostalHistoryStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/model/PostalHistoryStatus.java
+END
+ReportEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/model/ReportEntity.java
+END
+ReportEntityType.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/model/ReportEntityType.java
+END
+StatisticBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/model/StatisticBean.java
+END

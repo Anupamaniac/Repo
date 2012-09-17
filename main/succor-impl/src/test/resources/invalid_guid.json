@@ -1,0 +1,37 @@
+{
+	"license_data": {
+    	"test_license": true
+  	},
+    "header": {
+        "hostname":"rshbgdev04",
+        "created_at":1279811842,
+        "message_type":"studio_readiness_message",
+        "schema_version":1
+    },
+    "message": {
+        "unit": 0,
+        "guid": "invalid_guid",
+        "first_message_to_this_user": false,
+        "course": "SK-DEU-L2-NA-PE-NA-NA-Y-3",
+        "level": 1,
+        "iso_language_code": "es-419",
+        "rs_language_code": "ESP
+    },
+
+    "customer_data": {
+        "city":"New York",
+        "postal_code":"12345",
+        "state_province":"NY",
+        "address_line_1":"25 street",
+        "address_line_2":"15 structure, 12",
+        "guid":"invalid_guid",
+        "contact_phone_number":"(333) 555555",
+        "first_name":"Dmitry",
+        "contact_phone_country_code":"8",
+        "last_viewed_locale":"es-ES",
+        "last_name":"Grits",
+        "country_iso":4,
+        "email":"testuser@wyvern.etr.eastbanctech.ru",
+        "institutional": false
+    }
+}

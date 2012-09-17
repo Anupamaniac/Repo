@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	 <bean name="rabbitMqConnectionParameters" class="com.rabbitmq.client.ConnectionParameters">
+		<property name="username" value="${rabbitmq.userName}"/>
+		<property name="password" value="${rabbitmq.password}"/>
+		<property name="virtualHost" value="${rabbitmq.vhost}"/>
+		<property name="requestedHeartbeat" value="10"/>
+	</bean> 
+
+	<bean name="rabbitMqConnectionFactory" class="com.rabbitmq.client.ConnectionFactory">
+		 <constructor-arg ref="rabbitMqConnectionParameters" /> 
+	</bean>
+
+	<bean name="rabbitMqChannelManager" class="com.rosettastone.succor.mdp.RabbitMqChannelManager">
+		<property name="connectionFactory" ref="rabbitMqConnectionFactory"/>
+		<property name="host" value="${rabbitmq.host}"/>
+		<property name="port" value="${rabbitmq.port}"/>
+		<property name="hoptoadNotificationService" ref="hopToadService"/>
+	</bean>
+	
+</beans>

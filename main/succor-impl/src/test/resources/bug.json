@@ -1,0 +1,101 @@
+{
+  "customer_data": {
+    "postal_code": null,
+    "country_iso": null,
+    "first_name": null,
+    "contact_phone_number": null,
+    "last_name": null,
+    "address_line_1": null,
+    "support_language_iso": "en-US",
+    "email": "ruschiuser@rs.com",
+    "contact_phone_country_code": null,
+    "address_line_2": null,
+    "last_viewed_locale": "en-US",
+    "city": null,
+    "institutional": false,
+    "guid": "05273ae8-cf1c-4c90-bccd-ebf13e0b5fed",
+    "time_zone": "",
+    "state_province": null
+  },
+  "header": {
+    "created_at": 1346056271,
+    "hostname": "stgrun002",
+    "message_type": "studio_session_cancellation_message",
+    "schema_version": 1
+  },
+  "message": {
+    "iso_language_code": "ru-RU",
+    "eschool_session_id": 275647,
+    "learner_first_seen_at": null,
+    "unit": 1,
+    "teacher_technical_problem": null,
+    "cancelled_at": null,
+    "rs_language_code": "CHI",
+    "learner_technical_problem": false,
+    "level": 1,
+    "reason": "no_coach_yes_learner",
+    "cancelled": false,
+    "cancelled_by": null,
+    "guid": "05273ae8-cf1c-4c90-bccd-ebf13e0b5fed",
+    "session_start_time": 1346963910,
+    "teacher_first_seen_at": 1346052662,
+    "attendance_id": 36383
+  },
+  "license_data": {
+    "creation_account_guid": "048f539c-7d13-102d-9b5a-f03c5d1f8336",
+    "product_rights": [
+      {
+        "rs_language_code": "RUS",
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "application"
+      },
+      {
+        "rs_language_code": "CHI",
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "application"
+      },
+      {
+        "rs_language_code": "CHI",
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "eschool"
+      },
+      {
+        "rs_language_code": "CHI",
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "premium_community"
+      },
+      {
+        "rs_language_code": "RUS",
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "eschool"
+      },
+      {
+        "rs_language_code": "RUS",
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "group_studio_consumable_product_right"
+      },
+      {
+        "rs_language_code": "RUS",
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "premium_community"
+      }
+    ],
+    "creation_account_type": "OnlineSubscriptionCreationAccount",
+    "test_license": true,
+    "upgraded_at": 0
+  }
+}

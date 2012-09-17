@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "properties": {
+    "GUID": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "pattern": "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$"
+    },
+    "action": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "level": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 5
+    },
+    "licenceKey": {
+      "type": "string"
+    },
+    "product_lang": {
+      "type": "string",
+      "pattern": "(aa_DJ|af_ZA|an_ES|ar_AE|ar_BH|ar_DZ|ar_EG|ar_IQ|ar_JO|ar_KW|ar_LB|ar_LY|ar_MA|ar_OM|ar_QA|ar_SA|ar_SD|ar_SY|ar_TN|ar_YE|be_BY|bg_BG|br_FR|br_FR|bs_BA|ca_AD|ca_ES|ca_ES|ca_FR|ca_IT|cs_CZ|cy_GB|da_DK|da_DK|de_AT|de_AT|de_BE|de_BE|de_CH|de_DE|de_DE|de_LU|de_LU|el_CY|el_GR|en_AU|en_BW|en_CA|en_DK|en_GB|en_GB|en_HK|en_IE|en_IE|en_NZ|en_PH|en_SG|en_US|en_US|en_ZA|en_ZW|es_AR|es_BO|es_CL|es_CO|es_CR|es_DO|es_EC|es_ES|es_ES|es_GT|es_HN|es_MX|es_NI|es_PA|es_PE|es_PR|es_PY|es_SV|es_US|es_UY|es_VE|et_EE|et_EE|eu_ES|eu_ES|fi_FI|fi_FI|fo_FO|fr_BE|fr_BE|fr_CA|fr_CH|fr_FR|fr_FR|fr_LU|fr_LU|ga_IE|ga_IE|gd_GB|gl_ES|gl_ES|gv_GB|he_IL|hr_HR|hsb_D|hu_HU|hy_AM|id_ID|is_IS|it_CH|it_IT|it_IT|iw_IL|ka_GE|kk_KZ|kl_GL|ku_TR|kw_GB|lg_UG|lt_LT|lv_LV|mg_MG|mi_NZ|mk_MK|ms_MY|mt_MT|nb_NO|nl_BE|nl_BE|nl_NL|nl_NL|nn_NO|no_NO|oc_FR|om_KE|pl_PL|pt_BR|pt_PT|pt_PT|ro_RO|ru_RU|ru_UA|sk_SK|sl_SI|so_DJ|so_KE|so_SO|sq_AL|sr_CS|st_ZA|sv_FI|sv_FI|sv_SE|sv_SE|tg_TJ|th_TH|tl_PH|tr_CY|tr_TR|uk_UA|uz_UZ|vi_VN|wa_BE|wa_BE|xh_ZA|yi_US|zu_ZA)"
+    },
+    "support_lang": {
+      "type": "string",
+      "pattern": "(aa_DJ|af_ZA|an_ES|ar_AE|ar_BH|ar_DZ|ar_EG|ar_IQ|ar_JO|ar_KW|ar_LB|ar_LY|ar_MA|ar_OM|ar_QA|ar_SA|ar_SD|ar_SY|ar_TN|ar_YE|be_BY|bg_BG|br_FR|br_FR|bs_BA|ca_AD|ca_ES|ca_ES|ca_FR|ca_IT|cs_CZ|cy_GB|da_DK|da_DK|de_AT|de_AT|de_BE|de_BE|de_CH|de_DE|de_DE|de_LU|de_LU|el_CY|el_GR|en_AU|en_BW|en_CA|en_DK|en_GB|en_GB|en_HK|en_IE|en_IE|en_NZ|en_PH|en_SG|en_US|en_US|en_ZA|en_ZW|es_AR|es_BO|es_CL|es_CO|es_CR|es_DO|es_EC|es_ES|es_ES|es_GT|es_HN|es_MX|es_NI|es_PA|es_PE|es_PR|es_PY|es_SV|es_US|es_UY|es_VE|et_EE|et_EE|eu_ES|eu_ES|fi_FI|fi_FI|fo_FO|fr_BE|fr_BE|fr_CA|fr_CH|fr_FR|fr_FR|fr_LU|fr_LU|ga_IE|ga_IE|gd_GB|gl_ES|gl_ES|gv_GB|he_IL|hr_HR|hsb_D|hu_HU|hy_AM|id_ID|is_IS|it_CH|it_IT|it_IT|iw_IL|ka_GE|kk_KZ|kl_GL|ku_TR|kw_GB|lg_UG|lt_LT|lv_LV|mg_MG|mi_NZ|mk_MK|ms_MY|mt_MT|nb_NO|nl_BE|nl_BE|nl_NL|nl_NL|nn_NO|no_NO|oc_FR|om_KE|pl_PL|pt_BR|pt_PT|pt_PT|ro_RO|ru_RU|ru_UA|sk_SK|sl_SI|so_DJ|so_KE|so_SO|sq_AL|sr_CS|st_ZA|sv_FI|sv_FI|sv_SE|sv_SE|tg_TJ|th_TH|tl_PH|tr_CY|tr_TR|uk_UA|uz_UZ|vi_VN|wa_BE|wa_BE|xh_ZA|yi_US|zu_ZA)"
+    }
+  }
+}

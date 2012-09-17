@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/parature
+END
+Identifiable.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/parature/Identifiable.java
+END
+SuperTicket.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/parature/SuperTicket.java
+END
+Ticket.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/parature/Ticket.java
+END
+ActionCsr.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/parature/ActionCsr.java
+END
+ContactReasonType.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/parature/ContactReasonType.java
+END
+TicketType.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/parature/TicketType.java
+END
+ProductLevel.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/parature/ProductLevel.java
+END
+TicketLanguageType.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/parature/TicketLanguageType.java
+END
+Action.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/parature/Action.java
+END
+TicketOriginType.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/parature/TicketOriginType.java
+END
+OutreachTicket.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/parature/OutreachTicket.java
+END

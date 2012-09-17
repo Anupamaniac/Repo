@@ -1,0 +1,39 @@
+{
+  "license_data": {
+    "test_license": true
+  },
+  "message": {
+    "iso_language_code": "es-419",
+    "levels": "1-5",
+    "guid": "b3e4ff30-78c0-4118-ba5b-0e6a38d8c48d",
+    "rs_language_code": "ESP",
+    "test_product_names" : ["S5"]
+  },
+  "header": {
+    "created_at": 1292272683,
+    "hostname": "flash.local",
+    "message_type": "levels_completed_message",
+    "schema_version": 1,
+    "test_disable_sync" : true
+  },
+  "customer_data": {
+    "time_zone": "America/New_York",
+    "address_line_1": null,
+    "contact_phone_country_code": null,
+    "address_line_2": null,
+    "last_viewed_locale": "ja-JP",
+    "city": null,
+    "last_name": "Redway",
+    "institutional": false,
+    "state_province": null,
+    "postal_code": null,
+    "guid": "b3e4ff30-78c0-4118-ba5b-0e6a38d8c48d",
+    "country_iso": 840,
+    "email": "kzhirov@rosettastone.com",
+    "first_name": "Alecia",
+    "contact_phone_number": null,
+    "institutional": false,
+    "test_contact" : true,
+    "test_parature_id" : 557208
+  }
+}

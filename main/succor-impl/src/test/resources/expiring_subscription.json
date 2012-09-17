@@ -1,0 +1,63 @@
+{
+    "customer_data": {
+        "email": "test75166@rs.com",
+        "guid": "931e3b0b-0ec5-41d0-8f6d-33acc7fea641",
+        "last_name": "Pickle",
+        "last_viewed_locale": "en-US",
+        "contact_phone_country_code": null,
+        "address_line_1": null,
+        "contact_phone_number": null,
+        "address_line_2": null,
+        "country_iso": 826,
+        "state_province": null,
+        "city": null,
+        "postal_code": null,
+        "support_language_iso": "en-US",
+        "time_zone": "America/New_York",
+        "first_name": "Reginald",
+        "institutional": false
+    },
+    "license_data": {
+        "test_license": true,
+        "product_rights": [
+            {
+                "content_ranges": [
+                    "1-4"
+                ],
+                "family": "application",
+                "rs_language_code": "GRK"
+            },
+            {
+                "content_ranges": [
+                    "1-4"
+                ],
+                "family": "eschool",
+                "rs_language_code": "GRK"
+            },
+            {
+                "content_ranges": [
+                    "1-4"
+                ],
+                "family": "premium_community",
+                "rs_language_code": "GRK"
+            }
+        ],
+        "creation_account_type": "FamilyCreationAccount",
+        "creation_account_guid": "32f70a54-7e35-45ff-b4b5-871ea032be27",
+        "upgraded_at": 1339424418
+    },
+    "header": {
+        "hostname": "stgdeploy1",
+        "created_at": 1346941318,
+        "schema_version": 1,
+        "message_type": "expiring_subscription_message"
+    },
+    "message": {
+        "guid": "931e3b0b-0ec5-41d0-8f6d-33acc7fea641",
+        "days": 5,
+        "expiration_time": 1347286800,
+        "family": "premium_community",
+        "rs_language_code": "GRK",
+        "iso_language_code": "el-GR"
+    }
+}

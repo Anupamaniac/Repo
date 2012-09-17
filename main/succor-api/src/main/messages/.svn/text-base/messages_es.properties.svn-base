@@ -1,0 +1,27 @@
+mail.from=exitoalcliente@rosettastone.com
+mail.subject.level_completion_message_1=¡Felicitaciones por completar el Nivel 1 de TOTALe!
+mail.subject.level_completion_message_2=¡Buen trabajo! ¡Ha completado el Nivel 2 en TOTALe!
+mail.subject.level_completion_message_3=¡Muchas felicitaciones por completar el Nivel 3 de TOTALe!
+mail.subject.levels_completed_message_1-3=Espectacular logro al completar Niveles 1, 2 y 3 en TOTALe!
+mail.subject.level_completion_message_4=¡Fantástico, ha terminado el Nivel 4 en TOTALe!
+mail.subject.level_completion_message_5=Su logro es excepcional, ¡Completó el Nivel 5 en TOTALe!
+mail.subject.levels_completed_message_1-5=Ha completado satisfactoriamente los Niveles 1-5 en TOTALe!
+
+mail.subject.first_studio_readiness_message=¡Practique en vivo en Rosetta Studio con un Instructor nativo!
+mail.subject.not_logged_in_for_days_30_first=¡En TOTALe, participe hoy mismo de emocionantes Lecciones, Juegos y Sesiones en vivo!
+mail.subject.not_logged_in_for_days_30=Engage in Exciting Lessons, Games, and Live Sessions in TOTALe Today!
+
+mail.subject.first_completed_studio_session_message=¡Excelente práctica de sus habilidades en Rosetta Studio!
+mail.subject.studio_reminder_message=¡Se acerca su Sesión de Rosetta Studio!
+
+mail.subject.studio_session_cancellation_message_no_coach_yes_learner=Nuestras más sinceras disculpas por la cancelación de su sesión
+mail.subject.studio_session_cancellation_message_cancelled_session_no_learner=Te extrañamos en Studio!
+mail.subject.studio_session_cancellation_message_cancelled_before_session=Nuestras disculpas por su sesión cancelada 
+mail.subject.studio_session_cancellation_message_cancelled_session_yes_learner=Nuestras disculpas por la sesión cancelada
+mail.subject.studio_session_cancellation_message_uncancelled_session_no_learner=Te extrañamos en Studio!
+
+mail.subject.claimed_extensions_message=¡Sumérjase en nuestro Studio en línea y en los componentes de World en TOTALe!
+mail.subject.rosetta_world_encouragement_message=¡Participe hoy mismo de historias y juegos interactivos en Rosetta World!
+ 
+postal_history.subject=Weekly postal report - Spanish
+postal_history.body=Postal information up to {0} - Spanish

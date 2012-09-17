@@ -1,0 +1,73 @@
+{
+  	"header": {
+	    "schema_version": 1,
+	    "hostname": "kb.local",
+	    "message_type": "studio_session_cancellation_message",
+	    "created_at": 1284486073,
+	    "test_disable_sync" : true
+	},
+	"customer_data": {
+		"city": "Timbuktu",
+		"guid": "ecdb1178-89f5-47e2-b1f5-bf8589619d3d",
+		"institutional": false,
+		"state_province": "Denial",
+		"postal_code": "90210",
+		"country_iso": null,
+		"contact_phone_number": null,
+		"address_line_1": "Perdition Rd.",
+		"email": "kzhirov@rosettastone.com",
+		"contact_phone_country_code": null,
+		"last_name": "Activated",
+		"address_line_2": "Panda Modiem",
+		"last_viewed_locale": "en-US",
+		"support_language_iso": "en-US",
+  		"time_zone": "America/New_York",
+		"first_name": "Non"
+	},
+	"license_data": {
+		"upgraded_at": 1303249942,
+    "product_rights": [
+      {
+        "rs_language_code": "ENG",
+        "family": "application",
+        "content_ranges": [
+          "1-4"
+        ]
+      },
+      {
+        "rs_language_code": "ENG",
+        "family": "eschool",
+        "content_ranges": [
+          "1-4"
+        ]
+      },
+      {
+        "rs_language_code": "ENG",
+        "family": "premium_community",
+        "content_ranges": [
+          "1-4"
+        ]
+      }
+    ],
+    "creation_account_guid": "5ce12bb5-8423-4456-a388-d73d272ae8fc",
+    "creation_account_type": "FamilyCreationAccount",
+    "test_license": true
+	},
+  	"message": {
+	    "reason": "cancelled_before_session",
+	    "session_start_time": 1333390138,
+	    "learner_first_seen_at": 1292274071,
+	    "attendance_id": 433549839,
+	    "level": 1,
+	    "teacher_technical_problem": null,
+	    "cancelled_by": "Canceller",
+	    "rs_language_code": "ENG",
+	    "guid": "ecdb1178-89f5-47e2-b1f5-bf8589619d3d",
+	    "cancelled_at": 1292533272,
+	    "cancelled": true,
+	    "learner_technical_problem": false,
+	    "unit": 1,
+	    "teacher_first_seen_at": null,
+	    "iso_language_code": "es-419"
+ 	}
+}

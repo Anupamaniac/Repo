@@ -1,0 +1,38 @@
+package com.rosettastone.succor
+import com.rosettastone.succor.drools.Item;
+global com.rosettastone.succor.drools.ItemService itemService
+
+rule "Equal rule 1"
+when
+    $item: Item(price == 1)
+then
+    itemService.equal($item, 1);
+end
+
+rule "Equal rule 2"
+when
+    $item: Item(price == 2)
+then
+    itemService.equal($item, 2);
+end
+
+rule "Equal rule 3"
+when
+    $item: Item(price == 3)
+then
+    itemService.equal($item, 3);
+end
+
+rule "Equal rule 4"
+when
+    $item: Item(price == 4)
+then
+    itemService.equal($item, 4);
+end
+
+rule "Equal rule 5"
+when
+    $item: Item(price == 5)
+then
+    itemService.equal($item, 5);
+end

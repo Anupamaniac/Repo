@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<s:TitleWindow xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx" title="History" close="PopUpManager.removePopUp(this)"
+        width="800" height="600">
+    <fx:Declarations>
+        <mx:DateFormatter id="df" formatString="MM/DD/YY LL:NN A"/>
+    </fx:Declarations>
+
+    <fx:Script>
+        <![CDATA[
+        import mx.collections.ArrayCollection;
+        import mx.managers.PopUpManager;
+
+        [Bindable]
+        public var history:ArrayCollection = new ArrayCollection();
+
+
+        /**
+         * Returns formatted action label
+         * @param item
+         * @param column
+         * @return
+         */
+        private function getActionLabel(item:Object,column:DataGridColumn):String {
+            return item[column.dataField].toLowerCase();
+        }
+
+        /**
+         * Returns formatted date object
+         * @param item
+         * @param column
+         * @return
+         */
+        public function getDateLabel(item:Object,column:DataGridColumn):String {
+            return df.format(item[column.dataField]);
+        }
+
+        ]]>
+    </fx:Script>
+
+    <mx:DataGrid id="historyGrid" width="780" left="10" top="10" dataProvider="{history}" height="550">
+        <mx:columns>
+            <mx:DataGridColumn headerText="Date" width="150" dataField="created" labelFunction="getDateLabel">
+            </mx:DataGridColumn>
+            <mx:DataGridColumn headerText="Action" width="70" dataField="action" labelFunction="getActionLabel">
+            </mx:DataGridColumn>
+            <mx:DataGridColumn headerText="User" width="120" dataField="username">
+            </mx:DataGridColumn>
+            <mx:DataGridColumn headerText="Rule Name" dataField="ruleName">
+            </mx:DataGridColumn>
+        </mx:columns>
+    </mx:DataGrid>
+</s:TitleWindow>

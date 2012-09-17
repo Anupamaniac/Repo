@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/model
+END
+ParatureAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/model/ParatureAction.java
+END
+ParatureTaskTracker.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/model/ParatureTaskTracker.java
+END
+Task.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/model/Task.java
+END
+Message.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/model/Message.java
+END
+TaskType.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/model/TaskType.java
+END
+ParatureActionStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/model/ParatureActionStatus.java
+END
+TaskStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/model/TaskStatus.java
+END
+ParatureTaskHistory.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/model/ParatureTaskHistory.java
+END
+TaskExecutionStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/model/TaskExecutionStatus.java
+END
+HistoryEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/model/HistoryEntity.java
+END

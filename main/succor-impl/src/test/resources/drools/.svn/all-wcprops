@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/resources/drools
+END
+stress1.drl
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/resources/drools/stress1.drl
+END
+stress2.drl
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/resources/drools/stress2.drl
+END
+rule-template-test.drl
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/resources/drools/rule-template-test.drl
+END

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <!-- Statistic AOP proxy -->
+    <!--<aop:config>-->
+        <!--<aop:aspect id="statisticAspect" ref="executionProfiler">-->
+            <!--<aop:pointcut id="businessService" expression="execution (* com.rosettastone.succor.service..*.*(..))"/>-->
+            <!--<aop:around pointcut-ref="businessService" method="profile"/>-->
+       <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+    <bean id="systemArchitecture" class="com.rosettastone.succor.utils.aspects.SystemArchitecture"/>
+
+    <bean id="executionProfiler" class="com.rosettastone.succor.utils.aspects.TimeExecutionProfiler"/>
+
+    <context:component-scan base-package="com.rosettastone.succor.keepalive, com.rosettastone.succor.web.servlets"/>
+
+	<bean name="keepaliveController" class="com.rosettastone.succor.keepalive.KeepaliveController">
+		<property name="backgroundThreads">
+			<list>
+				<!-- <ref bean="taskParatureExecutorThread"/> -->
+				<ref bean="taskRuleExecutorThread"/>
+				<ref bean="taskEmailExecutorThread"/>
+				<ref bean="rabbitMqListener"/>
+				<ref bean="taskSMSExecutorThread"/>
+				<ref bean="taskPrepareExecutorThread"/>
+				<ref bean="taskDiscoveryCallExecutorThread"/>
+			</list>
+		</property>
+		<property name="exceptionNotificationStatusWatcher" ref="exceptionNotificationStatusWatcher"/>
+		<property name="keepAliveControllerDao" ref="keepAliveControllerDao"/>
+	</bean>
+
+    <bean name="previewController" class="com.rosettastone.succor.web.servlets.PreviewController">
+        <property name="templateHolder" ref="templateHolder" />
+    </bean>
+</beans>

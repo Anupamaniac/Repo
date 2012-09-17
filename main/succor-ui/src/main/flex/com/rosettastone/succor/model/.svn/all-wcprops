@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model
+END
+StaticDictionary.as
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/StaticDictionary.as
+END
+Counter.as
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/Counter.as
+END
+Product.as
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/Product.as
+END
+Event.as
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/Event.as
+END
+StaticObjects.as
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/StaticObjects.as
+END
+TemplateVariable.as
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/TemplateVariable.as
+END
+Ticket.as
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/Ticket.as
+END
+Enum.as
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/Enum.as
+END
+Variable.as
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/Variable.as
+END
+Rule.as
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/WebDev/!svn/ver/109908/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/Rule.as
+END
+Statistic.as
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/Statistic.as
+END
+RuleHistory.as
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/RuleHistory.as
+END
+Template.as
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/Template.as
+END
+TaskError.as
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/model/TaskError.as
+END

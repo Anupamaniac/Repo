@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:MXDataGridItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+						  xmlns:s="library://ns.adobe.com/flex/spark" 
+						  xmlns:mx="library://ns.adobe.com/flex/mx" 
+						  focusEnabled="true" xmlns:component="com.rosettastone.succor.component.*"
+                          click="selectRule();">
+    <fx:Binding source="rule.remove" destination="checkBox.selected" twoWay="true" />
+	<fx:Script>
+		<![CDATA[
+        /**
+         * Checkbox renderer that used in DataGrid
+         * Checkbox is binded to rule.remove boolean field
+         */
+			import com.rosettastone.succor.model.Rule;
+            import com.rosettastone.succor.service.Helper;
+
+            [Bindable]
+            private var rule:Rule;
+
+            private function selectRule():void{
+                Helper.selectedRule = rule;
+            }
+
+			override public function set data(value:Object):void {
+				rule = Rule(value);
+			}
+
+			override public function get data():Object {
+				return rule;
+			}
+		]]>
+	</fx:Script>
+    <s:HGroup horizontalAlign="center" width="30">
+        <s:CheckBox id="checkBox"/>
+    </s:HGroup>
+</s:MXDataGridItemRenderer>

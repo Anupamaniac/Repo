@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <!-- <bean id="taskDataSource" class="org.apache.tomcat.jdbc.pool.DataSourceFactory" destroy-method="close">
+        <property name="url" value="${mysql.connection.url}"/>
+        <property name="username" value="${mysql.connection.username}"/>
+        <property name="password" value="${mysql.connection.password}"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="maxActive" value="500"/>
+         <property name="validationQuery" value="select 1"/>
+    </bean> -->
+    
+    <bean id="taskDataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close" 
+		p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="${mysql.connection.url}"
+		p:username="${mysql.connection.username}"
+		p:password="${mysql.connection.password}" 
+		p:initialSize="8"
+		p:maxActive="8"
+		p:maxWait="1000"
+		p:jmxEnabled="true"
+		p:removeAbandonedTimeout="100"
+		p:removeAbandoned="true"
+		p:validationInterval="30000"
+		p:testWhileIdle="true"
+        p:testOnBorrow="true"
+        p:testOnReturn="true"
+		p:validationQuery="select 1"/>
+
+    <bean id="taskSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="configLocation">
+            <value>classpath:backgroundtask-hibernate.cfg.xml</value>
+        </property>
+        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>
+        <property name="dataSource" ref="taskDataSource"/>
+        <property name="schemaUpdate" value="true"/>
+    </bean>
+
+    <bean id="taskTransactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="taskSessionFactory"/>
+    </bean>
+
+    <bean id="taskTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="taskTransactionManager"/>
+        <property name="isolationLevel">
+	        <util:constant static-field="org.springframework.transaction.TransactionDefinition.ISOLATION_READ_COMMITTED"/>
+        </property>
+    </bean>
+
+    <bean id="taskHibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory" ref="taskSessionFactory"/>
+    </bean>
+
+
+    <bean id="taskHibernateInterceptor" class="org.springframework.orm.hibernate3.HibernateInterceptor">
+        <property name="sessionFactory" ref="taskSessionFactory"/>
+    </bean>
+
+	<bean name="abstractDao" abstract="true">
+        <property name="hibernateTemplate" ref="taskHibernateTemplate"/>
+	</bean>
+
+    <bean id="taskDaoTarget" class="com.rosettastone.succor.backgroundtask.impl.TaskDao" parent="abstractDao"/>
+
+    <bean id="taskDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyTargetClass" value="true"/>
+        <property name="interceptorNames">
+            <list>
+                <value>taskHibernateInterceptor</value>
+                <value>taskDaoTarget</value>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="postalHistoryDaoTarget" class="com.rosettastone.succor.timertask.dao.PostalHistoryDao" parent="abstractDao"/>
+
+    <bean id="postalHistoryDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyTargetClass" value="true"/>
+        <property name="interceptorNames">
+            <list>
+                <value>taskHibernateInterceptor</value>
+                <value>postalHistoryDaoTarget</value>
+            </list>
+        </property>
+    </bean>
+
+	<bean name="emailReportHistoryDao" class="com.rosettastone.succor.timertask.dao.EmailReportHistoryDao"
+		  parent="abstractDao"/>
+
+	<bean name="reportDao" class="com.rosettastone.succor.timertask.dao.ReportDao"
+		  parent="abstractDao"/>
+
+    <bean id="taskArgumentSerializer" class="com.rosettastone.succor.backgroundtask.impl.ArgumentSerializer"/>
+    
+    <bean id="taskManager" class="com.rosettastone.succor.backgroundtask.impl.TaskManagerImpl">
+    	<property name="taskDao" ref="taskDao"/>
+    	<property name="argumentSerializer" ref="taskArgumentSerializer"/>
+    	<property name="currentRabbitMqMessageStorage" ref="currentRabbitMqMessageStorage"/>
+    </bean>
+    
+    <bean name="currentRabbitMqMessageStorage" class="java.lang.ThreadLocal"/>
+    
+    <bean name="currentTask" class="java.lang.ThreadLocal"/>
+    
+    <bean name="taskReadWriteLock" class="java.util.concurrent.locks.ReentrantReadWriteLock">
+    	<constructor-arg value="true"/>
+    </bean>
+
+    <bean id="statisticDao" class="com.rosettastone.succor.backgroundtask.impl.StatisticDaoImpl" parent="abstractDao" />
+	<bean id="paratureTaskTrackerDao" class="com.rosettastone.succor.backgroundtask.impl.ParatureTaskTrackerDao" parent="abstractDao" />
+    <tx:annotation-driven transaction-manager="taskTransactionManager"/>
+</beans>

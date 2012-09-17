@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:MXDataGridItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009"
+						  xmlns:s="library://ns.adobe.com/flex/spark"
+						  xmlns:mx="library://ns.adobe.com/flex/mx"
+						  focusEnabled="true" xmlns:ui="com.rosettastone.succor.ui.*"
+						  xmlns:component="com.rosettastone.succor.component.*"
+						  xmlns:validator="com.rosettastone.succor.validator.*"
+						  xmlns:flex="com.rosettastone.succor.flex.*"
+						  click="selectRule();"
+        >
+	<fx:Declarations>
+	</fx:Declarations>
+	<fx:Binding source="rule.name" destination="ruleName.text" twoWay="true" />
+	<!--
+	- Localization
+	-->
+	<fx:Script>
+		<![CDATA[
+        /**
+         * Complex renderer for Rule model object that used in DataGrid
+         */
+
+			import com.rosettastone.succor.model.Rule;
+			import com.rosettastone.succor.model.StaticDictionary;
+			import com.rosettastone.succor.model.Template;
+			import com.rosettastone.succor.model.Ticket;
+			import com.rosettastone.succor.service.Helper;
+			import com.rosettastone.succor.service.RemoteServices;
+			import com.rosettastone.succor.ui.EmailTemplate;
+			import com.rosettastone.succor.ui.RuleList;
+			
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			import mx.utils.ObjectUtil;
+			import mx.utils.StringUtil;
+			
+			import spark.events.TextOperationEvent;
+
+			[Bindable]
+			private var rule:Rule;
+			
+			// list of supported languages
+            private var languages:ArrayCollection = new ArrayCollection();
+			
+			public const reminderEvent:String = "StudioReminderMessage"; 
+
+            public var eventClicked:Boolean = false;
+            public var productClicked:Boolean = false;
+            public var ticketTypeClicked:Boolean = false;
+            public var daysClicked:Boolean = false;
+            public var gfClicked:Boolean = false;
+            public var soloClicked:Boolean = false;
+
+            private function selectRule():void{
+                Helper.selectedRule = rule;
+            }
+
+            /**
+             * Set Rule object to current renderer
+             * set selected values to UI objects.
+             */
+			override public function set data(value:Object):void {
+				rule = Rule(value);
+				//trace("RuleRenderer set data RuleItem " + rule.productName + " active=" + rule.active + " ust=" + rule.updateSuperTicket);
+                // find and set selected product
+				productTypeLevel.selectedIndex = findProductByName(rule.productName);
+                // find and set selected event
+				eventDropDown.selectedIndex = findEventById(rule.eventId);
+                // show or hide 'Days' combobox
+				updateDaysVisibility();
+				updateHoursVisibility();
+				updateGfVisibility();
+                // sort tickets objects by ticket type, or create object if it does not exist.
+				var sortedTickets:ArrayCollection = new ArrayCollection();
+				for (var i:int = 0; i < StaticDictionary.ticketTypes.length; i++) {
+					sortedTickets.addItem(findTicketOrCreate(StaticDictionary.ticketTypes[i].name));
+				}
+				rule.tickets = sortedTickets;
+                ticketType.selectedIndex = 0;
+                for (var i:int = 0; i < sortedTickets.length; i++) {
+                    if (sortedTickets[i].type == rule.selectedTicketType) {
+                        ticketType.selectedIndex = i;
+                    }
+                }
+				changeTicketType(null);
+			}
+			
+			private function updateDaysVisibility():void {
+				daysDropDown.visible = (rule.eventId == 33 ) || (rule.eventId == 28);
+				smsItem.visible = !(rule.eventId == 33);/*update SMS Visibility for Discovery Call*/
+				if (rule.eventId == 28) {
+					daysDropDown.dataProvider = StaticDictionary.expiringDays;
+					mid.width = 56;
+				} else {
+					daysDropDown.dataProvider = StaticDictionary.discoveryCallDays;
+					mid.width = 56;
+				}
+				if (daysDropDown.visible && (rule.days > 0)) {
+					daysDropDown.selectedIndex = daysDropDown.dataProvider.getItemIndex(rule.days);
+				} else if (daysDropDown.visible) {
+					daysDropDown.selectedIndex = 0;
+					//                rule.days = daysDropDown.dataProvider.getItemIndex(0);
+					rule.days = daysDropDown.dataProvider[0];
+				}
+				daysItem.visible = daysDropDown.visible;
+				if (!daysItem.visible) {
+					rule.days = 0;
+					daysDropDown.selectedIndex = -1;
+					mid.width = 0;
+				}
+			}
+			
+			private function updateHoursVisibility():void {
+				hoursTextBox.visible = (rule.eventId == 32 ) || (rule.eventId == 15);
+				hoursItem.visible = hoursTextBox.visible;
+				hid.width = 56;
+				if (!hoursItem.visible) {
+					hid.width = 0;
+				}
+			}
+			
+			private function updateGfVisibility():void {
+			//var i:Array = new Array(15,16,17,18,19,32);
+			//gfItem.visible = i.contains(rule.eventId);
+				gfItem.visible = (rule.eventId == 32 ) || ((rule.eventId >= 15)  && (rule.eventId <= 20));
+				soloItem.visible = (rule.eventId == 32 ) || ((rule.eventId >= 15)  && (rule.eventId <= 20));
+				if(gf.selected && !solo.selected){
+				soloItem.visible=false;
+				}
+				if(solo.selected){
+				gfItem.visible=false;
+				}
+				
+				//soloItem.visible = gfItem.visible && !gf.selected;
+			}
+			
+			private function findTicketOrCreate(type:String):Ticket {
+				for each(var t:Ticket in rule.tickets) {
+					if (t.type == type) {
+						return t;
+					}
+				}
+				var ticket:Ticket = new Ticket();
+				ticket.type = type;
+				return ticket;
+			}
+			
+			override public function get data():Object {
+				return rule;
+			}
+			
+			private var template:EmailTemplate;
+			
+			private function closeTemplatePopup(event:MouseEvent):void {
+				PopUpManager.removePopUp(template);
+			}
+			
+			protected function findProductByName(name:String):int {
+				for (var i:int = 0; i < StaticDictionary.productTypes.length; i++) {
+					if (StaticDictionary.productTypes[i].name == name) {
+						return i;
+					}
+				}
+				return -1;
+			}
+			
+			protected function findEventById(id:int):int {
+				for (var i:int = 0; i < StaticDictionary.eventTypes.length; i++) {
+					if (StaticDictionary.eventTypes[i].id == id) {
+						return i;
+					}
+				}
+				return -1;
+			}
+			
+			
+			protected function creationCompleteHandler(event:FlexEvent):void {
+				template = new EmailTemplate();
+			}
+			
+			protected function changeProduct(event:Event):void {
+                if(productClicked){
+                    selectRule();
+                }
+				var idx:int = productTypeLevel.selectedIndex;
+				if (productTypeLevel.selectedIndex >= 0) {
+					rule.productName = StaticDictionary.productTypes[idx].name;
+				}
+			}
+			
+			protected function soloSelected(event:Event, rule:Rule):void {
+			if(soloClicked){
+                    selectRule();
+                }
+				if(!solo.selected){
+				rule.grandfathered=false;
+				gf.selected=false;
+				gfItem.visible=true;
+				soloItem.visible=true;
+				}
+				if(solo.selected){
+				rule.grandfathered=true;
+				gf.selected = true;
+				gfItem.visible=false;
+				soloItem.visible=true;
+				}
+			}
+			
+			protected function gfSelected(event:Event):void {
+			if(gfClicked){
+                    selectRule();
+                }
+				if(!gf.selected){
+				solo.selected=false;
+				soloItem.visible=true;
+				gfItem.visible=true;
+				}
+				if(gf.selected){
+				solo.selected = false;
+				soloItem.visible=false;
+				gfItem.visible=true;
+				}
+			}
+			
+			protected function changeEvent(event:Event):void {
+                if(eventClicked){
+                    selectRule();
+                }
+				var idx:int = eventDropDown.selectedIndex;
+				if (eventDropDown.selectedIndex >= 0) {
+					rule.eventId = StaticDictionary.eventTypes[idx].id;
+				}
+				
+				if (eventDropDown.selectedItem.className == reminderEvent) {
+					removeForReminder();
+				}
+				updateDaysVisibility();
+				updateHoursVisibility();
+				updateGfVisibility();
+			}
+			
+			private function removeForReminder():void {
+				var hasEmail:Boolean = rule.actions.contains("EMAIL");
+				var hasSMS:Boolean = rule.actions.contains("SMS");
+				
+				actionInst.selected = false;
+				actionPhone.selected = false;
+				actionPhoneCheck.selected = false;
+				actionPostal.selected = false;
+				updateSuperTicketCheckBox.selected = false;
+				
+				rule.updateSuperTicket = false;
+				
+				rule.actions.removeAll();
+				
+				if (hasEmail) {
+					rule.actions.addItem("EMAIL");
+				}
+				
+				if (hasSMS) {
+					rule.actions.addItem("SMS");
+				}
+			}
+			
+			protected function changeDays(event:Event):void {
+                if(daysClicked){
+                    selectRule();
+                }
+				var idx:int = daysDropDown.selectedIndex;
+				if (eventDropDown.selectedIndex >= 0) {
+					rule.days = daysDropDown.dataProvider[idx];
+				}
+			}
+			
+			protected function changeHours(event:Event):void {
+                if(daysClicked){
+                    selectRule();
+                }
+				//var idx:int = daysDropDown.selectedIndex;
+				try{
+					if (StringUtil.trim(hoursTextBox.text).length != 0) {
+						//rule.days = daysDropDown.dataProvider[idx];
+						rule.days = int(hoursTextBox.text)
+					}
+				}catch(err:Error){
+					Alert.show("Exception caught"+err.message);
+				}
+			}
+			
+			private function changeTicketType(event:Event):void {
+                if(ticketTypeClicked){
+                    selectRule();
+                }
+				//trace("changeTicketType " + ticketType.selectedIndex);
+//				for each(var ticket:Ticket in rule.tickets) {
+					//trace("ticket " + ObjectUtil.toString(ticket));
+//				}
+				
+				if (ticketType.selectedIndex >= 0) {
+					ticketSummary.text = rule.tickets[ticketType.selectedIndex].summary;
+                    rule.selectedTicketType = ticketType.selectedItem.name;
+				} else {
+					ticketSummary.text = ""
+				}
+			}
+			
+			private function changeSummary(event:Event):void {
+                selectRule();
+				//trace("changeSummary " + ticketSummary.text);
+				if (ticketType.selectedIndex >= 0) {
+					rule.tickets[ticketType.selectedIndex].summary = ticketSummary.text;
+				}
+			}
+			
+			private function numValidator_validHandler(event:Event):void {
+				Alert.show("valid");
+			}
+			
+			private function numValidator_invalidHandler(event:Event):void {
+				Alert.show("invalid");
+			}
+			
+			
+			private function showSMSTemplate(event:Event, isKid:Boolean):void {
+				showTemplate(event, isKid, Helper.SMS_TYPE);
+			}
+			
+			private function showEmailTemplate(event:Event, isKid:Boolean):void {
+				showTemplate(event, isKid, Helper.EMAIL_TYPE);
+			}
+			
+			var win:EmailTemplate;
+			
+			private function showTemplate(event:Event, isKid:Boolean, type:String):void {
+				//trace("showTemplate " + rule.templates);
+				win = PopUpManager.createPopUp(Helper.rootApp, EmailTemplate, true) as EmailTemplate;
+				win.kid = isKid;
+				// just because Email looks btter than EMAIL
+				win.emailTitle = type == Helper.SMS_TYPE ? Helper.SMS_TITLE : Helper.EMAIL_TITLE;
+				win.language = parentDocument.supportLanguage.selectedItem.name.toLowerCase();
+				if (rule.templates == null) {
+					rule.templates = new ArrayCollection();
+				}
+				for each(var t:Template in rule.templates) {
+					if (t.type == type) {
+						if ((isKid && t.kid) || (!isKid && !t.kid)) {
+							win.template = t;
+							break;
+						}
+					}
+				}
+				if (win.template == null) {
+					var template:Template = new Template();
+					template.type = type;
+					template.kid = isKid;
+					win.template = template;
+					rule.templates.addItem(template);
+				}
+				//trace("template " + ObjectUtil.toString(win.template));
+				PopUpManager.centerPopUp(win);
+			}
+			
+		]]>
+	</fx:Script>
+	<mx:Form width="100%">
+		<s:HGroup width="100%">
+			<s:VGroup width="50%" minWidth="400">
+				<s:HGroup width="100%">
+					<s:VGroup width="100%">
+						<mx:FormItem required="true" width="100%">
+							<s:Label text="RULE NAME" id="ruleNameLabel"/>
+							<flex:RuleName id="ruleName" heightInLines="4" minWidth="367" width="100%"
+                                change="selectRule();"/>
+						</mx:FormItem>
+					</s:VGroup>
+					<s:VGroup horizontalAlign="center">
+						<s:Label text="ACTIVE"/>
+						<component:FieldCheckBox id="activeCheckBox" valueField="active" data="{rule}" />
+					</s:VGroup>
+				</s:HGroup>
+				<s:HGroup width="100%">
+					<s:VGroup width="100%">
+						<mx:FormItem top="30" required="true" width="100%" >
+							<s:Label top="50" id="eventLabel" text="EVENT"/>
+							<s:DropDownList id="eventDropDown"  minWidth="165" width="100%" labelField="name"
+											dataProvider="{StaticDictionary.eventTypes}" change="changeEvent(event)"
+											styleName="dropDownStyle" click="eventClicked=true;"/>
+						</mx:FormItem>
+					</s:VGroup>
+					<s:VGroup id="mid" >
+						<mx:FormItem required="true" id="daysItem">
+							<s:Label id="daysLabel" text="DAYS"/>
+							<s:DropDownList id="daysDropDown" width="55"
+											dataProvider="{StaticDictionary.discoveryCallDays}" change="changeDays(event)"
+											styleName="dropDownStyle" click="daysClicked=true"/>
+						</mx:FormItem>
+						
+					</s:VGroup>
+					<s:VGroup id="hid" >
+					<mx:FormItem required="true" id="hoursItem">
+							<s:Label id="hoursLabel" text="HOURS"/>
+							<s:TextInput id="hoursTextBox" width="55" styleName="dropDownStyle" change="changeHours(event)" text="@{rule.hoursPriorToSession}"/>
+						</mx:FormItem>
+						</s:VGroup>
+					<s:VGroup>
+						<mx:FormItem required="true">
+							<s:Label id="proTyLeLabel" text="PRODUCT TYPE/LEVEL"/>
+							<s:DropDownList id="productTypeLevel" width="155" labelField="longName"
+											dataProvider="{StaticDictionary.productTypes}" change="changeProduct(event)"
+											styleName="dropDownStyle" click="productClicked=true"/>
+						</mx:FormItem>
+					</s:VGroup>
+				</s:HGroup>
+				<s:HGroup width="100%">
+					<s:VGroup>
+						<mx:FormItem required="true" id="gfItem">
+							<component:FieldCheckBox id="gf" data="{rule}" valueField="grandfathered" click="gfClicked=true" change="gfSelected(event);"/>
+							<s:Label text="Grand Fathered"/>
+						</mx:FormItem>
+					</s:VGroup>	
+					<s:VGroup>
+						<mx:FormItem id="soloItem" required="true">
+							<component:FieldCheckBox id="solo" data="{rule}" valueField="solo" click="soloClicked=true" change="soloSelected(event,rule);"/>
+							<s:Label text="SOLO"/>
+						</mx:FormItem>
+					</s:VGroup>	
+				</s:HGroup>	
+			</s:VGroup>
+			
+			<s:VGroup width="20%" minWidth="140" maxWidth="170">
+				
+				<mx:FormItem id="smsItem">
+					<s:HGroup verticalAlign="bottom">
+						<component:ActionCheckBox id="actionSMS" label="SMS" value="SMS" actions="{rule.actions}"
+                                                  selected="{rule.actions.contains('SMS')}" change="selectRule();"/>
+						<s:Label text="Edit Template" color="0x0000ff" click="showSMSTemplate(event, false)"
+								 useHandCursor="true" buttonMode="true" mouseChildren="false"/>
+					</s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem>
+					<s:HGroup verticalAlign="bottom">
+						<component:ActionCheckBox id="actionEmail" label="Email" value="EMAIL" actions="{rule.actions}"
+                                                  selected="{rule.actions.contains('EMAIL')}" change="selectRule();"/>
+						<s:Label text="Edit Template" color="0x0000ff" click="showEmailTemplate(event, false)"
+								 useHandCursor="true" buttonMode="true" mouseChildren="false"/>
+						<s:Label text="Kid email" color="0x0000ff" click="showEmailTemplate(event, true)"
+                                 visible="{parentDocument.supportLanguage.selectedItem.name.toLowerCase() == 'ko'}"
+                                 useHandCursor="true" buttonMode="true" mouseChildren="false"/>
+					</s:HGroup>
+				</mx:FormItem>
+				
+				<mx:FormItem includeInLayout="{eventDropDown.selectedItem.className != reminderEvent}" visible="{eventDropDown.selectedItem.className != reminderEvent}">
+					<component:ActionCheckBox id="actionPostal" label="Postal" value="POSTAL" actions="{rule.actions}"
+                                              selected="{rule.actions.contains('POSTAL')}" change="selectRule();"/>
+				</mx:FormItem>
+				<mx:FormItem includeInLayout="{eventDropDown.selectedItem.className != reminderEvent}" visible="false">
+					<component:ActionCheckBox id="actionPhone" label="Phone" value="PHONE" actions="{rule.actions}"
+                                              selected="{rule.actions.contains('PHONE')}" change="selectRule();"/>
+				</mx:FormItem>
+				<mx:FormItem includeInLayout="{eventDropDown.selectedItem.className != reminderEvent}" visible="false">
+					<component:ActionCheckBox id="actionPhoneCheck" label="Phone or email" value="PHONE_OR_EMAIL" actions="{rule.actions}"
+                                               selected="{rule.actions.contains('PHONE_OR_EMAIL')}" change="selectRule();"/>
+				</mx:FormItem>
+				<mx:FormItem includeInLayout="{eventDropDown.selectedItem.className != reminderEvent}" visible="false">
+					<component:ActionCheckBox visible="{parentDocument.supportLanguage.selectedItem.name.toLowerCase() == 'en' || parentDocument.supportLanguage.selectedItem.name.toLowerCase() == 'es'}"
+											  id="actionInst" label="Institutional Action Ticket" value="INSTANT_ACTION_TICKET"
+											  actions="{rule.actions}" selected="{rule.actions.contains('INSTANT_ACTION_TICKET')}"  change="selectRule();"/>
+				</mx:FormItem>
+				<mx:FormItem visible="false">
+					<component:FieldCheckBox id="ignoreDoNotContact" data="{rule}" label="Ignore Do Not Contact" valueField="ignoreDoNotContact" />
+				</mx:FormItem>
+				
+			</s:VGroup>
+			
+			<s:VGroup horizontalAlign="right" width="30%" minWidth="180">
+					
+			</s:VGroup>
+
+			<s:VGroup width="30%" minWidth="200" horizontalAlign="right" visible="false">
+				<mx:FormItem width="100%" minWidth="200">
+					<s:Label text="PARATURE TICKET TYPE"/>
+					<s:DropDownList id="ticketType" minWidth="200" width="100%" labelField="label"
+									dataProvider="{StaticDictionary.ticketTypes}" change="changeTicketType(event)"
+									styleName="dropDownStyle" click="ticketTypeClicked=true;"/>
+				</mx:FormItem>
+				<mx:FormItem width="100%" minWidth="200">
+					<s:Label text="TICKET SUMMARY"/>
+					<s:TextArea id="ticketSummary" change="changeSummary(event)" heightInLines="3"
+								width="100%" minWidth="200"/>
+				</mx:FormItem>
+				<mx:FormItem horizontalAlign="right" includeInLayout="{eventDropDown.selectedItem.className != reminderEvent}" visible="{eventDropDown.selectedItem.className != reminderEvent}">
+					<component:FieldCheckBox id="updateSuperTicketCheckBox" valueField="updateSuperTicket"
+											 data="{rule}" label="Update Super Ticket" change="selectRule()"/>
+				</mx:FormItem>
+			</s:VGroup>
+		</s:HGroup>
+	</mx:Form>
+	<fx:Style>
+		.dropDownStyle{
+			cornerRadius: 5;
+		}
+	</fx:Style>
+</s:MXDataGridItemRenderer>

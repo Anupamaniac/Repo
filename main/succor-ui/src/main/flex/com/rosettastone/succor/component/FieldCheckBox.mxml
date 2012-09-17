@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:CheckBox xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			xmlns:s="library://ns.adobe.com/flex/spark" 
+			xmlns:mx="library://ns.adobe.com/flex/mx" change="onChange(event)"
+            creationComplete="onCreationComplete()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+        /**
+         * Checkbox that mapped to some boolean property in rule
+         * Property name is stored in valueField
+         */
+
+        import com.rosettastone.succor.model.Rule;
+		import mx.controls.Alert;
+
+        public var rule:Rule;
+
+        // boolean field name in rule object
+        public var valueField:String;
+
+        // set data and set correct UI state
+        public function set data(rule:Rule):void {
+            this.rule = rule;
+            this.selected = rule[valueField];
+            trace("FieldCheckBox set data " + valueField + " " + this.selected);
+        }
+
+        private function onCreationComplete():void {
+
+        }
+
+        // onChange handler
+        private function onChange(event:Event):void {
+            trace("Change value " + valueField + " " + this.selected);
+            rule[valueField] = this.selected;
+        }
+		]]>
+	</fx:Script>
+</s:CheckBox>

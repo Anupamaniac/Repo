@@ -1,0 +1,36 @@
+Here is instruction how to enable user/password validation for the Drools Guvnor on tomcat.
+The simplest way is just create tomcat's user realm and add security constraints in gunvor's web.xml.
+
+1. Configure Realm. Open $CATALINA_HOME/conf/server.xml and add or uncomment new <Realm tag insade an <Engine> element:
+   <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/>
+
+2. Configure User database. Open $CATALINA_HOME/conf/tomcat-users.xml and add administrator role and user:
+  <role rolename="admin"/>
+  <user username="admin" password="admin" roles="admin"/>
+
+3. Add security constraints to the gunvor's web.xml. Open $CATALINA_HOME/webapps/drools-guvnor/WEB-INF/web.xml and add:
+	<security-role>
+		<description>system administrators</description>
+		<role-name>admin</role-name>
+	</security-role>
+
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>Drools Gunvor</realm-name>
+	</login-config>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>SecureConnection</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+4. Disable gunvor's embeded login module.  Open $CATALINA_HOME/webapps/drools-guvnor/WEB-INF/components.xml and
+	find and comment this line: <security:identity authenticate-method="#{defaultAuthenticator.authenticate}"/>
+	find and uncomment this line: <security:identity authenticate-method="#{nilAuthenticator.authenticate}"/>
+
+5. Restart tomcat

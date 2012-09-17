@@ -1,0 +1,35 @@
+{
+	"license_data": {
+    	"test_license": true
+  	},
+    "header": {
+        "message_type": "level_completion_message",
+        "created_at": 1281734508,
+        "hostname": "rshbgdev04",
+        "schema_version": 1
+    },
+    "message": {
+        "guid": "30b1c5f4-89cb-4392-944c-c7f77399c78d",
+        "rs_language_code": "FRA",
+        "course": "HEY",
+        "level": 5,
+        "iso_language_code": "fr-FR"
+    },
+
+    "customer_data": {
+        "city":"New York",
+        "postal_code":"12345",
+        "state_province":"NY",
+        "address_line_1":"25 street",
+        "address_line_2":"15 structure, 12",
+        "guid":"30b1c5f4-89cb-4392-944c-c7f77399c78d",
+        "contact_phone_number":"(333) 555555",
+        "first_name":"Konstantin",
+        "contact_phone_country_code":"8",
+        "last_viewed_locale":"ja-JP",
+        "last_name":"Zhirov",
+        "country_iso":4,
+        "email":"kzhirov@rosettastone.com",
+        "institutional": false
+    }
+}

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/WebDev/!svn/ver/93486/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/service
+END
+FlexService.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/WebDev/!svn/ver/110758/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/service/FlexService.java
+END
+RuleServiceStub.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/service/RuleServiceStub.java
+END
+RuleService.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/service/RuleService.java
+END
+StatisticService.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/service/StatisticService.java
+END
+RuleServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/WebDev/!svn/ver/109278/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/service/RuleServiceImpl.java
+END

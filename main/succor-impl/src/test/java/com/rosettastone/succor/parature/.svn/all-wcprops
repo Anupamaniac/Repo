@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/parature
+END
+ParaturePropertiesTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/parature/ParaturePropertiesTest.java
+END
+ParatureHttpClientTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/parature/ParatureHttpClientTest.java
+END
+RabbitMQProducerTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/parature/RabbitMQProducerTest.java
+END
+TestTicketFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/parature/TestTicketFactory.java
+END

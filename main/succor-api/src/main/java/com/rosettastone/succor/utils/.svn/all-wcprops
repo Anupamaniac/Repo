@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/utils
+END
+ModelUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/utils/ModelUtils.java
+END
+MessageUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/utils/MessageUtils.java
+END
+LocalizedMessageSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/utils/LocalizedMessageSource.java
+END

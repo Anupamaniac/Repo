@@ -1,0 +1,33 @@
+{
+  "message": {
+	"guid": "ae80d3e6-e78e-4c3d-8ecf-6dbc2cd4b07a",
+    "rs_language_code": "ESP",
+    "iso_language_code": "es-419"
+    "unit": 0,
+    "level": 1,
+    "session_start_time": 1284486073,
+    "hours": 24
+  },
+  "header": {
+    "schema_version": 1,
+    "hostname": "kb.local",
+    "message_type": "studio_reminder_message",
+    "created_at": 1284486073
+  },
+  "customer_data": {
+    "city": "Timbuktu",
+    "guid": "ae80d3e6-e78e-4c3d-8ecf-6dbc2cd4b07a",
+    "institutional": false,
+    "state_province": "Denial",
+    "postal_code": "90210",
+    "country_iso": null,
+    "contact_phone_number": null,
+    "address_line_1": "Perdition Rd.",
+    "email": "kzhirov@rosettastone.com",
+    "contact_phone_country_code": null,
+    "last_name": "Activated",
+    "address_line_2": "Panda Modiem",
+    "last_viewed_locale": "",
+    "first_name": "Non"
+  }
+}

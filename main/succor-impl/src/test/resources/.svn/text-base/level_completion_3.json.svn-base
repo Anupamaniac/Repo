@@ -1,0 +1,35 @@
+{
+   "license_data": {
+       "test_license": true
+     },
+   "header": {
+       "message_type": "level_completion_message",
+       "created_at": 1281734508,
+       "hostname": "rshbgdev04",
+       "schema_version": 1
+   },
+   "message": {
+       "guid": "1111-1111-1111-111",
+       "rs_language_code": "ARA",
+       "course": "HEY",
+       "level": 1,
+       "iso_language_code": "es-419"
+   },
+
+   "customer_data": {
+       "city":"New York",
+       "postal_code":"12345",
+       "state_province":"NY",
+       "address_line_1":"25 street",
+       "address_line_2":"15 structure, 12",
+       "guid":"11111111-1111-1111-1111-111111111111",
+       "contact_phone_number":"(333) 555555",
+       "first_name":"Kim",
+       "contact_phone_country_code":"8",
+       "last_viewed_locale":"en-US",
+       "last_name":"Lindsay",
+       "country_iso":4,
+       "email":"success.corresp@gmail.com",
+       "institutional": false
+   }
+}

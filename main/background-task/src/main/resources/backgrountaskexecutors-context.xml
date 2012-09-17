@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean name="exceptionNotificationStatusWatcher" 
+		class="com.rosettastone.succor.backgroundtask.impl.ExceptionNotificationStatusWatcher"/>
+
+	<bean id="taskEmailSender" class="com.rosettastone.succor.backgroundtask.impl.EmailSender">
+		<property name="mailSender" ref="mailSender"/>
+		<property name="emailList" value="${notification.adminemails}"/>
+		<property name="mailFrom" value="${notification.mailfrom}"/>
+		<property name="watcher" ref="exceptionNotificationStatusWatcher"/>
+        <property name="reportDao" ref="reportDao"/>
+	</bean>
+
+	<bean id="taskNotifyAdminExceptionHandler"
+		class="com.rosettastone.succor.backgroundtask.impl.NotifyAdminExceptionHandler">
+		<property name="emailSender" ref="taskEmailSender"/>
+		<property name="errorDelay" value="${backgroundtask.errorDelay}"/>
+		<property name="hoptoadNotificationService" ref="hopToadService"/>
+	</bean>
+
+	<bean id="task502ExceptionHandler" class="com.rosettastone.succor.backgroundtask.impl.RetryExceptionHandler"
+			parent="taskNotifyAdminExceptionHandler">
+		<property name="retryAmount" value="3"/>
+		<property name="retryInterval" value="240"/>
+	</bean>
+
+	<bean id="task503ExceptionHandler" class="com.rosettastone.succor.backgroundtask.impl.RetryExceptionHandler"
+			parent="taskNotifyAdminExceptionHandler">
+		<property name="retryAmount" value="1"/>
+		<property name="retryInterval" value="30"/>
+	</bean>
+
+	<bean id="taskCancelTaskExceptionHandler" 
+		  class="com.rosettastone.succor.backgroundtask.impl.CancelTaskExceptionHandler"
+		  parent="taskNotifyAdminExceptionHandler">
+	</bean>
+
+	<bean id="taskObjectNotFoundExceptionHandler" 
+		  class="com.rosettastone.succor.backgroundtask.impl.ObjectNotFoundExceptionHandler"
+		  parent="taskNotifyAdminExceptionHandler">
+		  <property name="retryAmount" value="1"/>
+		  <property name="retryInterval" value="1440"/>
+	</bean>
+
+	<bean id="taskEaterExceptionHandler"
+		  class="com.rosettastone.succor.backgroundtask.impl.EaterExceptionHandler"/>
+
+	<bean id="taskExceptionHandler" class="com.rosettastone.succor.backgroundtask.impl.RulesExceptionHandler">
+		<property name="defaultExceptionHandler" ref="taskNotifyAdminExceptionHandler"/>
+		<property name="delegates">
+			<map>
+                <entry key="com.rosettastone.succor.exception.SMSException" value-ref="taskEaterExceptionHandler"/>
+                <entry key="java.lang.NullPointerException" value-ref="taskCancelTaskExceptionHandler"/>
+                <entry key="org.drools.runtime.rule.ConsequenceException" value-ref="taskCancelTaskExceptionHandler"/>
+				<entry key="com.rosettastone.succor.exception.ObjectNotFoundException" value-ref="taskEaterExceptionHandler"/>
+				<entry key="com.rosettastone.succor.exception.InvalidJsonException" value-ref="taskEaterExceptionHandler"/>
+				<entry key="org.springframework.mail.MailSendException" value-ref="taskCancelTaskExceptionHandler"/>
+				<entry key="javax.mail.internet.AddressException" value-ref="taskCancelTaskExceptionHandler"/>
+				<entry key="org.springframework.orm.hibernate3.HibernateJdbcException" value-ref="taskEaterExceptionHandler"/>
+                <entry key="org.hibernate.exception.JDBCConnectionException" value-ref="taskEaterExceptionHandler"/>
+				<entry key="NOT_FOUND_404" value-ref="taskCancelTaskExceptionHandler"/>
+				<entry key="BAD_REQUEST_400" value-ref="taskEaterExceptionHandler"/>				
+				<entry key="NOT_FOUND_404_CUSTOMER" value-ref="taskEaterExceptionHandler"/>
+				<entry key="BAD_GATEWAY_502" value-ref="task502ExceptionHandler"/>
+				<entry key="SERVICE_UNAVAILABLE_503" value-ref="task503ExceptionHandler"/>				
+			</map>
+		</property>
+	</bean>
+    
+    <bean id="taskAbstractExecutor" class="com.rosettastone.succor.backgroundtask.impl.TaskExecutor" abstract="true">
+    	<property name="argumentSerializer" ref="taskArgumentSerializer"/>
+    	<property name="taskDao" ref="taskDao"/>
+    	<property name="transactionTemplate" ref="taskTransactionTemplate"/>
+    	<property name="noTaskDelay" value="${backgroundtask.noTaskDelay}"/>
+    	<property name="exceptionNotificationStatusWatcher" ref="exceptionNotificationStatusWatcher"/>
+    	<property name="currentRabbitMqMessageStorage" ref="currentRabbitMqMessageStorage"/>
+		<property name="exceptionHandler" ref="taskExceptionHandler"/>
+		<property name="currentTask" ref="currentTask"/>
+		<property name="hoptoadNotificationService" ref="hopToadService"/>
+		<!--<property name="currentEventStorage" ref="currentEventStorage" /> dirtyPost -->
+    </bean>   
+
+    <bean id="taskPrepareExecutor" parent="taskAbstractExecutor">
+        <property name="taskType" value="PREPARE"/>
+    </bean>
+
+	<bean id="taskEmailExecutor" parent="taskAbstractExecutor">
+		<property name="taskType" value="EMAIL"/>
+	</bean>
+
+    <bean id="taskSMSExecutor" parent="taskAbstractExecutor">
+        <property name="taskType" value="SMS"/>
+    </bean>
+
+    <bean id="taskPrepareExecutorThread" class="com.rosettastone.succor.backgroundtask.impl.TaskExecutorThread">
+    	<property name="executor" ref="taskPrepareExecutor"/>
+		<property name="readWriteLock" ref="taskReadWriteLock"/>
+		<property name="hoptoadNotificationService" ref="hopToadService"/>
+    </bean>
+
+    <bean id="taskSMSExecutorThread" class="com.rosettastone.succor.backgroundtask.impl.TaskExecutorThread">
+    	<property name="executor" ref="taskSMSExecutor"/>
+		<property name="readWriteLock" ref="taskReadWriteLock"/>
+		<property name="hoptoadNotificationService" ref="hopToadService"/>
+    </bean>
+
+
+    <bean id="taskEmailExecutorThread" class="com.rosettastone.succor.backgroundtask.impl.TaskExecutorThread">
+    	<property name="executor" ref="taskEmailExecutor"/>
+		<property name="readWriteLock" ref="taskReadWriteLock"/>
+		<property name="hoptoadNotificationService" ref="hopToadService"/>
+    </bean>
+
+<!-- <bean id="taskParatureExecutor" parent="taskAbstractExecutor">
+		<property name="taskType" value="PARATURE"/>
+	</bean> -->
+    
+    <!-- <bean id="taskParatureExecutorThread" class="com.rosettastone.succor.backgroundtask.impl.TaskExecutorThread">
+    	<property name="executor" ref="taskParatureExecutor"/>
+		<property name="readWriteLock" ref="taskReadWriteLock"/>
+		<property name="hoptoadNotificationService" ref="hopToadService"/>
+    </bean> -->
+
+	<bean id="taskRuleExecutor" parent="taskAbstractExecutor">
+		<property name="taskType" value="RULES"/>
+	</bean>
+    
+    <bean id="taskRuleExecutorThread" class="com.rosettastone.succor.backgroundtask.impl.TaskExecutorThread">
+    	<property name="executor" ref="taskRuleExecutor"/>
+		<property name="readWriteLock" ref="taskReadWriteLock"/>
+		<property name="hoptoadNotificationService" ref="hopToadService"/>
+    </bean>
+
+    <bean id="taskDiscoveryCallExecutor" parent="taskAbstractExecutor">
+        <property name="taskType" value="DISCOVERY_CALL"/>
+    </bean>
+
+    <bean id="taskDiscoveryCallExecutorThread" class="com.rosettastone.succor.backgroundtask.impl.TaskExecutorThread">
+    	<property name="executor" ref="taskDiscoveryCallExecutor"/>
+		<property name="readWriteLock" ref="taskReadWriteLock"/>
+		<property name="hoptoadNotificationService" ref="hopToadService"/>
+    </bean>
+
+</beans>

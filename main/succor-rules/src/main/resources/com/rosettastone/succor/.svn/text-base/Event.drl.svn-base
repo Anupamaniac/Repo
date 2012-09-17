@@ -1,0 +1,295 @@
+package com.rosettastone.succor
+
+import com.rosettastone.succor.model.bandit.Event;
+import com.rosettastone.succor.model.bandit.Message;
+import com.rosettastone.succor.model.bandit.Customer;
+import com.rosettastone.succor.model.bandit.LevelCompletionMessage;
+import com.rosettastone.succor.model.bandit.LevelsCompletedMessage;
+import com.rosettastone.succor.model.bandit.StudioReadinessMessage;
+import com.rosettastone.succor.model.bandit.StudioReminderMessage;
+import com.rosettastone.succor.model.bandit.FirstCompletedStudioSessionMessage;
+import com.rosettastone.succor.model.bandit.StudioSessionCancellationMessage;
+import com.rosettastone.succor.model.bandit.SessionCancelReason;
+import com.rosettastone.succor.model.bandit.CommunityAbsenceMessage;
+import com.rosettastone.succor.model.bandit.RWorldEncouragementMessage
+import com.rosettastone.succor.model.bandit.ClaimedExtensionsMessage;
+
+global com.rosettastone.succor.service.EventService eventService
+
+rule "Completion of Level 1 - L1 - Phone"
+	dialect "mvel" 
+	when
+		$event : Event( eval(message is LevelCompletionMessage) && message.level == "1" 
+			&& customer.productNames contains "L1")
+	then 
+		eventService.createPhoneTicketOrSendEmail($event);
+end
+
+rule "Completion of Level 1 - S3, S5, TOT - Email"
+	dialect "mvel" 
+	when
+		$event : Event( eval(message is LevelCompletionMessage) && message.level == "1" 
+			&& (customer.productNames contains "S3" || customer.productNames contains "S5" 
+				|| customer.productNames contains "TOT") )
+	then 
+		eventService.sendEmail($event);
+end
+
+rule "Completion of Level 2 - L2, S2 - Phone"
+	dialect "mvel" 
+	when
+		$event : Event( eval(message is LevelCompletionMessage) && message.level == "2" 
+			&& (customer.productNames contains "L2" || customer.productNames contains "S2"))
+	then 
+		eventService.createPhoneTicketOrSendEmail($event);
+end
+
+rule "Completion of Level 2 - S3, S5, TOT - Email"
+	dialect "mvel" 
+	when
+		$event : Event( eval(message is LevelCompletionMessage) && message.level == "2" 
+			&& (customer.productNames contains "S3" || customer.productNames contains "S5" 
+				|| customer.productNames contains "TOT") )
+	then 
+		eventService.sendEmail($event);
+end
+
+rule "Completion of Level 3 - L3, S3 - Phone"
+	dialect "mvel" 
+	when
+		$event : Event( eval(message is LevelCompletionMessage) && message.level == "3" 
+			&& (customer.productNames contains "L3" || customer.productNames contains "S3"))
+	then 
+		eventService.createPhoneTicketOrSendEmail($event);
+end
+
+rule "Completion of Level 3 - S5, TOT - Email"
+	dialect "mvel" 
+	when
+		$event : Event( eval(message is LevelCompletionMessage) && message.level == "3" 
+			&& (customer.productNames contains "S5" || customer.productNames contains "TOT") )
+	then 
+		eventService.sendEmail($event);
+end
+
+rule "Completion of Level 4 - L5 - Phone"
+	dialect "mvel" 
+	when
+		$event : Event( eval(message is LevelCompletionMessage) && message.level == "4" 
+			&& customer.productNames contains "L4")
+	then 
+		eventService.createPhoneTicketOrSendEmail($event);
+end
+
+rule "Completion of Level 4 - S5, TOT - Email"
+	dialect "mvel" 
+	when
+		$event : Event( eval(message is LevelCompletionMessage) && message.level == "4" 
+			&& (customer.productNames contains "S5" || customer.productNames contains "TOT") )
+	then 
+		eventService.sendEmail($event);
+end
+
+rule "Completion of Level 5 - L5, S5, TOT - Phone"
+	dialect "mvel" 
+	when
+		$event : Event( eval(message is LevelCompletionMessage) && message.level == "5" 
+			&& (customer.productNames contains "L5" || customer.productNames contains "S5" 
+				|| customer.productNames contains "TOT"))
+	then 
+		eventService.createPhoneTicketOrSendEmail($event);
+end
+
+rule "Completion of Level - Institutional"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is LevelCompletionMessage)  
+			&& customer.institutional == "true" && internalSuccorData.supportLocale.language != "ja")
+	then 
+		eventService.createInstitutionalTicket($event);
+end
+
+rule "Completion of Levels 1,2,3 - L3, S3, S5, TOT - Postal"
+	dialect "mvel" 
+	when
+		$event : Event( eval(message is LevelsCompletedMessage) && message.levels == "1-3" 
+			&& (customer.productNames contains "L3" || customer.productNames contains "S3" 
+				|| customer.productNames contains "S5" || customer.productNames contains "TOT"))
+	then 
+		eventService.sendPostalMail($event);
+end
+
+rule "Completion of Levels 1,2,3,4,5 - L5, S5, TOT - Postal"
+	dialect "mvel" 
+	when
+		$event : Event( eval(message is LevelsCompletedMessage) && message.levels == "1-5" 
+			&& (customer.productNames contains "L5"  || customer.productNames contains "S5" 
+				|| customer.productNames contains "TOT"))
+	then 
+		eventService.sendPostalMail($event);
+end
+
+rule "Completion of Levels - Institutional"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is LevelsCompletedMessage)  
+			&& customer.institutional == "true" && internalSuccorData.supportLocale.language != "ja")
+	then 
+		eventService.createInstitutionalTicket($event);
+end
+
+rule "Ready for first studio session - Non Institutional - Phone and Email"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is StudioReadinessMessage) && message.firstMessageToThisUser == "true" 
+			&& customer.institutional == "false" )
+	then 
+		eventService.sendEmail($event);
+		eventService.createPhoneTicket($event);
+end
+
+rule "Ready for first studio session - Institutional"
+	when
+		$event : Event(eval(message is StudioReadinessMessage) && message.firstMessageToThisUser == "true" 
+			&& customer.institutional == "true" && internalSuccorData.supportLocale.language != "ja")
+	then 
+		eventService.createInstitutionalTicket($event);
+end
+
+rule "Not logged back in after first 30 days — Non Inst — Phone and Email"
+	dialect "mvel"
+	when
+		$event : Event(eval(message is CommunityAbsenceMessage) && message.days == 30 && message.firstMessageToThisUser == "true" 
+			&& customer.institutional == "false")
+	then
+		eventService.sendEmail($event);
+		eventService.createPhoneTicket($event);
+end
+
+rule "Not logged back in after 30 days except first — Non Inst — Postal"
+	dialect "mvel"
+	when
+		$event : Event(eval(message is CommunityAbsenceMessage) && message.days == 30 && message.firstMessageToThisUser == "false" 
+			&& customer.institutional == "false")
+	then
+		eventService.sendPostalMail($event)
+end
+
+rule "Not logged back in after 30 days — Institutional"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is CommunityAbsenceMessage) && message.days == 30 
+			&& customer.institutional == "true" && internalSuccorData.supportLocale.language != "ja")
+	then 
+		eventService.createInstitutionalTicket($event)
+end
+
+rule "Completed first Studio Session"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is FirstCompletedStudioSessionMessage) 
+			&& customer.institutional == "false" )
+	then 
+		eventService.sendEmail($event);
+end
+
+rule "Completed first Studio Session - Institutional"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is FirstCompletedStudioSessionMessage) 
+			&& customer.institutional == "true" && internalSuccorData.supportLocale.language != "ja")
+	then 
+		eventService.createInstitutionalTicket($event);
+end
+
+rule "Session Reminder - 24 hours before session"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is StudioReminderMessage))
+	then 
+		eventService.sendEmail($event);
+end
+
+rule "Session Cancellation - Coach No-show - A Learner Attended - Phone Email"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is StudioSessionCancellationMessage) 
+			&& message.reason == SessionCancelReason.no_coach_yes_learner)
+	then 
+		eventService.createPhoneTicket($event);
+		eventService.sendEmail($event);
+end
+
+rule "Session Cancellation - Coach Cancels - no learners show - Institutional"
+	dialect "mvel"
+	when
+		$event : Event(eval(message is StudioSessionCancellationMessage) 
+			&& message.reason == SessionCancelReason.cancelled_session_no_learner 
+			&& customer.institutional == "true" && internalSuccorData.supportLocale.language != "ja")
+	then 
+		eventService.createInstitutionalTicket($event);
+end
+
+rule "Session Cancellation - Cancelled prior to session - Learner was signed up - Phone Email"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is StudioSessionCancellationMessage) 
+			&& message.reason == SessionCancelReason.cancelled_before_session)
+	then 
+		eventService.createPhoneTicket($event);
+		eventService.sendEmail($event);
+end
+
+rule "Session Cancellation - Cancelled during Session - Learner attended - Phone Email"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is StudioSessionCancellationMessage) 
+			&& message.reason == SessionCancelReason.cancelled_session_yes_learner)
+	then 
+		eventService.createPhoneTicket($event);
+		eventService.sendEmail($event);
+end
+
+rule "Learner No Show - At least one learner does not attend and session is not cancelled - Institutional"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is StudioSessionCancellationMessage)  
+			&& message.reason == SessionCancelReason.uncancelled_session_no_learner
+				&& customer.institutional == true && internalSuccorData.supportLocale.language != "ja")
+	then 
+		eventService.createInstitutionalTicket($event);
+end
+
+rule "Start their subscription Claim Online Rights"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is ClaimedExtensionsMessage) && customer.institutional != true)
+	then 
+		eventService.sendEmail($event);
+end
+
+rule "Start their subscription Claim Online Rights - Institutional"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is ClaimedExtensionsMessage) 
+			&& customer.institutional == true && internalSuccorData.supportLocale.language != "ja")
+	then 
+		eventService.createInstitutionalTicket($event);
+end
+
+rule "Completed their first 3 Core Lessons"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is RWorldEncouragementMessage) && customer.institutional != true)
+	then 
+		eventService.sendEmail($event);
+end
+
+rule "Completed their first 3 Core Lessons - Institutional"
+	dialect "mvel" 
+	when
+		$event : Event(eval(message is RWorldEncouragementMessage) 
+			&& customer.institutional == true && internalSuccorData.supportLocale.language != "ja")
+	then 
+		eventService.createInstitutionalTicket($event);
+end

@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/WebDev/!svn/ver/93486/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils
+END
+UnicodeResponseHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/UnicodeResponseHandler.java
+END
+ActionSerializer.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/ActionSerializer.java
+END
+CustomerJSONParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/CustomerJSONParser.java
+END
+ParatureHttpDelegator.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/ParatureHttpDelegator.java
+END
+EmailBodyGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/WebDev/!svn/ver/109909/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/EmailBodyGenerator.java
+END
+TicketSerializer.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/TicketSerializer.java
+END
+LocalizedMessageSourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/LocalizedMessageSourceImpl.java
+END
+TicketObjectBuilder.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/TicketObjectBuilder.java
+END
+TicketXMLParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/TicketXMLParser.java
+END
+UnicodeHandlerHttpResponseException.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/UnicodeHandlerHttpResponseException.java
+END
+TaskPriorityService.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/TaskPriorityService.java
+END
+JSONUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/JSONUtils.java
+END
+TicketJSONParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/TicketJSONParser.java
+END
+CsrJSONParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/CsrJSONParser.java
+END
+DateUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/DateUtils.java
+END

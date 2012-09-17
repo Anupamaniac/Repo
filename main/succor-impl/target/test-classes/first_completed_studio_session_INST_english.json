@@ -1,0 +1,60 @@
+{
+  "license_data": {
+        "upgraded_at": 1303249942,
+    "product_rights": [
+      {
+        "rs_language_code": "ENG",
+        "family": "application",
+        "content_ranges": [
+          "1-4"
+        ]
+      },
+      {
+        "rs_language_code": "ENG",
+        "family": "eschool",
+        "content_ranges": [
+          "1-4"
+        ]
+      },
+      {
+        "rs_language_code": "ENG",
+        "family": "premium_community",
+        "content_ranges": [
+          "1-4"
+        ]
+      }
+    ],
+    "creation_account_guid": "5ce12bb5-8423-4456-a388-d73d272ae8fc",
+    "creation_account_type": "FamilyCreationAccount",
+    "test_license": true
+
+  },
+  "message": {
+    "guid": "ecdb1178-89f5-47e2-b1f5-bf8589619d3d",
+    "rs_language_code": "ENG",
+    "iso_language_code": "es-419"
+  },
+  "header": {
+    "created_at": 1292272682,
+    "hostname": "flash.local",
+    "message_type": "first_completed_studio_session_message",
+    "schema_version": 1
+  },
+  "customer_data": {
+    "time_zone": "America/New_York",
+    "address_line_1": null,
+    "contact_phone_country_code": null,
+    "address_line_2": null,
+    "last_viewed_locale": "en-US",
+    "city": null,
+    "last_name": "Hanssson",
+    "institutional": true,
+    "state_province": null,
+    "postal_code": null,
+    "guid": "ecdb1178-89f5-47e2-b1f5-bf8589619d3d",
+    "country_iso": 840,
+    "email": "kzhirov@rosettastone.com",
+    "first_name": "Laura",
+    "contact_phone_number": null
+  }
+}

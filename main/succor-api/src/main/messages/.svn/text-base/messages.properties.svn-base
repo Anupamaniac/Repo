@@ -1,0 +1,67 @@
+#Default messages, e
+level1.mail.body=You have finished Level {0}
+
+mail.from=customersuccess@rosettastone.com
+
+mail.subject.level_completion_message_1=Congratulations on completing Level 1 in TOTALe!
+mail.subject.level_completion_message_2=A job well done!  You've completed Level 2 in TOTALe!
+mail.subject.level_completion_message_3=A big congratulations for completing Level 3 in TOTALe!
+mail.subject.levels_completed_message_1-3=Terrific Achievement for Completing Levels 1, 2, and 3 in TOTALe!
+mail.subject.level_completion_message_4=Fantastic, you've completed Level 4 in TOTALe!
+mail.subject.level_completion_message_5=Your exceptional accomplishment - completing Level 5 in TOTALe!
+mail.subject.levels_completed_message_1-5=You Have Successfully Completed Levels 1-5 in TOTALe!
+
+mail.subject.first_studio_readiness_message=Practice live in Rosetta Studio with a Coach who`s a native speaker!
+
+mail.subject.not_logged_in_for_days_30_first=Engage in exciting lessons, games, and live sessions in TOTALe today!
+mail.subject.not_logged_in_for_days_30=Engage in exciting lessons, games, and live sessions in TOTALe today!
+
+mail.subject.first_completed_studio_session_message=Excellent job practicing your skills in Rosetta Studio!
+mail.subject.studio_reminder_message=You have an upcoming Rosetta Studio session!
+mail.subject.subscription_followup=Dive into our online Studio and World components of TOTALe!
+mail.subject.rosetta_world_encouragement_message=Participate in Rosetta World stories and interactive games today!
+mail.subject.claimed_extensions_message=Dive into our online Studio and World components of TOTALe!
+
+mail.subject.studio_session_cancellation_message_no_coach_yes_learner=Our apologies for your cancelled session
+mail.subject.studio_session_cancellation_message_cancelled_session_no_learner=We missed you in Studio!
+mail.subject.studio_session_cancellation_message_cancelled_before_session=Our apologies for your cancelled session
+mail.subject.studio_session_cancellation_message_cancelled_session_yes_learner=Our apologies for your cancelled session
+mail.subject.studio_session_cancellation_message_uncancelled_session_no_learner=We missed you in Studio!
+
+levelU3.tiket.body=Test call ticket for customer {0}, Phone number {1}
+not_logged_in_for_days=${0}, you have not logged in for ${1} days in Rosetta Course.
+
+mail.support=Customer Success Team
+mail.support.url=http://totalesupport.rosettastone.com
+mail.telephone=T: (866) 834-6115 Option 5
+mail.slogan=Encouraging you every step of the way.
+mail.suggestion=Please let us know if you would like any assistance scheduling or attending your session.
+
+language.arabic=Arabic
+language.mandarinChines=Chinese (Mandarin)
+language.dutch=Dutch
+language.americanEnglish=English (American)
+language.britishEnglish=English (British)
+language.tagalogFilipino=Filipino (Tagalog)
+language.french=French
+language.german=German
+language.greek=Greek
+language.hebrew=Hebrew
+language.hindi=Hindi
+language.irish=Irish
+language.italian=Italian
+language.japanese=Japanese
+language.korean=Korean
+language.farsiPersian=Persian (Farsi)
+language.polish=Polish
+language.brazilPortuguese=Portuguese (Brazil)
+language.russian=Russian
+language.latinAmericaSpanish=Spanish (Latin America)
+language.spainSpanish=Spanish (Spain)
+language.swedish=Swedish
+language.turkish=Turkish
+language.vietnamese=Vietnamese
+
+#For Postal History
+postal_history.subject=Weekly postal report - English
+postal_history.body=Postal information up to {0} - English

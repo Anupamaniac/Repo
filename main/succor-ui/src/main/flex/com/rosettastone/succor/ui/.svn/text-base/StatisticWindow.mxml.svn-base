@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<s:TitleWindow xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx" title="Statistic" close="PopUpManager.removePopUp(this)"
+        width="800" height="680" creationComplete="onCreationComplete()" show="onShow()">
+    <fx:Declarations>
+        <mx:DateFormatter id="df" formatString="MM/DD/YY LL:NN A"/>
+    </fx:Declarations>
+
+    <fx:Script>
+        <![CDATA[
+        /**
+         * Dialog for view statistic about processed/unprocessed/processed with errors messages
+         */
+        import com.rosettastone.succor.model.Statistic;
+        import com.rosettastone.succor.model.TaskError;
+        import com.rosettastone.succor.model.TaskError;
+        import com.rosettastone.succor.service.Helper;
+        import com.rosettastone.succor.service.RemoteServices;
+
+        import mx.controls.Alert;
+        import mx.rpc.events.FaultEvent;
+        import mx.rpc.events.ResultEvent;
+        import mx.rpc.remoting.RemoteObject;
+        import mx.utils.ObjectUtil;
+
+        import mx.collections.ArrayCollection;
+        import mx.managers.PopUpManager;
+
+        [Bindable]
+        public var statistic:Statistic;
+
+        private var statisticService:RemoteObject;
+
+        private function onCreationComplete():void {
+            statisticService = RemoteServices.statisticService();
+            statisticService.getStatistic.addEventListener(ResultEvent.RESULT, onStatisticResult);
+            statisticService.getStatistic.addEventListener(FaultEvent.FAULT, RemoteServices.errorHandler);
+        }
+
+        public function onShow():void {
+            trace("statistic show");
+            statisticService.getStatistic();
+        }
+
+        private function onStatisticResult(event:ResultEvent):void {
+            var statistic:Object = event.result;
+            trace("statistic " + ObjectUtil.toString(statistic));
+        }
+
+        public function getDateLabel(item:Object,column:DataGridColumn):String {
+            return df.format(item[column.dataField]);
+        }
+
+        private function selectRow(event:Event):void {
+            // select row in the table
+            detailsButton.enabled = (errorsGrid.selectedIndex >=0);
+        }
+
+        /**
+         * Show details for selected error
+         */
+        private function showDetails(event:Event):void {
+            trace("show error details " + errorsGrid.selectedIndex);
+            if (errorsGrid.selectedIndex >= 0) {
+                var error:TaskError = errorsGrid.selectedItem as TaskError;
+                trace("error object " + ObjectUtil.toString(error));
+                var win:ErrorDescriptionWindow = PopUpManager.createPopUp(Helper.rootApp, ErrorDescriptionWindow, true) as ErrorDescriptionWindow;
+                win.error = error;
+                PopUpManager.centerPopUp(win);
+            }
+        }
+
+
+        ]]>
+    </fx:Script>
+    <s:VGroup width="100%" height="100%" paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15">
+        <s:Label top="50" text="STATISTIC"/>
+        <mx:DataGrid id="statisticGrid" width="100%" paddingTop="5" dataProvider="{statistic.counters}" height="300">
+            <mx:columns>
+                <mx:DataGridColumn headerText="Description" width="150" dataField="description">
+                </mx:DataGridColumn>
+                <mx:DataGridColumn headerText="Count" width="70" dataField="count">
+                </mx:DataGridColumn>
+            </mx:columns>
+        </mx:DataGrid>
+        <s:Label top="50" text="ERRORS"/>
+        <mx:DataGrid id="errorsGrid" allowMultipleSelection="false" width="100%" selectable="true" click="selectRow(event)" doubleClick="showDetails(event)" dataProvider="{statistic.errors}" height="250">
+            <mx:columns>
+                <mx:DataGridColumn headerText="Message Id" width="35" dataField="messageId">
+                </mx:DataGridColumn>
+                <mx:DataGridColumn headerText="Task type" width="40" dataField="taskType">
+                </mx:DataGridColumn>
+                <mx:DataGridColumn headerText="Date" width="40" dataField="date" labelFunction="getDateLabel">
+                </mx:DataGridColumn>
+                <mx:DataGridColumn headerText="Exception" width="150" dataField="exception">
+                </mx:DataGridColumn>
+            </mx:columns>
+        </mx:DataGrid>
+        <s:HGroup horizontalAlign="right" verticalAlign="middle" width="98%">
+            <s:Button id="detailsButton" label="Show Details" enabled="false" styleName="buttonStyle" height="25" click="showDetails(event)"/>
+            <s:Button label="Close"  styleName="buttonStyle" height="25" click="PopUpManager.removePopUp(this)"/>
+        </s:HGroup>
+    </s:VGroup>
+
+    <fx:Style>
+        .commonTextStyle{
+            fontSize: 10;
+        }
+        .buttonStyle {
+            fontWeight: bold;
+            fontSize: 13;
+            cornerRadius: 9;
+            borderColor:purple;
+            paddingBottom:40;
+        }
+
+    </fx:Style>
+
+</s:TitleWindow>

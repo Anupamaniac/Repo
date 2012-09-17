@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd ">
+
+    <!--<bean id="mailSender" class="com.rosettastone.succor.backgroundtask.impl.MockEmailSender"/>-->
+
+    <bean id="ldapService" class="com.rosettastone.succor.service.LdapService">
+        <property name="url" value="ldap://10.1.2.40:389"/>
+        <property name="principal" value="linuxldap@rosettastone.local"/>
+        <property name="credentials" value="IH2v3N0P2ssw0rd"/>
+        <property name="oU" value="OU=Consultants,OU=Corporate"/>
+        <property name="dC" value="dc=rosettastone,dc=local"/>
+    </bean>
+
+</beans>

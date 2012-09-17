@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:TitleWindow xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx" title="{emailTitle} template" close="PopUpManager.removePopUp(this)"
+               width="800" height="600" creationComplete="onCreationComplete()">
+    <fx:Declarations>
+    </fx:Declarations>
+
+    <fx:Script><![CDATA[
+        /**
+         * Template editor.
+         */
+		import com.rosettastone.succor.model.StaticDictionary;
+		import com.rosettastone.succor.model.Template;
+		import com.rosettastone.succor.model.TemplateVariable;
+		import com.rosettastone.succor.service.Helper;
+		import com.rosettastone.succor.service.RemoteServices;
+		
+		import mx.controls.Alert;
+		import mx.managers.PopUpManager;
+		import mx.rpc.events.FaultEvent;
+		import mx.rpc.events.ResultEvent;
+		import mx.rpc.remoting.RemoteObject;
+		import mx.utils.ObjectUtil;
+
+        [Bindable]
+        public var template:Template;
+        [Bindable]
+        public var emailTitle:String;
+		[Bindable]
+		public var language:String;
+
+        // is it for kid?
+        public var kid:Boolean;
+
+        private var flexService:RemoteObject;
+
+        private function onCreationComplete():void {
+            /// set handlers for remote service method
+            flexService = RemoteServices.flexService;
+            flexService.saveForPreview.addEventListener(ResultEvent.RESULT, onSaveForPreviewSuccess);
+            flexService.saveForPreview.addEventListener(FaultEvent.FAULT, RemoteServices.errorHandler);
+        }
+
+        private function onSaveForPreviewSuccess(event:ResultEvent):void {
+            var s:String;
+            if (ExternalInterface.available) {
+                var wrapperFunction:String = "openPreview";
+                //trace("Calling openPreview");
+                s = ExternalInterface.call(wrapperFunction, null);
+            } else {
+                s = "Wrapper not available";
+            }
+            //trace(s);
+        }
+
+        /**
+         * Validate all fields and save data to model object
+         */
+         private function onSaveClick(event:Event):void {
+            if(emailFrom.text.length==0 && emailTitle == Helper.EMAIL_TITLE) {
+                Alert.show("Fields FROM are required!", "Error", 4, null, handleFrom);
+            }else{
+	            template.sender = emailFrom.text;
+	            template.subject = emailSubject.text;
+	            template.body = emailBody.text;
+	            template.kid = kid;
+	            //trace("save template " + ObjectUtil.toString(template));
+	            PopUpManager.removePopUp(this);
+            }
+        }
+
+        private function handleFrom(event:Event):void{
+            emailFrom.focusManager.setFocus(emailFrom);
+        }
+
+        private function onCancelClick(event:Event):void {
+            PopUpManager.removePopUp(this);
+        }
+
+        private function onPreviewClick(event:Event):void {
+            flexService.saveForPreview(emailBody.text);
+        }
+
+        /**
+         * Insert variable to the current cursor position.
+         * @param event
+         */
+        protected function insertVariable(event:Event):void {
+            var variable:TemplateVariable = emailVars.selectedItem;
+            emailBody.insertText("${(" + variable.name + ")!\" \"}");
+            emailBody.setFocus();
+        }
+        ]]>
+	</fx:Script>
+    <s:VGroup left="20" top="20" right="20" bottom="20" height="100%">
+        <s:Label text="{emailTitle} Content" fontSize="16" fontWeight="bold"/>
+        <s:VGroup includeInLayout="{emailTitle == Helper.EMAIL_TITLE || language == 'ja'}">
+	        <s:Label text="Enter the subject, body and 'from' address." styleName="commonTextStyle"/>
+	        <s:Label text="FROM" styleName="commonTextStyle"/>
+	        <s:TextInput id="emailFrom" width="80%" text="{template.sender}"/>
+	        <s:Label text="SUBJECT LINE" styleName="commonTextStyle"/>
+	        <s:TextInput width="100%" id="emailSubject" text="{template.subject}"/>
+        </s:VGroup>
+        <s:HGroup width="100%" height="100%">
+            <s:VGroup width="75%" height="100%">
+                <s:Label text="BODY HTML" styleName="commonTextStyle"/>
+                <s:TextArea id="emailBody" width="100%" height="100%" text="{template.body}"/>
+            </s:VGroup>
+            <s:VGroup width="25%" height="100%">
+                <s:Label text="VARIABLES" styleName="commonTextStyle"/>
+                <s:List id="emailVars" width="100%" height="100%" labelField="displayName"
+                        allowMultipleSelection="false"
+                        dataProvider="{StaticDictionary.templateVariables}" click="insertVariable(event)"/>
+            </s:VGroup>
+        </s:HGroup>
+        <s:HGroup horizontalAlign="right" width="100%">
+            <s:Button label="CANCEL" id="cancelButton" click="onCancelClick(event)" styleName="buttonStyle" height="25"/>
+            <s:Button label="PREVIEW" click="onPreviewClick(event)" styleName="buttonStyle" height="25"/>
+            <s:Button label="SAVE" click="onSaveClick(event)" styleName="buttonStyle" emphasized="true" height="25"/>
+        </s:HGroup>
+    </s:VGroup>
+    <fx:Style>
+        .full {}
+        .commonTextStyle{
+            fontSize: 8;
+        }
+        .buttonStyle {
+            fontWeight: bold;
+            fontSize: 13;
+            cornerRadius: 9;
+            borderColor:purple;
+            paddingBottom:40;
+        }
+        .buttonStyle1 {
+            fontSize: 8;
+            width:55;
+            height:15;
+            fontWeight:normal;
+            cornerRadius: 6;
+        }
+
+    </fx:Style>
+</s:TitleWindow>

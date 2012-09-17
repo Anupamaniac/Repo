@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:ui="com.rosettastone.succor.ui.*"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%"
+               initialize="init();"
+        >
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+    <fx:Script>
+		<![CDATA[
+        /**
+         * The main file for succor UI.
+         */
+        import com.rosettastone.succor.service.Helper;
+        import com.rosettastone.succor.service.RemoteServices;
+
+        import com.rosettastone.succor.ui.EmailTemplate;
+
+        /**
+         * Redirect to logout
+         */
+        private function signOut():void {
+            var url:String = RemoteServices.getBaseUrl();
+            var urlRequest:URLRequest = new URLRequest("j_spring_cas_security_logout");
+            navigateToURL(urlRequest, '_top');
+        }
+
+        var win:EmailTemplate;
+
+        private function init(){
+            Helper.rootApp = this;
+        }
+
+        ]]>
+	</fx:Script>
+    <s:Scroller left="1" right="1" top="1" bottom="1">
+        <s:Group width="100%">
+            <s:Rect minWidth="1186" width="100%" height="100%" minHeight="700">
+                <s:fill><s:SolidColor color="#382f26"/></s:fill>
+            </s:Rect>
+
+            <s:VGroup left="0" top="20" height="100%" width="100%">
+                <s:HGroup width="100%" color="white" height="30" verticalAlign="middle" horizontalAlign="right">
+                    <s:HGroup horizontalAlign="right" verticalAlign="middle" width="100%">
+                        <s:Label fontSize="14" text="Welcome, {RemoteServices.getUser()}" width="200"/>
+                        <s:Label fontSize="14" text="Sign out" click="signOut()" width="80"
+                                 useHandCursor="true" buttonMode="true" mouseChildren="false"/>
+                        <s:Label fontSize="14" text="Help" width="50"
+                                 click="RemoteServices.openLink('http://support.rosettastone.com/ics/support/default.asp?deptID=14042')"
+                                 useHandCursor="true" buttonMode="true" mouseChildren="false"/>
+                    </s:HGroup>
+
+                </s:HGroup>
+
+                <s:Group width="100%" height="100%" minHeight="360">
+                    <s:Rect width="100%"  height="100%">
+                        <s:fill><s:SolidColor color="#4682b4"/></s:fill>
+                    </s:Rect>
+
+                    <s:HGroup left="20" top="20" right="20" bottom="20" horizontalAlign="left"
+                              width="100%" height="100%">
+
+                        <s:Group width="180">
+                            <s:Rect width="100%" height="100%">
+                                <s:fill><s:SolidColor color="#fed519"/></s:fill>
+                            </s:Rect>
+                            <mx:Box paddingTop="8" paddingBottom="8" backgroundColor="white" styleName="boxStyle">
+                                <s:Label paddingLeft="8" text="Success Correspondence" styleName="leftTextStyle"
+                                         height="30" backgroundColor="#afeeee" width="100%"/>
+                                <s:Label paddingLeft="8" text="Customer Success Portal"
+                                         styleName="leftTextStyle"
+                                         height="25" width="100%"
+                                         click="RemoteServices.openLink('https://coachportal.rosettastone.com/')"
+                                         useHandCursor="true" buttonMode="true" mouseChildren="false"
+                                        />
+                            </mx:Box>
+                        </s:Group>
+
+                        <ui:RuleList width="100%" height="100%"/>
+
+                    </s:HGroup>
+                </s:Group>
+
+            </s:VGroup>
+            <mx:Image left="17" source="rs-logo.png"/>
+        </s:Group>
+
+    </s:Scroller>
+    <fx:Style>
+        .leftTextStyle{
+            fontSize: 13;
+            verticalAlign:"middle";
+            horizontalAlign:center;
+            height:"30";
+        }
+        .boxStyle{
+            left:3;
+            top:3;
+            right:3;
+            bottom:3;
+            horizontalAlign:center;
+        }
+        .linkStyle{
+            fontSize: 13;
+            verticalAlign:"middle";
+            horizontalAlign:center;
+            height:"30";
+            useHand:true;
+            buttonMode:true;
+            mouseChildren:"false";
+        }
+    </fx:Style>
+
+</s:Application>

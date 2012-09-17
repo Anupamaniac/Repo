@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/WebDev/!svn/ver/93200/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/service
+END
+LdapService.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/service/LdapService.java
+END
+SMSService.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/WebDev/!svn/ver/93190/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/service/SMSService.java
+END
+CustomerSynchronizationService.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/service/CustomerSynchronizationService.java
+END
+DiscoveryCallService.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/WebDev/!svn/ver/93190/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/service/DiscoveryCallService.java
+END
+EventServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/WebDev/!svn/ver/93200/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/service/EventServiceImpl.java
+END
+PostalHistoryService.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/service/PostalHistoryService.java
+END
+EmailService.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/service/EmailService.java
+END
+SMSEmailService.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/service/SMSEmailService.java
+END
+AbstractEmailService.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/service/AbstractEmailService.java
+END

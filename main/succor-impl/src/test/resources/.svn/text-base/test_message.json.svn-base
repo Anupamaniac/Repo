@@ -1,0 +1,36 @@
+{
+	"license_data": {
+    	"test_license": true
+  	},
+    "header": {
+        "message_type": "first_completed_studio_session_message",
+        "created_at": 1281734508,
+        "hostname": "rshbgdev04",
+        "schema_version": 1
+    },
+    "message": {
+        "guid": "1111-1111-1111-1111",
+        "rs_language_code": "ENG",
+        "iso_language_code": "ar",
+    },
+
+    "customer_data": {
+        "city":"New York",
+        "postal_code":"12345",
+        "state_province":"NY",
+        "address_line_1":"25 street",
+        "address_line_2":"15 structure, 12",
+        "guid":"1111-1111-1111-1111",
+        "contact_phone_number":"(333) 555555",
+        "first_name":"Allison",
+        "contact_phone_country_code":"8",
+        "last_viewed_locale":"en-US",
+        "last_name":"Martin",
+        "country_iso":4,
+        "email":"testuser@wyvern.etr.eastbanctech.ru",
+        "institutional": false
+    },
+    "test" : {
+    	"workLocally" : false
+    }
+}

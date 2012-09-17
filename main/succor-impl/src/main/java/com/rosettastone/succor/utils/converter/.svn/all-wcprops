@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/converter
+END
+StringFieldConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/converter/StringFieldConverter.java
+END
+Names.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/converter/Names.java
+END
+ActionConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/converter/ActionConverter.java
+END
+CustomFieldConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/converter/CustomFieldConverter.java
+END
+CustomerConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/converter/CustomerConverter.java
+END
+ActionCsrConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/utils/converter/ActionCsrConverter.java
+END

@@ -1,0 +1,17 @@
+{
+	"license_data": {
+    	"test_license": true
+  	},
+	"message":{
+		"guid":"998ba2e8-8ab4-403f-97da-f2a55eb0c845",
+		"iso_language_code":"nl-NL",
+	    "rs_language_code": "ESP"
+	},
+	"customer_data":"no customer data",
+	"header":{
+		"schema_version":1,
+		"hostname":"stgdeploy1",
+		"created_at":1285268273,
+		"message_type":"first_core_lesson_completion_message"
+	}
+}

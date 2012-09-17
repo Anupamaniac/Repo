@@ -1,0 +1,59 @@
+{
+	"license_data": {
+    	    "upgraded_at": 1303249942,
+    "product_rights": [
+      {
+        "rs_language_code": "ENG",
+        "family": "application",
+        "content_ranges": [
+          "1-4"
+        ]
+      },
+      {
+        "rs_language_code": "ENG",
+        "family": "eschool",
+        "content_ranges": [
+          "1-4"
+        ]
+      },
+      {
+        "rs_language_code": "ENG",
+        "family": "premium_community",
+        "content_ranges": [
+          "1-4"
+        ]
+      }
+    ],
+    "creation_account_guid": "5ce12bb5-8423-4456-a388-d73d272ae8fc",
+    "creation_account_type": "FamilyCreationAccount",
+    "test_license": true
+
+  	},
+    "header": {
+        "message_type": "first_core_lesson_completion_message",
+        "created_at": 1281734502,
+        "hostname": "rshbgdev04",
+        "schema_version": 1
+    },
+    "message": {
+        "guid": "f3faefc4-2b10-4c1c-b35c-e3293fad6111",
+        "iso_language_code": "ar",
+        "rs_language_code": "ENG"
+    },
+    "customer_data": {
+        "city":"New York",
+        "postal_code":"12345",
+        "state_province":"NY",
+        "address_line_1":"25 street",
+        "address_line_2":"15 structure, 12",
+        "guid":"f3faefc4-2b10-4c1c-b35c-e3293fad6111",
+        "contact_phone_number":"(333) 555555",
+        "first_name":"FirstName",
+        "contact_phone_country_code":"8",
+        "last_viewed_locale":"es-ES",
+        "last_name":"LastName",
+        "country_iso":4,
+        "email":"testuser@wyvern.etr.eastbanctech.ru",
+        "institutional": false
+    }
+}

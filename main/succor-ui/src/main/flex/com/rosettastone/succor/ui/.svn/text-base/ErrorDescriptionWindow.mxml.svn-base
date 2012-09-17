@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<s:TitleWindow xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx" title="Statistic" close="PopUpManager.removePopUp(this)"
+               width="800" height="650">
+    <fx:Declarations>
+        <mx:DateFormatter id="df" formatString="MM/DD/YY LL:NN A"/>
+    </fx:Declarations>
+
+    <fx:Script>
+        <![CDATA[
+        /**
+         * Dialog window that contains full information about error.
+         */
+        import com.rosettastone.succor.model.TaskError;
+
+        import mx.managers.PopUpManager;
+
+        [Bindable]
+        public var error:TaskError;
+        ]]>
+    </fx:Script>
+    <mx:Form width="100%" left="10" right="10" top="10">
+        <s:VGroup width="100%" height="100%" paddingTop="5" paddingBottom="5" paddingLeft="5" paddingRight="5">
+                <s:Label top="50" text="MESSAGE ID"/>
+                <s:TextInput editable="false" text="{error.messageId}" width="100%"/>
+
+                <s:Label top="50" text="TASK ID"/>
+                <s:TextInput editable="false" text="{error.taskId}" width="100%"/>
+
+                <s:Label top="50" text="TASK TYPE"/>
+                <s:TextInput editable="false" text="{error.taskType}" width="100%"/>
+
+                <s:Label top="50" text="MESSAGE"/>
+                <s:TextArea id="messageArea" text="{error.message}" editable="false" heightInLines="12" width="100%"/>
+
+                <s:Label top="50" text="STACKTRACE"/>
+                <s:TextArea id="stackTraceArea" text="{error.stacktrace}" editable="false" heightInLines="12"
+                            width="100%"/>
+        </s:VGroup>
+        <s:HGroup horizontalAlign="right" verticalAlign="middle" width="98%">
+            <s:Button label="Close"  styleName="buttonStyle" height="25" click="PopUpManager.removePopUp(this)"/>
+        </s:HGroup>
+    </mx:Form>
+
+    <fx:Style>
+        .commonTextStyle {
+            fontSize: 10;
+        }
+
+        .buttonStyle {
+            fontWeight: bold;
+            fontSize: 13;
+            cornerRadius: 9;
+            borderColor: purple;
+            paddingBottom: 40;
+        }
+
+    </fx:Style>
+
+</s:TitleWindow>

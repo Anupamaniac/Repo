@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/WebDev/!svn/ver/93486/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl
+END
+ObjectNotFoundExceptionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/ObjectNotFoundExceptionHandler.java
+END
+ParatureExceptionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/ParatureExceptionHandler.java
+END
+AbstractDelegatExceptionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/AbstractDelegatExceptionHandler.java
+END
+ParatureTaskTrackerDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/ParatureTaskTrackerDao.java
+END
+RulesExceptionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/RulesExceptionHandler.java
+END
+TaskExecutorThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/TaskExecutorThread.java
+END
+ArgumentSerializer.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/ArgumentSerializer.java
+END
+Util.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/Util.java
+END
+EaterExceptionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/EaterExceptionHandler.java
+END
+StatisticDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/StatisticDaoImpl.java
+END
+TaskManagerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/TaskManagerImpl.java
+END
+AbstractExceptionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/AbstractExceptionHandler.java
+END
+TaskExecutor.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/WebDev/!svn/ver/93486/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/TaskExecutor.java
+END
+RetryExceptionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/svn/WebDev/!svn/ver/93486/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/RetryExceptionHandler.java
+END
+CancelTaskExceptionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn/WebDev/!svn/ver/93486/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/CancelTaskExceptionHandler.java
+END
+TaskDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/TaskDao.java
+END
+ExceptionNotificationStatusWatcher.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/ExceptionNotificationStatusWatcher.java
+END
+EmailSender.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/EmailSender.java
+END
+StatisticDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/StatisticDao.java
+END
+NotifyAdminExceptionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/svn/WebDev/!svn/ver/93486/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/backgroundtask/impl/NotifyAdminExceptionHandler.java
+END

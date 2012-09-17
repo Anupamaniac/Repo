@@ -1,0 +1,39 @@
+template header
+ruleName
+ruleAction
+ruleCondition
+eventClass
+
+package com.rosettastone.succor;
+
+import com.rosettastone.succor.model.bandit.Event;
+import com.rosettastone.succor.model.bandit.Message;
+import com.rosettastone.succor.model.bandit.Customer;
+import com.rosettastone.succor.model.bandit.LevelCompletionMessage;
+import com.rosettastone.succor.model.bandit.LevelsCompletedMessage;
+import com.rosettastone.succor.model.bandit.StudioReadinessMessage;
+import com.rosettastone.succor.model.bandit.StudioReminderMessage;
+import com.rosettastone.succor.model.bandit.FirstCompletedStudioSessionMessage;
+import com.rosettastone.succor.model.bandit.StudioSessionCancellationMessage;
+import com.rosettastone.succor.model.bandit.SessionCancelReason;
+import com.rosettastone.succor.model.bandit.CommunityAbsenceMessage;
+import com.rosettastone.succor.model.bandit.RWorldEncouragementMessage
+import com.rosettastone.succor.model.bandit.ClaimedExtensionsMessage;
+import com.rosettastone.succor.model.bandit.FollowUpWithLearnerMessage;
+import com.rosettastone.succor.model.bandit.DiscoveryCallMessage;
+import com.rosettastone.succor.model.bandit.StudioSatisfactionMessage;
+import com.rosettastone.succor.model.bandit.ExpiringSubscriptionMessage;
+import com.rosettastone.succor.model.bandit.InitialProfileSetupMessage;
+global com.rosettastone.succor.service.EventService eventService;
+
+template "condition"
+
+rule "@{ruleName}"
+	dialect "mvel"
+	when
+		$event : Event( eval(message is @{eventClass}) && @{ruleCondition})
+	then
+@{ruleAction}
+end
+
+end template

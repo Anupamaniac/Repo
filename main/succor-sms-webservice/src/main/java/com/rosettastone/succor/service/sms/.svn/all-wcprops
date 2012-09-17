@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/WebDev/!svn/ver/93607/succor/branches/trunk_30032012/succor-sms-webservice/src/main/java/com/rosettastone/succor/service/sms
+END
+SMSRequestVO.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-sms-webservice/src/main/java/com/rosettastone/succor/service/sms/SMSRequestVO.java
+END
+SMSWebService.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-sms-webservice/src/main/java/com/rosettastone/succor/service/sms/SMSWebService.java
+END
+SMSSender.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-sms-webservice/src/main/java/com/rosettastone/succor/service/sms/SMSSender.java
+END
+CellTrustPlatform.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-sms-webservice/src/main/java/com/rosettastone/succor/service/sms/CellTrustPlatform.java
+END
+AbstractSMSPlatform.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-sms-webservice/src/main/java/com/rosettastone/succor/service/sms/AbstractSMSPlatform.java
+END
+ClickatellPlatform.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/svn/WebDev/!svn/ver/93607/succor/branches/trunk_30032012/succor-sms-webservice/src/main/java/com/rosettastone/succor/service/sms/ClickatellPlatform.java
+END
+StringConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-sms-webservice/src/main/java/com/rosettastone/succor/service/sms/StringConverter.java
+END

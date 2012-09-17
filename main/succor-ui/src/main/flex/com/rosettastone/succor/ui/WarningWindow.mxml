@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
+   xmlns:s="library://ns.adobe.com/flex/spark"
+   title="Caution" width="330" height="120" close="title_close();">
+  <mx:Script>
+  <![CDATA[
+  /**
+   * Warning dialog
+   */
+    import mx.managers.PopUpManager;
+
+    [Bindable]
+    public var ruleList:RuleList;
+    [Bindable]
+    public var firstButtonLabel:String = "CANCEL";
+    [Bindable]
+    public var secondButtonLabel:String = "CONTINUE";
+    [Bindable]
+    public var deleteRule:Boolean;
+
+    public function title_close():void{
+        PopUpManager.removePopUp(this);
+    }
+    public function continue_close():void{
+        if(deleteRule){
+            ruleList.callDeleteRules();
+        }else{
+            ruleList.callSaveRules();
+        }
+        PopUpManager.removePopUp(this);
+    }
+  ]]>
+  </mx:Script>
+    <s:VGroup>
+        <mx:Label text="When you change/add/activate/remove rules, those"/>
+        <mx:Label text="action will be in effect from this point forward"/>
+        <s:HGroup horizontalAlign="right" width="100%">
+            <mx:Button label="{firstButtonLabel}"
+                      fontWeight="normal"
+                      fontSize="13"
+                      cornerRadius="9" click="title_close()"/>
+            <mx:Button label="{secondButtonLabel}"
+                      emphasized="true"
+                      fontWeight="normal"
+                      fontSize="13"
+                      cornerRadius="9" click="continue_close()"
+                      width="100"/>
+        </s:HGroup>
+    </s:VGroup>
+</mx:TitleWindow>

@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx" height="100%"
+		 xmlns:validator="com.rosettastone.succor.validator.*"
+		 xmlns:controls="com.rosettastone.succor.controls.*"
+		 creationComplete="onCreationComplete();" >
+
+	<fx:Declarations>
+		<fx:Model id="ruleValidationModel">
+			<ruleModel>
+				<rule>{ruleList.selectedItem}</rule>
+			</ruleModel>
+		</fx:Model>
+		<fx:Model id="allRulesModel">
+			<rulesModel>
+				<rules>{rules}</rules>
+			</rulesModel>
+		</fx:Model>
+		<validator:RuleValidator id="ruleValidator" source="{ruleValidationModel}" property="rule" />
+		<validator:MultiRulesValidator id="multiRulesValidator" source="{allRulesModel}" property="rules" />
+	</fx:Declarations>
+
+	<fx:Script>
+		<![CDATA[
+        /**
+         * UI block with table of rules and action buttons
+         */
+        import com.rosettastone.succor.model.Rule;
+        import com.rosettastone.succor.model.RuleHistory;
+        import com.rosettastone.succor.model.StaticDictionary;
+        import com.rosettastone.succor.model.StaticObjects;
+        import com.rosettastone.succor.model.Statistic;
+        import com.rosettastone.succor.model.Template;
+        import com.rosettastone.succor.service.Helper;
+        import com.rosettastone.succor.service.RemoteServices;
+
+        import mx.collections.ArrayCollection;
+        import mx.controls.Alert;
+        import mx.events.CloseEvent;
+        import mx.events.ValidationResultEvent;
+        import mx.managers.PopUpManager;
+        import mx.rpc.events.FaultEvent;
+        import mx.rpc.events.ResultEvent;
+        import mx.rpc.remoting.RemoteObject;
+        import mx.utils.ObjectUtil;
+        import mx.utils.StringUtil;
+        import mx.validators.ValidationResult;
+
+        import spark.events.IndexChangeEvent;
+	import spark.events.TextOperationEvent;
+	import flash.events.Event;
+	import mx.utils.ArrayUtil;
+
+        private var baseUrl:String;
+
+        [Bindable]
+        public var rules:ArrayCollection;
+
+	[Bindable]
+	private var eventCollection:ArrayCollection;
+	
+	[Bindable]
+	private var productCollection:ArrayCollection;
+			
+	[Bindable]
+	private var ticketCollection:ArrayCollection;
+	
+	
+	[Bindable]
+	private var actionCollection:ArrayCollection;
+	
+	[Bindable]
+	public var actionItems:Array;
+	
+		[Bindable]
+		public var globalSearchKey = "";
+		
+		[Bindable]
+		public var globalSelectedEvent = "All Events";
+		
+		[Bindable]
+		public var globalSelectedProduct = "All Products";
+		
+		[Bindable]
+		public var globalSelectedTicket = "All Ticket Types";
+		
+		[Bindable]
+		public var globalSelectedAction = "No Action";
+		
+			
+	[Bindable]
+	public var actionItemsStr:String = "";
+	
+        private var processingAlert:ProgressPopup;
+
+        private var flexService:RemoteObject;
+
+        private var statisticService:RemoteObject;
+
+        private var selectedIndex:int = 0;
+
+        private function onCreationComplete():void {
+            flexService = RemoteServices.flexService;
+            // set handlers for remote services
+            flexService.getStaticObjects.addEventListener(ResultEvent.RESULT, onStaticObjectsResult);
+            flexService.getStaticObjects.addEventListener(FaultEvent.FAULT, RemoteServices.errorHandler);
+
+            flexService.getRules.addEventListener(ResultEvent.RESULT, loadRules);
+            flexService.getRules.addEventListener(FaultEvent.FAULT, RemoteServices.errorHandler);
+
+            flexService.getRulesByLang.addEventListener(ResultEvent.RESULT, loadRules);
+            flexService.getRulesByLang.addEventListener(FaultEvent.FAULT, RemoteServices.errorHandler);
+
+	    flexService.getRulesByLangBySearch.addEventListener(ResultEvent.RESULT, loadRules);
+	    flexService.getRulesByLangBySearch.addEventListener(FaultEvent.FAULT, RemoteServices.errorHandler);
+            flexService.getHistory.addEventListener(ResultEvent.RESULT, onHistoryResult);
+            flexService.getHistory.addEventListener(FaultEvent.FAULT, RemoteServices.errorHandler);
+
+            flexService.saveRules.addEventListener(ResultEvent.RESULT, loadRules);
+            flexService.saveRules.addEventListener(FaultEvent.FAULT, errorHandler);
+
+            flexService.deleteRules.addEventListener(ResultEvent.RESULT, loadRules);
+			flexService.deleteRules.addEventListener(FaultEvent.FAULT, RemoteServices.errorHandler);
+			
+
+            flexService.getProducts.addEventListener(ResultEvent.RESULT, onProductResult);
+            flexService.getProducts.addEventListener(FaultEvent.FAULT, RemoteServices.errorHandler);
+
+            statisticService = RemoteServices.statisticService();
+            statisticService.getStatistic.addEventListener(ResultEvent.RESULT, onStatisticResult);
+            statisticService.getStatistic.addEventListener(FaultEvent.FAULT, RemoteServices.errorHandler);
+
+            //trace("onCreationComplete");
+            // load static objects from server
+            flexService.getStaticObjects("EN");
+
+            Helper.infoLabel = info;
+        }
+
+			public function errorHandler(event:FaultEvent):void {
+				Helper.setInfo("Error Occurred.", "red");				
+				RemoteServices.errorHandler(event);
+			}
+			
+        protected function addRule(event:MouseEvent):void {
+            // create rule and set default values
+            var r:Rule = new Rule();
+            r.active = true;
+            r.remove = false;
+			r.addNew = true;//versioning
+            r.updateSuperTicket = true;
+            r.eventId = 1;
+			r.version = 0;	//versioning
+            r.productName = StaticDictionary.productTypes[0].name;
+            var lang:Object = supportLanguage.selectedItem;
+            r.supportLang = lang.name;
+            r.ignoreDoNotContact = false;
+			r.grandfathered = false;
+			r.solo = false;
+			r.hoursPriorToSession="0";
+            Helper.selectedRule = r;
+            rules.addItemAt(r, 0);
+            selectedIndex = 0;
+            setSelectedItem();
+
+            //trace("Add rule " + rules);
+        }
+
+        private function setSelectedItem():void {
+            ruleList.selectedIndex = selectedIndex;
+            ruleList.validateNow();
+            ruleList.scrollToIndex(selectedIndex);
+        }
+
+        //validate and save rules
+        protected function saveRules(event:MouseEvent):void {
+            var toRemove:Boolean = false;
+            var hasErrors:Boolean = false;
+            for each (var rule:Rule in rules) {
+                toRemove = toRemove || rule.remove;
+            }
+            if (toRemove) {
+                selectedIndex = rules.getItemIndex(Helper.selectedRule);
+                deleted = true;
+                showWarning(true);
+            }else{
+                var errors:String = isAllValid();
+                if (errors != "") {
+                    Helper.setInfo("Error while save rules.", "red");
+                    Alert.show(errors, "Error");
+                } else {
+                    if (!deleted) {
+                        showWarning(false);
+                    } else {
+                        callSaveRules();
+                    }
+                }
+                deleted = false;
+            }
+        }
+
+        // show warning message
+        private function showWarning(deleteRule:Boolean):void{
+            var warningWindow:WarningWindow = new WarningWindow();
+            warningWindow.ruleList = this;
+            warningWindow.deleteRule = deleteRule;
+            PopUpManager.addPopUp(warningWindow, this, true);
+            PopUpManager.centerPopUp(warningWindow);
+        }
+
+        // check that rules is valid
+        private function isAllValid():String {
+            var errors:String = "";
+            for each (var rule:Rule in rules) {
+                ruleValidationModel.rule = rule;
+                errors += isRuleValid(rule);
+            }
+//            if(errors.length>0){
+//                return errors;
+//            }
+            errors += isAllRulesValid()
+            return errors;
+        }
+
+        // validate all rules
+        private function isAllRulesValid():String {
+            var resultEvent:ValidationResultEvent = multiRulesValidator.validate();
+            return checkResult(resultEvent);
+        }
+
+        // validate specified rule
+        private function isRuleValid(rule:Rule):String {
+            var resultEvent:ValidationResultEvent = ruleValidator.validate();
+            return checkResult(resultEvent);
+        }
+
+        private function checkResult(resultEvent:ValidationResultEvent):String {
+            var error:String = "";
+            if (resultEvent.results != null && resultEvent.results.length != 0) {
+                error = extractErrors(resultEvent);
+            }
+            return error;
+        }
+
+        // extract errors from validator
+        private function extractErrors(resultEvent:ValidationResultEvent):String {
+            var error:String = "";
+            for each (var result:ValidationResult in resultEvent.results) {
+                error += result.errorMessage + "\n";
+            }
+            return error;
+        }
+
+        protected function saveCloseHandler(event:CloseEvent):void {
+            if (event.detail == Alert.YES) {
+                callSaveRules();
+            }
+        }
+
+        public function callSaveRules():void {
+            for each(var rule:Rule in rules) {
+                //trace("Saving rule " + ObjectUtil.toString(rule));
+                for each(var t:Template in rule.templates) {
+                    //trace(t.kid.toString());
+                }
+            }
+			try{
+            flexService.saveRules(rules, getSelectedLangCode(),globalSearchKey, globalSelectedEvent ,globalSelectedProduct, globalSelectedTicket, globalSelectedAction);
+            Helper.setInfo("All rules saved.", "green");
+			}catch(errObject:Error){
+				Alert.show("caught java exception");
+				Alert.show(errObject.getStackTrace());
+        }
+        }
+
+        public function callDeleteRules():void {
+            flexService.deleteRules(rules, getSelectedLangCode(),globalSearchKey, globalSelectedEvent ,globalSelectedProduct, globalSelectedTicket , globalSelectedAction);
+            Helper.setInfo("Rules deleted.", "green");
+        }
+
+
+        private function onStaticObjectsResult(event:ResultEvent):void {
+		try{
+            var staticObjects:StaticObjects = StaticObjects(event.result);
+            StaticDictionary.actionTypes = staticObjects.actionTypes;
+            StaticDictionary.productTypes = staticObjects.productTypes;
+            StaticDictionary.eventTypes = staticObjects.eventTypes;
+            StaticDictionary.ticketTypes = staticObjects.ticketTypes;
+            StaticDictionary.languages = staticObjects.languages;
+            StaticDictionary.templateVariables = staticObjects.templateVariables;
+            supportLanguage.selectedIndex = 0;
+            flexService.getRulesByLangBySearch(getSelectedLangCode(),globalSearchKey, globalSelectedEvent ,globalSelectedProduct, globalSelectedTicket, globalSelectedAction);
+            //trace("onResult");
+            //            for each(var action:Object in StaticDictionary.actions) {
+            //                trace("action " + ObjectUtil.toString(action) + " " + (action is Action));
+            //            }
+			getTicketsForSearch(StaticDictionary.ticketTypes);
+            getEventsForSearch(StaticDictionary.eventTypes);
+			getProductsForSearch(StaticDictionary.productTypes);
+			getActionsForSearch(StaticDictionary.actionTypes);
+			}catch(e:Error) {
+			Alert.show(e.toString());
+			}
+			
+        }
+
+        private function onHistoryResult(event:ResultEvent):void {
+            PopUpManager.removePopUp(processingAlert);
+
+            var win:HistoryWindow = PopUpManager.createPopUp(this, HistoryWindow, true) as HistoryWindow;
+            win.history = event.result as ArrayCollection;
+            for each(var h:RuleHistory in win.history) {
+                //trace("history " + ObjectUtil.toString(h));
+            }
+
+            PopUpManager.centerPopUp(win);
+        }
+
+        private function onProductResult(event:ResultEvent):void {
+            var products:ArrayCollection = event.result as ArrayCollection;
+            StaticDictionary.productTypes = products;
+			getProductsForSearch(products);
+            flexService.getRulesByLangBySearch(getSelectedLangCode(),globalSearchKey, globalSelectedEvent ,globalSelectedProduct, globalSelectedTicket, globalSelectedAction);
+        }
+
+        private var firstTime:Boolean = true;
+
+        var deleted:Boolean = false;
+
+        private function loadRules(event:ResultEvent):void {
+            rules = event.result as ArrayCollection;
+			
+	if(rules != null && rules.length == 0){
+		Helper.setInfo("No matching rules present.", "red");
+		}else{
+			if(Helper.infoLabel.text != "All rules saved.")
+		Helper.setInfo("", "red");
+                     }
+            var count:int = 0;
+            for each(var rule:Rule in rules) {
+                trace("Load Rules " + ObjectUtil.toString(rule));
+                if ((Helper.selectedRule != null) && ((rule.name == Helper.selectedRule.name))) {
+                    selectedIndex = count;
+                    break;
+                }
+                count++;
+            }
+            if (firstTime) {
+                firstTime = false;
+            } else {
+                setSelectedItem();
+            }
+            PopUpManager.removePopUp(processingAlert);
+            if (deleted && rules.length>0) {
+                saveRules(new MouseEvent("SaveAfterDelete"));
+            }
+        }
+
+        private function onSaveResult(event:ResultEvent):void {
+            PopUpManager.removePopUp(processingAlert);
+            loadRules(event);
+        }
+
+        private function onSaveFault(error:String):void {
+            PopUpManager.removePopUp(processingAlert);
+            Alert.show(error);
+        }
+
+        protected function supportLanguageChanged(event:IndexChangeEvent):void {
+			resetSearchWithoutInfo(event);
+            processingAlert = new ProgressPopup();
+            processingAlert.popupText = "Loading...";
+            PopUpManager.addPopUp(processingAlert, this, true);
+            PopUpManager.centerPopUp(processingAlert);
+            var lang:String = getSelectedLangCode();
+            flexService.getRulesByLangBySearch(lang,globalSearchKey, globalSelectedEvent ,globalSelectedProduct, globalSelectedTicket, globalSelectedAction);
+            flexService.getProducts(lang);
+			
+        }
+			
+			protected function resetSearch(event:Event):void {
+				productDropDown.selectedIndex=0;
+				eventDropDown1.selectedIndex=0;
+				ticketDropDown.selectedIndex=0;
+				actionDropDown.selectedIndex=0;
+				//actionDropDown.deselectAllCheckBoxes();
+				actionItemsStr=""
+				searchKey.text="";
+				
+				globalSelectedEvent = "All Events";
+				globalSelectedProduct = "All Products";
+				globalSelectedTicket = "All Ticket Types";
+				globalSelectedAction = "No Action";
+				
+				Helper.setInfo("Search reset done. All rules reloaded.", "");
+			}
+			
+			protected function resetSearchWithoutInfo(event:Event):void {
+				productDropDown.selectedIndex=0;
+				eventDropDown1.selectedIndex=0;
+				ticketDropDown.selectedIndex=0;
+				actionDropDown.selectedIndex=0;
+				//actionDropDown.deselectAllCheckBoxes();
+				actionItemsStr=""
+				searchKey.text="";
+				
+				globalSelectedEvent = "All Events";
+				globalSelectedProduct = "All Products";
+				globalSelectedTicket = "All Ticket Types";
+				globalSelectedAction = "No Action";
+			}
+			
+	protected function getSearchResult(event:Event):void {
+		var lang:String = getSelectedLangCode();
+		globalSearchKey = searchKey.text;
+		globalSelectedEvent = getSelectedEvent();
+		globalSelectedProduct = getSelectedProduct();
+		globalSelectedTicket = getSelectedTicket();
+		globalSelectedAction = getSelectedAction();
+		flexService.getRulesByLangBySearch(lang,globalSearchKey, globalSelectedEvent ,globalSelectedProduct, globalSelectedTicket, globalSelectedAction);
+	}
+        private function getSelectedLangCode():String {
+            //trace("getSelectedLangCode");
+            var lang:Object = supportLanguage.selectedItem;
+            return lang.name;
+        }
+	private function getSelectedEvent():String {
+		var selectedEvent:Object = eventDropDown1.selectedItem;
+		if(selectedEvent == undefined || eventDropDown1.selectedIndex==0){
+			return null;
+		}
+		else{
+			return selectedEvent.id;
+		}
+	}
+	
+	private function getSelectedProduct():String {
+		var selectedProduct:Object = productDropDown.selectedItem;
+		if(selectedProduct == undefined || productDropDown.selectedIndex==0){
+			return null;
+		}
+		else{
+			return selectedProduct.name;
+		}
+	}
+			
+	private function getSelectedTicket():String {
+		var selectedTicket:Object = ticketDropDown.selectedItem;
+		if(selectedTicket == undefined || ticketDropDown.selectedIndex==0){
+			return null;
+		}
+		else{
+			return selectedTicket.name;
+		}
+	}
+	
+	private function getSelectedAction():String {
+		var selectedAction:Object = actionDropDown.selectedItem;
+		if(selectedAction == undefined || actionDropDown.selectedIndex==0){
+			return null;
+		}
+		else{
+			return selectedAction.name;
+		}
+	}
+			
+	private  function getProductsForSearch(products:ArrayCollection):ArrayCollection {
+		productCollection = new ArrayCollection(products.toArray());
+		productCollection.addItemAt("All Products",0);
+		return productCollection;
+	}
+	
+	private  function getEventsForSearch(events:ArrayCollection):ArrayCollection {
+		eventCollection = new ArrayCollection(events.toArray());
+		eventCollection.addItemAt("All Events",0);
+		return eventCollection;
+	}
+			
+	private  function getTicketsForSearch(tickets:ArrayCollection):ArrayCollection {
+		ticketCollection = new ArrayCollection(tickets.toArray());
+		ticketCollection.addItemAt("All Ticket Types",0);
+		return ticketCollection;
+	}
+	
+	private  function getActionsForSearch(actions:ArrayCollection):ArrayCollection {
+		actionCollection = new ArrayCollection(actions.toArray());
+		actionCollection.addItemAt("No Action",0);
+		return actionCollection;
+	}
+			
+        // show loading dialog and load history
+        private function showHistory(event:Event):void {
+            processingAlert = new ProgressPopup();
+            processingAlert.popupText = "Loading history...";
+            PopUpManager.addPopUp(processingAlert, this, true);
+            PopUpManager.centerPopUp(processingAlert);
+            flexService.getHistory(getSelectedLangCode());
+        }
+
+        // show loading dialog and load statistic
+        private function showStatistic(event:Event):void {
+            processingAlert = new ProgressPopup();
+            processingAlert.popupText = "Loading statistic...";
+            PopUpManager.addPopUp(processingAlert, this, true);
+            PopUpManager.centerPopUp(processingAlert);
+            statisticService.getStatistic();
+        }
+
+        // close loading dialog and show result
+        private function onStatisticResult(event:ResultEvent):void {
+            var statistic:Statistic = event.result as Statistic;
+            trace("statistic " + ObjectUtil.toString(statistic));
+
+            PopUpManager.removePopUp(processingAlert);
+            var win:StatisticWindow = PopUpManager.createPopUp(Helper.rootApp, StatisticWindow, true) as StatisticWindow;
+            win.statistic = statistic;
+            PopUpManager.centerPopUp(win);
+        }
+
+        private function refreshRules(event:Event):void {
+            processingAlert = new ProgressPopup();
+            processingAlert.popupText = "Refreshing...";
+            PopUpManager.addPopUp(processingAlert, this, true);
+            PopUpManager.centerPopUp(processingAlert);
+            flexService.getRulesByLangBySearch(getSelectedLangCode(),globalSearchKey, globalSelectedEvent ,globalSelectedProduct, globalSelectedTicket, globalSelectedAction);
+            Helper.setInfo("All rules reloaded.", "");
+        }
+		
+		/* private function onAddItem ():void {
+                actionItems = actionDropDown.selectedViews;
+				actionItemsStr = "";
+				var actionItemsString:String = "";
+				if(actionItems != null && actionItems.length>0 ){
+					if(actionItems[0] != undefined || actionItems[0] != null ){
+						for (var i:String in actionItems) {
+							actionItemsString = actionItemsString + '#'+ actionItems[i].name;
+						}
+						if(actionItems.length == 0){
+							actionItemsStr = null;
+						}else{
+							actionItemsStr=StringUtil.trim(actionItemsString);
+						}
+					}
+				}
+            }*/
+        ]]>
+	</fx:Script>
+
+	<s:Group width="100%" minWidth="960" minHeight="200" height="100%">
+		<s:Rect width="100%" height="100%"><s:fill>
+		    <s:SolidColor color="#fed519" /></s:fill></s:Rect>
+		<s:Rect left="3" top="3" right="3" bottom="3" width="100%" height="100%">
+			<s:fill><s:SolidColor color="white"/></s:fill></s:Rect>
+
+		<s:VGroup paddingLeft="10" paddingTop="10" paddingBottom="10" paddingRight="10" left="20" top="20"
+				  minHeight="200" minWidth="940" height="100%" width="100%"
+				  verticalAlign="bottom">
+			<s:HGroup width="100%">
+				<s:VGroup horizontalAlign="left" width="70%" height="100%">
+                    <s:HGroup horizontalAlign="left" height="34%" width="100%">
+                        <s:Label fontSize="18" 
+                                 text="Configure Success Correspondence Rules"/>
+						<s:Label styleName="commonTextStyle" id="info"
+							 fontSize="14" fontWeight="bold" top="10"/>
+            		</s:HGroup>
+					<s:HGroup id="ruleNameGroup" horizontalAlign="left" height="10%"  >
+						<s:Label fontSize="10" width="100%"
+								 text="Rule Name" paddingTop="10" verticalAlign="bottom"/>
+					</s:HGroup>
+				</s:VGroup>
+				<s:VGroup  horizontalAlign="right" width="27%" right="10" >
+					<s:Label text="SUPPORT LANGUAGE:" />
+					<s:DropDownList id="supportLanguage" dataProvider="{StaticDictionary.languages}" selectedIndex="0"
+									labelField="label" change="supportLanguageChanged(event)" cornerRadius="5"/>
+				</s:VGroup>
+			</s:HGroup>
+			
+			<s:HGroup id="searchComp" horizontalAlign="left" verticalAlign="top" width="85%" right="10" >
+				<controls:TextInputHint name="searchKey"  id="searchKey" 
+								  fontSize="12" hint="Enter Rule Name" hintColor="#357EC7" />
+				<s:DropDownList id="productDropDown"  minWidth="115" width="100%" labelField="longName" selectedIndex="0"
+								 dataProvider="{productCollection}" prompt="All Products"
+								styleName="dropDownStyle" />
+				<s:DropDownList id="eventDropDown1" minWidth="115" width="100%" labelField="name" selectedIndex="0"
+								dataProvider="{eventCollection}"  prompt="All Events"
+								styleName="dropDownStyle" />
+				<s:DropDownList id="actionDropDown"  minWidth="135" width="100%" labelField="label" selectedIndex="0"
+								dataProvider="{actionCollection}"  prompt="Select an Action" 
+								styleName="dropDownStyle" />
+				<!--<controls:MultiSelectionDropDown  id="actionDropDown" minWidth="205" width="100%" requireSelection="false"	dataProvider="{actionCollection}" labelField="label"	
+												  itemRenderer="com.rosettastone.succor.renderer.MultiSelectItemRenderer"
+												  skinClass="com.rosettastone.succor.skins.MultiSelectionDropDownListSkin"
+												  addItem="onAddItem()" prompt="Select Actions"/>-->
+				<s:Button label="Go" styleName="roundButtonStyle"  emphasized="true" height="22" width="40" click="getSearchResult(event)"/>
+				<s:Button label="Reset" styleName="buttonStyle"  emphasized="true" height="22"  click="resetSearch(event); getSearchResult(event);"/>
+				<s:DropDownList id="ticketDropDown"  minWidth="135" width="100%" labelField="label" selectedIndex="0" visible="false"
+								dataProvider="{ticketCollection}"  prompt="All Ticket Types" 
+								styleName="dropDownStyle" />
+			</s:HGroup>
+			
+			<s:HGroup width="100%" >
+				<s:VGroup horizontalAlign="left" height="100%" width="70%" verticalAlign="bottom">
+					<s:Label paddingLeft="0" fontSize="10" width="100%"
+							 text="REMOVE"/>
+				</s:VGroup>
+				<s:VGroup horizontalAlign="right" width="27%">
+					<s:Button bottom="100" label="ADD RULE" click="addRule(event)" styleName="buttonStyle" emphasized="true"/>
+				</s:VGroup>
+			</s:HGroup>
+			<!--<s:VGroup height="100%" width="100%" minHeight="100">-->
+			<mx:DataGrid id="ruleList" left="20" top="50" dataProvider="{rules}" visible="true"
+						 width="100%" height="100%" minHeight="200" rowHeight="200" headerHeight="0">
+				<mx:columns>
+					<mx:DataGridColumn headerText="" width="30" resizable="false"
+									   itemRenderer="com.rosettastone.succor.renderer.CheckBoxRenderer" textAlign="center"/>
+					<mx:DataGridColumn resizable="true" itemRenderer="com.rosettastone.succor.renderer.RuleRenderer"/>
+				</mx:columns>
+			</mx:DataGrid>
+			<!--</s:VGroup>-->
+			<s:HGroup horizontalAlign="right" verticalAlign="middle" width="98%">
+                <s:Label text="View Statistic" color="0x0000ff" click="showStatistic(event)"/>
+				<s:Label text="View History" color="0x0000ff" click="showHistory(event)"/>
+				<s:Button label="Cancel"  styleName="buttonStyle" height="25" click="refreshRules(event)"/>
+				<s:Button label="SAVE" click="saveRules(event)" styleName="buttonStyle" emphasized="true" height="25"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:Group>
+
+	<fx:Style>
+		.commonTextStyle{
+			fontSize: 10;
+		}
+		.buttonStyle {
+			fontWeight: bold;
+			fontSize: 13;
+			cornerRadius: 9;
+			borderColor:purple;
+			paddingBottom:40;
+		}
+		.roundButtonStyle {
+			fontWeight: bold;
+			fontSize: 13;
+			cornerRadius: 9;
+			borderColor:purple;
+			paddingBottom:40;
+		} 
+
+	</fx:Style>
+
+
+</s:Group>

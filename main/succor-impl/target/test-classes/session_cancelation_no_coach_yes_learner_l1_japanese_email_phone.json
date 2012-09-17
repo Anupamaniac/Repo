@@ -1,0 +1,45 @@
+{
+  "license_data": {
+    "test_license": false
+  },
+  "message": {
+    "reason": "no_coach_yes_learner",
+    "session_start_time": 1292274000,
+    "learner_first_seen_at": 1292274071,
+    "attendance_id": 433549839,
+    "level": 1,
+    "teacher_technical_problem": null,
+    "cancelled_by": "Canceller",
+    "rs_language_code": "ESC",
+    "guid": "ecdb1178-89f5-47e2-b1f5-bf8589619d3d",
+    "cancelled_at": 1292533272,
+    "cancelled": true,
+    "learner_technical_problem": false,
+    "unit": 1,
+    "teacher_first_seen_at": null,
+    "iso_language_code": "es-419"
+  },
+  "header": {
+    "message_type": "studio_session_cancellation_message",
+    "created_at": 1292533272,
+    "hostname": "flash.local",
+    "schema_version": 1
+  },
+  "customer_data": {
+    "contact_phone_number": null,
+    "address_line_1": null,
+    "email": "kzhirov@rosettastone.com",
+    "last_name": "Hanssson",
+    "contact_phone_country_code": null,
+    "address_line_2": null,
+    "last_viewed_locale": "ja-JP",
+    "first_name": "Laura",
+    "city": null,
+    "institutional": false,
+    "state_province": null,
+    "guid": "ecdb1178-89f5-47e2-b1f5-bf8589619d3d",
+    "time_zone": "America/New_York",
+    "postal_code": null,
+    "country_iso": 840
+  }
+}

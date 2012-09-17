@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+	<bean name="discoveryCallTimer" class="com.rosettastone.succor.timertask.DiscoveryCallTimer">
+        <property name="discoveryCallDao" ref="discoveryCallDao"/>
+        <property name="taskManager" ref="taskManager" />
+        <property name="hoptoadNotificationService" ref="hopToadService"/>
+	</bean>
+	
+	<task:executor id="discoveryCallExecutor" pool-size="1"/>
+	
+	<task:scheduler id="discoveryCallScheduler" pool-size="1"/>
+	
+	<task:scheduled-tasks scheduler="discoveryCallScheduler">
+		<task:scheduled ref="discoveryCallTimer" method="timer" cron="${timer.discoveryCall.cron}"/>
+	</task:scheduled-tasks>
+</beans>

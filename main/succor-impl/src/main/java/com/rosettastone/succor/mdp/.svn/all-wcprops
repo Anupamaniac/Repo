@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/WebDev/!svn/ver/93843/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/mdp
+END
+RabbitMqChannelManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/mdp/RabbitMqChannelManager.java
+END
+RabbitMqMessageProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/WebDev/!svn/ver/109278/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/mdp/RabbitMqMessageProcessor.java
+END
+RabbitMqListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/mdp/RabbitMqListener.java
+END
+MessagePreProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/WebDev/!svn/ver/110758/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/mdp/MessagePreProcessor.java
+END

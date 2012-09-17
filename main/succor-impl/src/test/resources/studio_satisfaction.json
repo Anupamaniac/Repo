@@ -1,0 +1,67 @@
+ {
+  "customer_data": {
+    "postal_code": null,
+    "country_iso": 4,
+    "first_name": "2ant30561",
+    "contact_phone_number": null,
+    "last_name": "ant30561",
+    "support_language_iso": "en-US",
+    "address_line_1": null,
+    "contact_phone_country_code": null,
+    "email": "2ant30561@rs.com",
+    "address_line_2": null,
+    "last_viewed_locale": "en-US",
+    "city": null,
+    "institutional": false,
+    "guid": "65558e5a-e201-4019-9e79-99e4443fdaee",
+    "time_zone": "America/New_York",
+    "state_province": null
+  },
+  "header": {
+    "created_at": 1326366072,
+    "message_type": "studio_reminder_message",
+    "hostname": "stgrun002",
+    "schema_version": 1
+  },
+  "message": {
+    "iso_language_code": "ar",
+    "hours": 24,
+    "unit": 1,
+    "session_id": 181559,
+    "student_id": 10046,
+    "rs_language_code": "ARA",
+    "level": 1,
+    "session_start_time": 1347549741,
+    "guid": "65558e5a-e201-4019-9e79-99e4443fdaee",
+    "attendance_id": 28702
+  },
+  "license_data": {
+    "creation_account_guid": "018450a3-6e3d-48ee-bab6-5d3d119896a8",
+    "product_rights": [
+      {
+        "family": "application",
+        "rs_language_code": "ARA",
+        "content_ranges": [
+          "1-12"
+        ]
+      },
+      {
+        "family": "eschool",
+        "rs_language_code": "ARA",
+        "content_ranges": [
+          "1-12"
+        ]
+      },
+      {
+        "family": "premium_community",
+        "rs_language_code": "ARA",
+        "content_ranges": [
+          "1-12"
+        ]
+      }
+    ],
+    "creation_account_type": "FamilyCreationAccount",
+    "test_license": true,
+    "upgraded_at": 0
+  }
+}

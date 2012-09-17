@@ -1,0 +1,33 @@
+{
+	"license_data": {
+    	"test_license": true
+  	},
+    "header": {
+        "message_type": "first_completed_studio_session_message",
+        "created_at": 1281734501,
+        "hostname": "rshbgdev04",
+        "schema_version": 1
+    },
+    "message": {
+        "guid": "f3faefc4-2b10-4c1c-b35c-e3293fad6111",
+        "iso_language_code": "ar",
+        "rs_language_code": "ESP"
+    },
+
+    "customer_data": {
+        "city":null,
+        "postal_code": null,
+        "state_province": null,
+        "address_line_1": null,
+        "address_line_2": null,
+        "guid":"f3faefc4-2b10-4c1c-b35c-e3293fad6111",
+        "contact_phone_number": null,
+        "first_name":null,
+        "contact_phone_country_code": null,
+        "last_viewed_locale":"es-ES",
+        "last_name":null,
+        "country_iso":4,
+        "email":"testuser@wyvern.etr.eastbanctech.ru",
+        "institutional": false
+    }
+}

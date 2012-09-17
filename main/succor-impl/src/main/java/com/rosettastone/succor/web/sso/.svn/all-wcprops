@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/sso
+END
+SuccCas20ServiceTicketValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/sso/SuccCas20ServiceTicketValidator.java
+END
+SuccUserDetails.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/sso/SuccUserDetails.java
+END
+SuccUserDetailsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/sso/SuccUserDetailsService.java
+END

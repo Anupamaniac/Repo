@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/java/com/rosettastone/succor/backgroundtask/impl/stress
+END
+StatisticDaoStressTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/java/com/rosettastone/succor/backgroundtask/impl/stress/StatisticDaoStressTest.java
+END
+StressTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/java/com/rosettastone/succor/backgroundtask/impl/stress/StressTest.java
+END
+EchoBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/java/com/rosettastone/succor/backgroundtask/impl/stress/EchoBean.java
+END
+TaskCreatorBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/java/com/rosettastone/succor/backgroundtask/impl/stress/TaskCreatorBean.java
+END
+LogExceptionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/java/com/rosettastone/succor/backgroundtask/impl/stress/LogExceptionHandler.java
+END

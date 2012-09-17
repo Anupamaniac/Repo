@@ -1,0 +1,63 @@
+{
+  "header": {
+    "hostname": "stgrun002",
+    "schema_version": 1,
+    "created_at": 1309357173,
+    "message_type": "level_completion_message"
+  },
+  "customer_data": {
+    "time_zone": "America/Santiago",
+    "address_line_2": "",
+    "last_viewed_locale": "ko-KR",
+    "city": "",
+    "institutional": false,
+    "guid": "f3faefc4-2b10-4c1c-b35c-e3293fad6111",
+    "state_province": "",
+    "last_name": "l1-completed-l1",
+    "postal_code": "",
+    "country_iso": 4,
+    "first_name": "eng-v4",
+    "email": "eng-v4@l1-completed-l1.totale",
+    "contact_phone_number": "5403332111",
+    "support_language_iso": "ko-KR",
+    "address_line_1": "",
+    "contact_phone_country_code": "1"
+  },
+  "license_data": {
+    "upgraded_at": 1303249942,
+    "product_rights": [
+      {
+        "rs_language_code": "ENG",
+        "family": "application",
+        "content_ranges": [
+          "1-4"
+        ]
+      },
+      {
+        "rs_language_code": "ENG",
+        "family": "eschool",
+        "content_ranges": [
+          "1-4"
+        ]
+      },
+      {
+        "rs_language_code": "ENG",
+        "family": "premium_community",
+        "content_ranges": [
+          "1-4"
+        ]
+      }
+    ],
+    "creation_account_guid": "5ce12bb5-8423-4456-a388-d73d272ae8fc",
+    "creation_account_type": "FamilyCreationAccount",
+    "test_license": true
+  },
+  "message": {
+    "level": "1",
+    "iso_language_code": "en-US",
+    "guid": "f3faefc4-2b10-4c1c-b35c-e3293fad6111",
+    "course": "SK-ENG-L1-NA-PE-NA-NA-Y-3",
+    "rs_language_code": "ENG",
+    "session_start_time": 1330189200
+  }
+}

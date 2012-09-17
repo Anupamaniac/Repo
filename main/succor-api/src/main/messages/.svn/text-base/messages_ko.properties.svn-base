@@ -1,0 +1,5 @@
+mail.from=noreply@rosettastone.com
+mail.subject.studio_reminder_message=곧 Rosetta Studio 수업이 시작됩니다!
+mail.subject.studio_session_cancellation_message_no_coach_yes_learner=수업 취소에 대한 사과문
+mail.subject.studio_session_cancellation_message_cancelled_before_session=수업 취소에 대한 사과문
+mail.subject.studio_session_cancellation_message_cancelled_session_yes_learner=수업 취소에 대한 사과문

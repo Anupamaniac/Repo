@@ -1,0 +1,37 @@
+{
+  "customer_data": {
+    "time_zone": "America/New_York",
+    "postal_code": null,
+    "country_iso": 840,
+    "contact_phone_number": null,
+    "email": "testuser@wyvern.etr.eastbanctech.ru",
+    "address_line_1": null,
+    "guid": "74ea1ed2-781d-49ba-9809-b0b9fefe976d",
+    "contact_phone_country_code": null,
+    "address_line_2": null,
+    "first_name": "Laura",
+    "last_viewed_locale": "ja-JP",
+    "last_name": "Hanssson",
+    "city": null,
+    "institutional": false,
+    "state_province": null
+  },
+  "message": {
+    "guid": "11111111-1111-1111-1111-111111111111",
+    "iso_language_code": "ar",
+    "rs_language_code": "ITA"
+  },
+  "license_data": {
+    "test_license": false
+  },
+  "header": {
+    "message_type": "rosetta_world_encouragement_message",
+    "schema_version": 1,
+    "created_at": 1294433344,
+    "hostname": "AppTeamMacPro"
+  },
+  "test" : {
+	"workLocally" : false
+  }
+  
+}

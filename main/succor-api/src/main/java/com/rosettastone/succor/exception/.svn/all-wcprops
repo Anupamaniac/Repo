@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/exception
+END
+InvalidJsonException.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/exception/InvalidJsonException.java
+END
+SMSException.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/exception/SMSException.java
+END
+ApplicationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/exception/ApplicationException.java
+END
+ObjectNotFoundException.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/exception/ObjectNotFoundException.java
+END
+ParatureException.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/exception/ParatureException.java
+END
+FTPException.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/exception/FTPException.java
+END
+InvalidUpdateException.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/exception/InvalidUpdateException.java
+END
+ParatureErrorCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/exception/ParatureErrorCode.java
+END

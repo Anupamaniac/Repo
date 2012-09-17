@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/WebDev/!svn/ver/105893/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/keepalive
+END
+KeepaliveController.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/WebDev/!svn/ver/108041/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/keepalive/KeepaliveController.java
+END
+StatisticController.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/keepalive/StatisticController.java
+END
+TaskStatisticController.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/keepalive/TaskStatisticController.java
+END

@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/WebDev/!svn/ver/105893/succor/branches/trunk_30032012/succor-impl/src/main/resources
+END
+flex-servlet.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/resources/flex-servlet.xml
+END
+scheduler-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/resources/scheduler-context.xml
+END
+service-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/resources/service-context.xml
+END
+hibernate-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/WebDev/!svn/ver/108041/succor/branches/trunk_30032012/succor-impl/src/main/resources/hibernate-context.xml
+END
+rabbitmq-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/resources/rabbitmq-context.xml
+END
+spring-servlet.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/WebDev/!svn/ver/105018/succor/branches/trunk_30032012/succor-impl/src/main/resources/spring-servlet.xml
+END
+parature-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/resources/parature-context.xml
+END
+security-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/WebDev/!svn/ver/105018/succor/branches/trunk_30032012/succor-impl/src/main/resources/security-context.xml
+END
+rules-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/resources/rules-context.xml
+END
+properties-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/resources/properties-context.xml
+END
+hibernate.cfg.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/WebDev/!svn/ver/108041/succor/branches/trunk_30032012/succor-impl/src/main/resources/hibernate.cfg.xml
+END
+log4j.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/resources/log4j.xml
+END

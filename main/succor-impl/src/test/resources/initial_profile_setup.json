@@ -1,0 +1,58 @@
+ {
+  "customer_data": {
+    "postal_code": null,
+    "first_name": "ts",
+    "country_iso": 840,
+    "last_name": "77345",
+    "contact_phone_number": null,
+    "support_language_iso": "en-US",
+    "address_line_1": null,
+    "email": "ts77345@rs.com",
+    "contact_phone_country_code": null,
+    "address_line_2": null,
+    "last_viewed_locale": "en-US",
+    "city": null,
+    "time_zone": "America/New_York",
+    "guid": "a014ed94-097d-4925-ba7a-57cb144a3ad5",
+    "institutional": true,
+    "state_province": null
+  },
+  "header": {
+    "created_at": 1341577952,
+    "hostname": "stgrun002",
+    "message_type": "initial_profile_setup_message",
+    "schema_version": 1
+  },
+  "message": {
+    "guid": "a014ed94-097d-4925-ba7a-57cb144a3ad5"
+  },
+  "license_data": {
+    "creation_account_guid": "6557ad31-7627-4852-9639-2ce2ce3f07d9",
+    "product_rights": [
+      {
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "application",
+        "rs_language_code": "ENG"
+      },
+      {
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "eschool",
+        "rs_language_code": "ENG"
+      },
+      {
+        "content_ranges": [
+          "1-20"
+        ],
+        "family": "premium_community",
+        "rs_language_code": "ENG"
+      }
+    ],
+    "creation_account_type": "DateRangeCreationAccount",
+    "test_license": true,
+    "upgraded_at": 0
+  }
+}

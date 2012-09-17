@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="succor-impl">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="succor-api-2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/succor-api/succor-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="succor-sms-webservice-2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/succor-sms-webservice/succor-sms-webservice">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="succor-rules-2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/succor-rules/succor-rules">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="background-task-2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/background-task/background-task">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="succor-impl"/>
+        <property name="java-output-path" value="/succor-impl/target/classes"/>
+    </wb-module>
+</project-modules>

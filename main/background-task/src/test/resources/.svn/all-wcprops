@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/resources
+END
+test-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/resources/test-context.xml
+END
+stress-test-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/resources/stress-test-context.xml
+END
+email-report-dataset.xml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/resources/email-report-dataset.xml
+END
+task-dataset.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/resources/task-dataset.xml
+END
+postalhistory-dataset.xml
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/resources/postalhistory-dataset.xml
+END
+statistic-dataset.xml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/resources/statistic-dataset.xml
+END
+log4j.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/test/resources/log4j.xml
+END

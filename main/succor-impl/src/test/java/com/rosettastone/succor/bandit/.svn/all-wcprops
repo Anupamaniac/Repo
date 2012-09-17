@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/bandit
+END
+ProductNameGeneratorTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/bandit/ProductNameGeneratorTest.java
+END
+LicenseConverterTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/bandit/LicenseConverterTest.java
+END
+JsonToObjectConverterTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/bandit/JsonToObjectConverterTest.java
+END
+EventParserTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/bandit/EventParserTest.java
+END

@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/docs/javadoc/com/rosettastone/succor/exception
+END
+InvalidJsonException.html
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/docs/javadoc/com/rosettastone/succor/exception/InvalidJsonException.html
+END
+SMSException.html
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/docs/javadoc/com/rosettastone/succor/exception/SMSException.html
+END
+ApplicationException.html
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/docs/javadoc/com/rosettastone/succor/exception/ApplicationException.html
+END
+ObjectNotFoundException.html
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/docs/javadoc/com/rosettastone/succor/exception/ObjectNotFoundException.html
+END
+ParatureException.html
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/docs/javadoc/com/rosettastone/succor/exception/ParatureException.html
+END
+package-frame.html
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/docs/javadoc/com/rosettastone/succor/exception/package-frame.html
+END
+package-use.html
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/docs/javadoc/com/rosettastone/succor/exception/package-use.html
+END
+package-summary.html
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/docs/javadoc/com/rosettastone/succor/exception/package-summary.html
+END
+FTPException.html
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/docs/javadoc/com/rosettastone/succor/exception/FTPException.html
+END
+ParatureErrorCode.html
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/docs/javadoc/com/rosettastone/succor/exception/ParatureErrorCode.html
+END
+package-tree.html
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/docs/javadoc/com/rosettastone/succor/exception/package-tree.html
+END

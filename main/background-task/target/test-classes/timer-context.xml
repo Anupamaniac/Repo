@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/task/spring-util.xsd">
+
+	<bean name="emailReportTimer" class="com.rosettastone.succor.timertask.EmailReportTimer">
+		<property name="emailList" value="default@default.com" />
+		<property name="mailFrom" value="default@default.com" />
+		<property name="mailSender" ref="mailSender" />
+		<property name="emailReportHistoryDao" ref="emailReportHistoryDao" />
+		<property name="reportDao" ref="reportDao" />
+		<property name="transactionTemplate" ref="taskTransactionTemplate" />
+		<property name="readWriteLock" ref="taskReadWriteLock" />
+	</bean>
+
+	<bean name="localeEn" class="java.util.Locale">
+		<constructor-arg value="en" />
+	</bean>
+	<bean name="localeJa" class="java.util.Locale">
+		<constructor-arg value="ja" />
+	</bean>
+	<bean name="localeEs" class="java.util.Locale">
+		<constructor-arg value="es" />
+	</bean>
+	<bean name="localeKo" class="java.util.Locale">
+		<constructor-arg value="ko" />
+	</bean>
+
+
+	<bean name="sendPostalBatchTimer"
+		class="com.rosettastone.succor.timertask.SendPostalBatchTimer">
+		<property name="postalHistoryDao" ref="postalHistoryDao" />
+		<property name="readWriteLock" ref="taskReadWriteLock" />
+		<property name="supportedLocales">
+			<list>
+				<ref bean="localeEn" />
+				<ref bean="localeJa" />
+				<ref bean="localeEs" />
+				<ref bean="localeKo" />
+			</list>
+		</property>
+		<property name="ftpService" ref="ftpService" />
+	</bean>
+
+	<bean name="removeOldPostalHistoryTimer"
+		class="com.rosettastone.succor.timertask.RemoveOldPostalHistoryTimer">
+		<property name="postalHistoryDao" ref="postalHistoryDao" />
+	</bean>
+
+	<bean name="removeOldParatureTaskAndHistoryTimer"
+		class="com.rosettastone.succor.timertask.RemoveOldParatureTaskAndHistoryTimer">
+		<property name="taskDao" ref="taskDao" />
+		<property name="hoptoadNotificationService" ref="hopToadService"/>
+	</bean>
+	<bean name="resetNextRunTimer"
+		class="com.rosettastone.succor.timertask.ResetNextRunTimer">
+		<property name="taskDao" ref="taskDao" />
+		<property name="hoptoadNotificationService" ref="hopToadService"/>
+	</bean>
+	<task:executor id="annotationExecutor" pool-size="1" />
+
+	<task:scheduler id="annotationScheduler" pool-size="1" />
+
+	<task:scheduled-tasks scheduler="annotationScheduler">
+		<task:scheduled ref="emailReportTimer" method="mainTimer"
+			cron="${timer.sendStatistic.cron}" />
+		<task:scheduled ref="emailReportTimer" method="checkFailureTimer"
+			fixed-delay="${timer.sendStatistic.delay}" />
+		<task:scheduled ref="sendPostalBatchTimer" method="mainTimer"
+			cron="${timer.sendPostalReport.cron}" />
+		<task:scheduled ref="sendPostalBatchTimer" method="checkFailureTimer"
+			fixed-delay="${timer.sendStatistic.delay}" />
+		<task:scheduled ref="removeOldPostalHistoryTimer"
+			method="timer" cron="${timer.removeOld.cron}" />
+		<task:scheduled ref="removeOldParatureTaskAndHistoryTimer"
+			method="cleanDb" cron="${timer.removeOldParatureTaskAndHistory.cron}" />
+		<task:scheduled ref="resetNextRunTimer"
+			method="resetNextRun" cron="${timer.resetNextRunTimer.cron}" />
+	</task:scheduled-tasks>
+
+</beans>

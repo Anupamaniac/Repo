@@ -1,0 +1,95 @@
+10
+
+dir
+106686
+https://svn.lan.flt/svn/WebDev/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor
+https://svn.lan.flt/svn/WebDev
+
+
+
+2012-07-26T11:05:22.649795Z
+105893
+asangamlal
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+169e7656-d7f2-0310-83d5-fda845fb8f35
+
+mdp
+dir
+
+service
+dir
+
+utils
+dir
+
+bandit
+dir
+
+spring
+dir
+
+dao
+dir
+
+parature
+dir
+
+timertask
+dir
+
+SpringLauncher.java
+file
+
+
+
+
+
+0b26560b5861bcd9ff12168bf666432b
+2012-03-30T08:41:37.275935Z
+92730
+asangamlal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1065
+
+keepalive
+dir
+
+rules
+dir
+
+web
+dir
+

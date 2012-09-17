@@ -1,0 +1,45 @@
+{
+  	"header": {
+	    "schema_version": 1,
+	    "hostname": "kb.local",
+	    "message_type": "studio_session_cancellation_message",
+	    "created_at": 1284486073,
+	    "test_disable_sync" : true
+	},
+	"customer_data": {
+		"city": "Timbuktu",
+		"guid": "ae80d3e6-e78e-4c3d-8ecf-6dbc2cd4b07a",
+		"institutional": true,
+		"state_province": "Denial",
+		"postal_code": "90210",
+		"country_iso": null,
+		"contact_phone_number": null,
+		"address_line_1": "Perdition Rd.",
+		"email": "kzhirov@rosettastone.com",
+		"contact_phone_country_code": null,
+		"last_name": "Activated",
+		"address_line_2": "Panda Modiem",
+		"last_viewed_locale": "en-US",
+		"first_name": "Non"
+	},
+	"license_data": {
+		"test_license": true
+	},
+  	"message": {
+	    "reason": "uncancelled_session_no_learner",
+	    "session_start_time": 1292274000,
+	    "learner_first_seen_at": 1292274071,
+	    "attendance_id": 433549839,
+	    "level": 1,
+	    "teacher_technical_problem": null,
+	    "cancelled_by": "Canceller",
+	    "rs_language_code": "ESP",
+	    "guid": "ae80d3e6-e78e-4c3d-8ecf-6dbc2cd4b07a",
+	    "cancelled_at": 1292533272,
+	    "cancelled": true,
+	    "learner_technical_problem": false,
+	    "unit": 1,
+	    "teacher_first_seen_at": null,
+	    "iso_language_code": "es-419"
+ 	}
+}

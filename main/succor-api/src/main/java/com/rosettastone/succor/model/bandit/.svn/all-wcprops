@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/WebDev/!svn/ver/96351/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit
+END
+ExpiringSubscriptionMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/ExpiringSubscriptionMessage.java
+END
+InitialProfileSetupMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/InitialProfileSetupMessage.java
+END
+Customer.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/Customer.java
+END
+ProductRights.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/ProductRights.java
+END
+SessionCancelReason.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/SessionCancelReason.java
+END
+StudioReminderMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/WebDev/!svn/ver/110182/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/StudioReminderMessage.java
+END
+LevelCompletionMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/LevelCompletionMessage.java
+END
+DiscoveryCallMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/DiscoveryCallMessage.java
+END
+MessageLevelUnitStartTime.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/MessageLevelUnitStartTime.java
+END
+CommunityAbsenceMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/CommunityAbsenceMessage.java
+END
+StudioReadinessMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/StudioReadinessMessage.java
+END
+JsonField.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/JsonField.java
+END
+FollowUpWithLearnerMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/FollowUpWithLearnerMessage.java
+END
+Event.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/Event.java
+END
+License.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/WebDev/!svn/ver/110758/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/License.java
+END
+ClaimedExtensionsMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/ClaimedExtensionsMessage.java
+END
+Message.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/Message.java
+END
+StudioSatisfactionMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/StudioSatisfactionMessage.java
+END
+InternalSuccorData.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/WebDev/!svn/ver/93190/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/InternalSuccorData.java
+END
+FirstCompletedStudioSessionMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/FirstCompletedStudioSessionMessage.java
+END
+MessageType.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/MessageType.java
+END
+UpdateMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/UpdateMessage.java
+END
+Header.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/Header.java
+END
+StudioSessionConfirmationMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/StudioSessionConfirmationMessage.java
+END
+RWorldEncouragementMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/RWorldEncouragementMessage.java
+END
+LevelsCompletedMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/LevelsCompletedMessage.java
+END
+Range.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/Range.java
+END
+StudioSessionCancellationMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/svn/WebDev/!svn/ver/110182/succor/branches/trunk_30032012/succor-api/src/main/java/com/rosettastone/succor/model/bandit/StudioSessionCancellationMessage.java
+END

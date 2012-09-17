@@ -1,0 +1,39 @@
+{
+  "message": {
+     "guid": "ecdb1178-89f5-47e2-b1f5-bf8589619d3d",
+    "rs_language_code": "ESC",
+    "unit": 0,
+    "iso_language_code": "ar",
+    "level": 1,
+    "session_start_time": 1284486073,
+    "hours": 24,
+    "session_id":1,
+    "student_id":1
+  },
+  "header": {
+    "schema_version": 1,
+    "hostname": "kb.local",
+    "message_type": "studio_reminder_message",
+    "created_at": 1284486073,
+    "test_disable_sync" : true
+  },
+  "customer_data": {
+    "city": "Timbuktu",
+    "guid": "ecdb1178-89f5-47e2-b1f5-bf8589619d3d",
+    "institutional": false,
+    "state_province": "Denial",
+    "postal_code": "90210",
+    "country_iso": null,
+    "contact_phone_number": null,
+    "address_line_1": "Perdition Rd.",
+    "email": "user_with_no_interactions@example.com",
+    "contact_phone_country_code": null,
+    "last_name": "Activated",
+    "address_line_2": "Panda Modiem",
+    "last_viewed_locale": "en-US",
+    "first_name": "Non"
+  },
+	"license_data": {
+		"test_license": true
+	}
+}

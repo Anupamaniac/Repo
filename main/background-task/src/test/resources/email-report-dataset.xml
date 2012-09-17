@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+	<message id="1" message="Test message 1"/>
+	<task id="1" type="PARATURE" status="ACTIVE" bean_name="Dataset bean" method_name="Dataset method"
+				 arguments="Dataset arguments" next_run="[NULL]" created_at="2010-09-01 00:00:00" message_id="1"/>
+	<task id="2" type="EMAIL" status="COMPLETED" bean_name="Dataset bean" method_name="Dataset method"
+				 arguments="Dataset arguments" next_run="[NULL]" created_at="2010-09-01 00:00:00" message_id="1"/>
+	<task id="3" type="PARATURE" status="CANCELLED" bean_name="Dataset bean" method_name="Dataset method"
+				 arguments="Dataset arguments" next_run="[NULL]" created_at="2010-09-01 00:00:00" message_id="1"/>
+	<task id="4" type="EMAIL" status="CANCELLED" bean_name="Dataset bean" method_name="Dataset method"
+				 arguments="Dataset arguments" next_run="[NULL]" created_at="2010-09-01 00:00:00" message_id="1"/>
+	<task id="5" type="PARATURE" status="CANCELLED" bean_name="Dataset bean" method_name="Dataset method"
+				 arguments="Dataset arguments" next_run="[NULL]" created_at="2010-09-01 00:00:00" message_id="1"/>
+	<task id="6" type="EMAIL" status="COMPLETED" bean_name="Dataset bean" method_name="Dataset method"
+				 arguments="Dataset arguments" next_run="[NULL]" created_at="2010-09-01 00:00:00" message_id="1"/>
+	<history_entity />
+				 
+	<email_report_history id="1" date="2010-09-01 00:00:00" />
+	<email_report_history id="2" date="2010-09-01 01:00:00" />
+	
+	<report_entity id="1" type="MESSAGE_SKIPPED" date="2010-09-01 00:00:00"/>
+	<report_entity id="2" type="EMAIL_ERROR" date="2010-09-02 00:00:00"/>
+	<report_entity id="3" type="EMAIL_CUSTOMER" date="2010-09-03 00:00:00"/>
+	<report_entity id="4" type="SUPER_TIKET" date="2010-09-04 00:00:00"/>
+	<report_entity id="5" type="POSTAL_TICKET" date="2010-09-05 00:00:00"/>
+	<report_entity id="6" type="PHONE_TICKET" date="2010-09-06 00:00:00"/>
+	<report_entity id="7" type="INSTITUTIONAL_TICKET" date="2010-09-07 00:00:00"/>
+	<report_entity id="8" type="EMAIL_ERROR" date="2010-09-02 00:00:01"/>
+	<report_entity id="9" type="EMAIL_CUSTOMER" date="2010-09-03 00:00:02"/>
+	<report_entity id="10" type="EMAIL_CUSTOMER" date="2010-09-03 00:00:03"/>
+	<report_entity id="11" type="SUPER_TIKET" date="2010-09-04 00:00:04"/>
+	<report_entity id="12" type="SUPER_TIKET" date="2010-09-04 00:00:05"/>
+	<report_entity id="13" type="SUPER_TIKET" date="2010-09-04 00:00:06"/>
+	<report_entity id="14" type="POSTAL_TICKET" date="2010-09-05 00:00:07"/>
+	<report_entity id="15" type="POSTAL_TICKET" date="2010-09-05 00:00:08"/>
+	<report_entity id="16" type="POSTAL_TICKET" date="2010-09-05 00:00:09"/>
+	<report_entity id="17" type="POSTAL_TICKET" date="2010-09-05 00:00:10"/>
+	<report_entity id="18" type="PHONE_TICKET" date="2010-09-06 00:00:11"/>
+	<report_entity id="19" type="PHONE_TICKET" date="2010-09-06 00:00:12"/>
+	<report_entity id="20" type="PHONE_TICKET" date="2010-09-06 00:00:13"/>
+	<report_entity id="21" type="PHONE_TICKET" date="2010-09-06 00:00:14"/>
+	<report_entity id="22" type="PHONE_TICKET" date="2010-09-06 00:00:15"/>
+	<report_entity id="23" type="INSTITUTIONAL_TICKET" date="2010-09-07 00:00:16"/>
+	<report_entity id="24" type="INSTITUTIONAL_TICKET" date="2010-09-07 00:00:17"/>
+	<report_entity id="25" type="INSTITUTIONAL_TICKET" date="2010-09-07 00:00:18"/>
+	<report_entity id="26" type="INSTITUTIONAL_TICKET" date="2010-09-07 00:00:19"/>
+	<report_entity id="27" type="INSTITUTIONAL_TICKET" date="2010-09-07 00:00:20"/>
+	<report_entity id="28" type="INSTITUTIONAL_TICKET" date="2010-09-07 00:00:21"/>
+
+	<report_entity id="29" type="MESSAGE_SKIPPED" date="2009-09-01 00:00:00"/>
+	<report_entity id="30" type="MESSAGE_SKIPPED" date="2019-09-01 00:00:00"/>
+
+    <postal_history id="1" status="PROCESSED" created_at="2010-01-01 00:00:00.000000000" customer_name="Customer name 1"
+                   shipping_address="local street 1" processed_at="2009-09-01 00:00:00"
+                   contact_reason="FIRST_STUDIO_COMPLETITION" product_level="U1" language="RUSSIAN" support_locale="en"/>
+    <postal_history id="2" status="PROCESSED" created_at="2010-01-05 00:00:00.000000000" customer_name="Customer name 2"
+                   shipping_address="local street 2" processed_at="2010-09-06 00:00:11"
+                   contact_reason="FIRST_STUDIO_COMPLETITION" product_level="L1" language="RUSSIAN" support_locale="jp"/>
+    <postal_history id="3" status="PROCESSED" created_at="2010-01-07 00:00:00.000000000" customer_name="Customer name 3"
+                   shipping_address="local street 3" processed_at="2010-09-06 00:00:11"
+                   contact_reason="FIRST_STUDIO_COMPLETITION" product_level="TOT" language="RUSSIAN" support_locale="en"/>
+    <postal_history id="4" status="PROCESSED" created_at="2010-01-10 00:00:00.000000000" customer_name="Customer name 4"
+                   shipping_address="local street 4" processed_at="2019-09-01 00:00:00"
+                   contact_reason="FIRST_STUDIO_COMPLETITION" product_level="S5" language="RUSSIAN" support_locale="jp"/>
+    <postal_history id="5" status="UNPROCESSED" created_at="2010-01-15 00:00:00.000000000" customer_name="Customer name 5"
+                   shipping_address="local street 5"
+                   contact_reason="FIRST_STUDIO_COMPLETITION" product_level="NA" language="RUSSIAN" support_locale="en"/>
+
+</dataset>

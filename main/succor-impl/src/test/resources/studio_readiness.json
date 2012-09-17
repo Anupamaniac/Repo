@@ -1,0 +1,37 @@
+{
+	"license_data": {
+    	"test_license": true
+  	},
+    "header": {
+        "hostname":"rshbgdev04",
+        "created_at":1279811842,
+        "message_type":"studio_readiness_message",
+        "schema_version":1
+    },
+    "message": {
+        "unit": 0,
+        "guid": "ecdb1178-89f5-47e2-b1f5-bf8589619d3d",
+        "first_message_to_this_user": true,
+        "course": "SK-DEU-L2-NA-PE-NA-NA-Y-3",
+        "level": 1,
+        "iso_language_code": "es-419",
+        "rs_language_code": "ESP"
+    },
+
+    "customer_data": {
+        "city":"New York",
+        "postal_code":"12345",
+        "state_province":"NY",
+        "address_line_1":"25 street",
+        "address_line_2":"15 structure, 12",
+        "guid":"ecdb1178-89f5-47e2-b1f5-bf8589619d3d",
+        "contact_phone_number":"(333) 555555",
+        "first_name":"Konstantin",
+        "contact_phone_country_code":"8",
+        "last_viewed_locale":"en-US",
+        "last_name":"Zhirov",
+        "country_iso":4,
+        "email":"kzhirov@rosettastone.com",
+        "institutional": false
+    }
+}

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/dao
+END
+ReportDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/dao/ReportDao.java
+END
+PostalHistoryDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/dao/PostalHistoryDao.java
+END
+EmailReportHistoryDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/background-task/src/main/java/com/rosettastone/succor/timertask/dao/EmailReportHistoryDao.java
+END

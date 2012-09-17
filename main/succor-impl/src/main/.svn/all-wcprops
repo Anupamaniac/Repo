@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/WebDev/!svn/ver/105893/succor/branches/trunk_30032012/succor-impl/src/main
+END
+succor-data.sql
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/succor-data.sql
+END
+succor-current-rules.sql
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/succor-current-rules.sql
+END
+succor-create-tables.sql
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/succor-create-tables.sql
+END

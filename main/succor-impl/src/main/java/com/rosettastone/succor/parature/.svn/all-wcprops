@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/parature
+END
+CustomerParatureApi.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/parature/CustomerParatureApi.java
+END
+ParatureProperties.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/parature/ParatureProperties.java
+END
+TicketParatureApi.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/parature/TicketParatureApi.java
+END
+ParatureHttpClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/parature/ParatureHttpClient.java
+END
+CsrParatureApi.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/parature/CsrParatureApi.java
+END
+ParatureErrorMessageBuilder.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/parature/ParatureErrorMessageBuilder.java
+END
+ParatureHttpClientFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/parature/ParatureHttpClientFactory.java
+END

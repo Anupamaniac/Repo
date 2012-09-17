@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+       ">
+
+
+    <bean id="bawSessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</prop>
+                <prop key="hbm2ddl.auto">none</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.connection.autocommit">true</prop>
+                <prop key="hibernate.connection.autoReconnect">false</prop>
+            </props>
+        </property>
+
+        <property name="annotatedClasses">
+            <list>
+                <value>com.rosettastone.succor.dao.CustomerEntity</value>
+                <value>com.rosettastone.succor.dao.DiscoveryCallEntity</value>
+            </list>
+        </property>
+        <property name="dataSource" ref="bawDataSource"/>
+    </bean>
+
+    <!-- <bean id="bawDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="url" value="${db.connection.url}"/>
+        <property name="username" value="${db.connection.username}"/>
+        <property name="password" value="${db.connection.password}"/>
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+        <property name="maxActive" value="500"/>
+        <property name="validationQuery" value="select * from dual"/>
+    </bean> -->
+    <!-- <context:property-placeholder location="classpath:sample/jdbc.properties"/> -->
+    <bean id="bawDataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close"
+		p:driverClassName="oracle.jdbc.OracleDriver"
+		p:url="${db.connection.url}"
+		p:username="${db.connection.username}"
+		p:password="${db.connection.password}" 
+		p:initialSize="8"
+		p:maxActive="8"
+		p:maxWait="1000"
+		p:jmxEnabled="true"
+		p:removeAbandonedTimeout="100"
+		p:removeAbandoned="true"
+		p:validationInterval="30000"
+		p:testWhileIdle="true"
+        p:testOnBorrow="true"
+        p:testOnReturn="true"
+		p:validationQuery="select * from dual"/>
+
+    <bean id="customerDaoTarget" class="com.rosettastone.succor.dao.CustomerDAO">
+        <property name="sessionFactory" ref="bawSessionFactory"/>
+    </bean>
+
+    <bean id="discoveryCallDaoTarget" class="com.rosettastone.succor.dao.DiscoveryCallDao">
+        <property name="sessionFactory" ref="bawSessionFactory"/>
+    </bean>
+
+    <bean id="bawHibernateInterceptor" class="org.springframework.orm.hibernate3.HibernateInterceptor">
+        <property name="sessionFactory" ref="bawSessionFactory"/>
+    </bean>
+
+    <bean id="customerDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyTargetClass" value="true"/>
+        <property name="interceptorNames">
+            <list>
+                <value>bawHibernateInterceptor</value>
+                <value>customerDaoTarget</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="discoveryCallDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyTargetClass" value="true"/>
+        <property name="interceptorNames">
+            <list>
+                <value>bawHibernateInterceptor</value>
+                <value>discoveryCallDaoTarget</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="configLocation">
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <!-- <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSourceFactory" destroy-method="close">
+        <property name="url" value="${mysql.connection.url}"/>
+        <property name="username" value="${mysql.connection.username}"/>
+        <property name="password" value="${mysql.connection.password}"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="maxActive" value="500"/>
+    </bean> -->
+    
+     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close"
+		p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="${mysql.connection.url}"
+		p:username="${mysql.connection.username}"
+		p:password="${mysql.connection.password}" 
+		p:initialSize="8"
+		p:maxActive="8"
+		p:maxWait="1000"
+		p:jmxEnabled="true"
+		p:removeAbandonedTimeout="100"
+		p:removeAbandoned="true"
+		p:validationInterval="30000"
+		p:testWhileIdle="true"
+        p:testOnBorrow="true"
+        p:testOnReturn="true"
+		p:validationQuery="select 1"/>
+
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="ruleDao" class="com.rosettastone.succor.web.dao.RuleDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="eventDao" class="com.rosettastone.succor.web.dao.EventDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="productDao" class="com.rosettastone.succor.web.dao.ProductDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="templateDao" class="com.rosettastone.succor.web.dao.TemplateDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="keepAliveControllerDao" class="com.rosettastone.succor.dao.KeepaliveControllerDao">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+        <property name="bawHibernateTemplate" ref="bawHibernateTemplate"/>
+        
+    </bean>
+    <bean id="eventMessageTypeDao" class="com.rosettastone.succor.dao.EventMessageTypeDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+
+	<bean id="bawHibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+ 		<property name="sessionFactory" ref="bawSessionFactory" />
+	</bean>
+
+</beans>

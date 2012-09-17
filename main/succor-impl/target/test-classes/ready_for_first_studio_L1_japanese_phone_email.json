@@ -1,0 +1,36 @@
+{
+  "customer_data": {
+    "state_province": "Denial",
+    "postal_code": "90210",
+    "last_name": "Zhirov",
+    "country_iso": null,
+    "first_name": "Konstantin",
+    "guid": "ecdb1178-89f5-47e2-b1f5-bf8589619d3d",
+    "contact_phone_number": null,
+    "address_line_1": "Perdition Rd.",
+    "contact_phone_country_code": null,
+    "email": "kzhirov@rosettastone.com",
+    "address_line_2": "Panda Modiem",
+    "last_viewed_locale": "ja-JP",
+    "time_zone": "Etc/UTC",
+    "city": "Timbuktu",
+    "institutional": false
+  },
+  "message": {
+   "guid": "ecdb1178-89f5-47e2-b1f5-bf8589619d3d",
+    "rs_language_code": "ESC",
+    "course": "SK-DEU-L2-NA-PE-NA-NA-Y-3",
+    "attended_studio_session": false,
+    "first_message_to_this_user": true,
+    "iso_language_code": "es-419",
+    "unit": 0,
+    "level": 2
+  },
+  "header": {
+    "schema_version": 1,
+    "message_type": "studio_readiness_message",
+    "created_at": 1290537701,
+    "hostname": "phoenix"
+  },
+  "license_data": "no test data"
+}

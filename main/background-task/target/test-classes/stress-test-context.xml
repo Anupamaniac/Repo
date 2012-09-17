@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:test.properties" />
+    </bean>
+
+    <bean id="taskAbstractExecutor" class="com.rosettastone.succor.backgroundtask.impl.TaskExecutor" abstract="true">
+    	<property name="argumentSerializer" ref="taskArgumentSerializer"/>
+    	<property name="taskDao" ref="taskDao"/>
+    	<property name="transactionTemplate" ref="taskTransactionTemplate"/>
+    	<property name="noTaskDelay" value="5"/>
+    	<property name="exceptionNotificationStatusWatcher" ref="exceptionNotificationStatusWatcher"/>
+    	<property name="currentRabbitMqMessageStorage" ref="currentRabbitMqMessageStorage"/>
+    </bean>   
+
+	<bean name="exceptionNotificationStatusWatcher" 
+		class="com.rosettastone.succor.backgroundtask.impl.ExceptionNotificationStatusWatcher"/>
+
+    <bean name="logExceptionHandler" class="com.rosettastone.succor.backgroundtask.impl.stress.LogExceptionHandler"/>
+    <bean name="echoBean" class="com.rosettastone.succor.backgroundtask.impl.stress.EchoBean"/>
+    <bean name="taskCreatorBean" class="com.rosettastone.succor.backgroundtask.impl.stress.TaskCreatorBean">
+    	<property name="taskManager" ref="taskManager"/>
+    </bean>
+    
+	<bean id="taskEmailExecutor" parent="taskAbstractExecutor">
+		<property name="taskType" value="EMAIL"/>
+		<property name="exceptionHandler" ref="logExceptionHandler"/>
+	</bean>
+    
+    <bean id="taskEmailExecutorThread" class="com.rosettastone.succor.backgroundtask.impl.TaskExecutorThread">
+    	<property name="executor" ref="taskEmailExecutor"/>
+    </bean>
+    
+   	<bean id="taskParatureExecutor" parent="taskAbstractExecutor">
+		<property name="taskType" value="PARATURE"/>
+		<property name="exceptionHandler" ref="logExceptionHandler"/>
+	</bean>
+    
+    <bean id="taskParatureExecutorThread" class="com.rosettastone.succor.backgroundtask.impl.TaskExecutorThread">
+    	<property name="executor" ref="taskParatureExecutor"/>
+    </bean>
+    
+	<bean id="taskRuleExecutor" parent="taskAbstractExecutor">
+		<property name="taskType" value="RULES"/>
+		<property name="exceptionHandler" ref="logExceptionHandler"/>
+	</bean>
+    
+    <bean id="taskRuleExecutorThread" class="com.rosettastone.succor.backgroundtask.impl.TaskExecutorThread">
+    	<property name="executor" ref="taskRuleExecutor"/>
+    </bean>
+
+</beans>

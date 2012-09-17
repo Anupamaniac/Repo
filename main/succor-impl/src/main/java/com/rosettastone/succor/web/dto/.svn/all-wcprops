@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/dto
+END
+TaskErrorDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/dto/TaskErrorDTO.java
+END
+CounterDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/dto/CounterDTO.java
+END
+EventDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/dto/EventDTO.java
+END
+StaticObjectsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/dto/StaticObjectsDTO.java
+END
+TicketDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/dto/TicketDTO.java
+END
+EnumDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/dto/EnumDTO.java
+END
+RuleDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/WebDev/!svn/ver/109908/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/dto/RuleDTO.java
+END
+StatisticDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/main/java/com/rosettastone/succor/web/dto/StatisticDTO.java
+END

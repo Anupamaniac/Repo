@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   	http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context 	http://www.springframework.org/schema/context/spring-context-2.5.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+    <bean id="smsSender" class="com.rosettastone.succor.service.sms.SMSSender">
+        <property name="cellTrust" ref="cellTrustPlatform"/>
+        <property name="clickatell" ref="clickatellPlatform"/>
+    </bean>
+
+    <bean id="cellTrustPlatform" class="com.rosettastone.succor.service.sms.CellTrustPlatform" init-method="init">
+        <property name="username" value="${celltrust.username}"/>
+        <property name="password" value="${celltrust.password}"/>
+        <property name="url" value="www.primemessage.net/TxTNotify/SecureSMS"/>
+        <property name="protocol" value="http"/>
+
+    </bean>
+
+    <bean id="clickatellPlatform" class="com.rosettastone.succor.service.sms.ClickatellPlatform" init-method="init">
+        <property name="username" value="${clickatell.username}"/>
+        <property name="password" value="${clickatell.password}"/>
+        <property name="apiId" value="${clickatell.apiId}"/>
+        <property name="url" value="api.clickatell.com/http/sendmsg"/>
+        <property name="protocol" value="http"/>
+    </bean>
+
+</beans>

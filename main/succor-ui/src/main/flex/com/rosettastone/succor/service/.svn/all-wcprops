@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/service
+END
+Helper.as
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/service/Helper.as
+END
+RemoteServices.as
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/service/RemoteServices.as
+END
+RulesManager.as
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/service/RulesManager.as
+END
+RulesManagerImpl.as
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-ui/src/main/flex/com/rosettastone/succor/service/RulesManagerImpl.as
+END

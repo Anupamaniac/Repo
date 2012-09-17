@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-rules/src/test/java/com/rosettastone/succor/rules
+END
+CustomerRulesSessionTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-rules/src/test/java/com/rosettastone/succor/rules/CustomerRulesSessionTest.java
+END
+CustomerRulesLevelCompletedTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-rules/src/test/java/com/rosettastone/succor/rules/CustomerRulesLevelCompletedTest.java
+END
+ClaimedExtensionsMessageTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-rules/src/test/java/com/rosettastone/succor/rules/ClaimedExtensionsMessageTest.java
+END
+CustomerRulesLevelsCompletedTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-rules/src/test/java/com/rosettastone/succor/rules/CustomerRulesLevelsCompletedTest.java
+END
+CommunityAbsenceTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-rules/src/test/java/com/rosettastone/succor/rules/CommunityAbsenceTest.java
+END
+RWorldEncouragementTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-rules/src/test/java/com/rosettastone/succor/rules/RWorldEncouragementTest.java
+END
+BaseCustomerRulesTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-rules/src/test/java/com/rosettastone/succor/rules/BaseCustomerRulesTest.java
+END
+SessionCancelledTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-rules/src/test/java/com/rosettastone/succor/rules/SessionCancelledTest.java
+END

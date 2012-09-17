@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/service
+END
+LdapServiceTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/service/LdapServiceTest.java
+END
+MailSenderTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/service/MailSenderTest.java
+END
+CustomerSynchronizationServiceTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/service/CustomerSynchronizationServiceTest.java
+END
+FreemarkerConfigTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/WebDev/!svn/ver/92730/succor/branches/trunk_30032012/succor-impl/src/test/java/com/rosettastone/succor/service/FreemarkerConfigTest.java
+END

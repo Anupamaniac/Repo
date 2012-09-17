@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:si="http://www.springframework.org/schema/integration"
+	xmlns:jms="http://www.springframework.org/schema/integration/jms"
+	xmlns:amq="http://www.opencredo.com/schema/si/amq" xmlns:si-xml="http://www.springframework.org/schema/integration/xml"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/integration
+           http://www.springframework.org/schema/integration/spring-integration-1.0.xsd
+           http://www.springframework.org/schema/integration/jms
+           http://www.springframework.org/schema/integration/jms/spring-integration-jms-1.0.xsd
+           http://www.opencredo.com/schema/si/amq
+		   http://www.opencredo.com/schema/si/amq/opencredo-si-amq.xsd">
+
+	<bean id="customerSynchronizationService"
+          class="com.rosettastone.succor.service.impl.CustomerSynchronizationServiceImpl">
+		<property name="customerDao" ref="customerDaoStub" />
+		<property name="ticketParatureApi" ref="ticketParatureApiStub"/>
+	</bean>
+
+	<bean id="customerDaoStub" class="com.rosettastone.succor.service.impl.CustomerDaoStub"/>
+
+	<bean id="ticketParatureApiStub" class="com.rosettastone.succor.service.impl.TicketParatureApiStub"/>
+
+</beans>

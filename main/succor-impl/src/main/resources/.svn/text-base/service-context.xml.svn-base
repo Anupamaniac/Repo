@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <bean id="eventService" class="com.rosettastone.succor.service.EventServiceImpl">
+        <property name="taskManager" ref="taskManager" />
+        <property name="postalHistoryService" ref="postalHistoryService"/>
+        <property name="customerSynchronizationService" ref="customerSynchronizationService"/>
+        <property name="ticketParatureApi" ref="ticketParatureApi"/>
+        <property name="currentRuleExceptionStorage" ref="currentRuleExceptionStorage" />
+        <property name="priorityService" ref="taskPriorityService"/>
+    </bean>
+
+    <bean id="postalHistoryService" class="com.rosettastone.succor.service.PostalHistoryService">
+        <property name="contactReasonConverter" ref="contactReasonConverter" />
+        <property name="languageConverter" ref="languageConverter" />
+        <property name="postalHistoryDao" ref="postalHistoryDao" />
+    </bean>
+
+    <bean id="emailService" class="com.rosettastone.succor.service.EmailService">
+        <property name="mailSender" ref="mailSender" />
+        <property name="reportDao" ref="reportDao"/>
+        <property name="templateDao" ref="templateDao"/>
+        <property name="emailBodyGenerator" ref="emailBodyGenerator"/>
+    </bean>
+
+    <bean id="smsEmailService" class="com.rosettastone.succor.service.SMSEmailService">
+        <property name="mailSender" ref="mailSender" />
+        <property name="reportDao" ref="reportDao"/>
+        <property name="templateDao" ref="templateDao"/>
+        <property name="emailBodyGenerator" ref="emailBodyGenerator"/>
+    </bean>
+
+    <bean id="smsService" class="com.rosettastone.succor.service.SMSService">
+        <property name="smsSender" ref="smsSender" />
+        <property name="templateDao" ref="templateDao"/>
+        <property name="emailBodyGenerator" ref="emailBodyGenerator"/>
+        <property name="taskManager" ref="taskManager"/>
+        <property name="reportDao" ref="reportDao"/>
+        <property name="priorityService" ref="taskPriorityService"/>
+    </bean>
+
+    <bean name="discoveryCallService" class="com.rosettastone.succor.service.DiscoveryCallService">
+        <property name="synchronizationService" ref="customerSynchronizationService"/>
+        <property name="rulesInvoker" ref="rulesInvoker"/>
+    </bean>
+
+    <bean id="customerSynchronizationService" class="com.rosettastone.succor.service.CustomerSynchronizationService">
+        <property name="customerDao" ref="customerDao" />
+        <property name="customerParatureApi" ref="customerParatureApi" />
+    </bean>
+    
+	<bean name="rabbitMqListener" class="com.rosettastone.succor.mdp.RabbitMqListener">
+		<property name="channelManager" ref="rabbitMqChannelManager"/>
+		<property name="transactionManager" ref="taskTransactionManager"/>
+		<property name="taskManager" ref="taskManager"/>
+		<property name="queue" value="${rabbitmq.queue}"/>
+		<property name="excange" value="${rabbitmq.exchange}"/>
+		<property name="errorDelay" value="${backgroundtask.errorDelay}"/>
+		<property name="noMessageDelay" value="${backgroundtask.noTaskDelay}"/>
+    	<property name="exceptionNotificationStatusWatcher" ref="exceptionNotificationStatusWatcher"/>
+		<property name="notifyAdminExceptionHandler" ref="taskNotifyAdminExceptionHandler"/>
+        <property name="eventParser" ref="eventParser"/>
+        <property name="taskPriorityService" ref="taskPriorityService"/>
+        <property name="hoptoadNotificationService" ref="hopToadService"/>
+	</bean>
+
+	<bean name="rabbitMqMessageProcessor" class="com.rosettastone.succor.mdp.RabbitMqMessageProcessor">
+		<property name="rulesInvoker" ref="rulesInvoker"/>
+        <property name="currentRuleExceptionStorage" ref="currentRuleExceptionStorage" />
+	</bean>
+
+    <bean name="messagePreProcessor" class="com.rosettastone.succor.mdp.MessagePreProcessor">
+        <property name="synchronizationService" ref="customerSynchronizationService"/>
+        <property name="reportDao" ref="reportDao"/>
+        <property name="eventParser" ref="eventParser"/>
+        <property name="taskManager" ref="taskManager"/>
+    </bean>
+
+    <bean name="currentRuleExceptionStorage" class="java.lang.ThreadLocal"/>
+
+	<bean name="eventParser" class="com.rosettastone.succor.bandit.EventParser"/>
+	
+    <bean name="emailBodyGenerator" class="com.rosettastone.succor.utils.EmailBodyGenerator">
+        <property name="freemarkerConfiguration" ref="freemarkerConfiguration" />
+        <property name="languageConverter" ref="languageConverter"/>
+        <property name="messageSource" ref="messageSource"/>
+    </bean>
+
+    <bean id="ruleService" class="com.rosettastone.succor.web.service.RuleServiceImpl">
+        <property name="ruleDao" ref="ruleDao" />
+    </bean>
+
+    <bean id="statisticService" class="com.rosettastone.succor.web.service.StatisticService">
+        <property name="statisticDao" ref="statisticDao" />
+        <property name="reportDao" ref="reportDao" />
+        <property name="taskDao" ref="taskDao" />
+
+    </bean>
+
+    <bean id="flexService" class="com.rosettastone.succor.web.service.FlexService">
+        <property name="ruleDao" ref="ruleDao" />
+        <property name="eventDao" ref="eventDao" />
+        <property name="productDao" ref="productDao" />
+        <property name="templateDao" ref="templateDao" />
+        <property name="rulesInvoker" ref="rulesInvoker" />
+        <property name="templateHolder" ref="templateHolder"/>
+    </bean>
+
+    <bean name="hopToadService" class="com.rosettastone.succor.service.HoptoadNotificationService">
+    	<property name="hoptoadServerUrl" value="${hoptoad.server.url}"/>
+		<property name="hoptoadProxyHost" value="${hoptoad.server.proxy.host}"/>
+		<property name="hoptoadProxyPort" value="${hoptoad.server.proxy.port}"/>
+        <property name="env" value="${hoptoad.project.env}"/>
+        <property name="url" value="${hoptoad.project.url}"/>
+        <property name="apiKey" value="${hoptoad.api.key}"/>
+        <property name="projectRoot" value="${hoptoad.project.root}"/>
+	</bean>
+	
+	<bean name="ftpService" class="com.rosettastone.succor.service.FtpService">
+		<property name="ftpServerName" value="${ftp.servername}"/>
+        <property name="ftpDir" value="${ftp.dir}"/>
+        <property name="userName" value="${ftp.username}"/>
+        <property name="password" value="${ftp.password}"/>
+        <property name="exceptionNotificationStatusWatcher" ref="exceptionNotificationStatusWatcher"/>
+		<property name="notifyAdminExceptionHandler" ref="taskNotifyAdminExceptionHandler"/>
+	</bean>
+
+    <bean id="templateHolder" class="com.rosettastone.succor.web.TemplateHolder" scope="session">
+        <aop:scoped-proxy/>
+    </bean>
+
+    <bean id="taskPriorityService" class="com.rosettastone.succor.utils.TaskPriorityService">
+        <property name="eventMessageTypeDao" ref="eventMessageTypeDao"/>
+    </bean>
+
+</beans>

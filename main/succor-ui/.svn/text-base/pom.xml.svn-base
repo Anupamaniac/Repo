@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<parent>
+		<groupId>com.rosettastone.succor</groupId>
+		<artifactId>main</artifactId>
+		<version>2.0</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.rosettastone.succor</groupId>
+	<artifactId>succor-ui</artifactId>
+	<packaging>swf</packaging>
+	<name>${artifactId}</name>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>flex-framework</artifactId>
+			<version>${flex.sdk.version}</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>playerglobal</artifactId>
+			<version>${flex.sdk.version}</version>
+			<classifier>10.0</classifier>
+			<type>swc</type>
+		</dependency>
+        <dependency>
+            <groupId>com.adobe.flexunit</groupId>
+            <artifactId>flexunit</artifactId>
+            <version>4.1.0-beta3</version>
+            <type>swc</type>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+	<build>
+
+		<sourceDirectory>src/main/flex</sourceDirectory>
+
+        <resources>
+            <resource>
+                <directory>html-template</directory>
+                <filtering>true</filtering>
+                <targetPath>resources</targetPath>
+            </resource>
+            <resource>
+                <directory>jsp</directory>
+                <filtering>true</filtering>
+                <targetPath>resources</targetPath>
+            </resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			    <filtering>true</filtering>
+            </resource>
+		</resources>
+
+        <testSourceDirectory>src/test/flex</testSourceDirectory>
+        <testResources>
+          <testResource>
+            <directory>src/test/resources</directory>
+          </testResource>
+        </testResources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.sonatype.flexmojos</groupId>
+				<artifactId>flexmojos-maven-plugin</artifactId>
+                <version>3.9</version>
+				<extensions>true</extensions>
+
+				<configuration>
+                    <testRunner>
+                      <launcher>
+                        <flashplayerCommand>${flashPlayer.command}</flashplayerCommand>
+                      </launcher>
+                    </testRunner>
+					<storepass />
+					<sourceFile>succor.mxml</sourceFile>
+					<output>target/succor.swf</output>
+					<debug>true</debug>
+					<compiledLocales>
+						<locale>en_US</locale>
+					</compiledLocales>
+				</configuration>
+
+				<dependencies>
+					<dependency>
+						<groupId>com.adobe.flex</groupId>
+						<artifactId>compiler</artifactId>
+						<version>${flex.sdk.version}</version>
+						<type>pom</type>
+					</dependency>
+				</dependencies>
+			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <id>make shared resources</id>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>src/main/resources/assembly/resources.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+		</plugins>
+	</build>
+
+</project> 
